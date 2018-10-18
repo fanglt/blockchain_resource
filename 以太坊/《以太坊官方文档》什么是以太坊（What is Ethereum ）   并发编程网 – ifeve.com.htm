@@ -1,0 +1,775 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-9394337417063147",
+          enable_page_level_ads: true
+     });
+</script>
+<base target="_blank">
+<meta name="baidu_union_verify" content="d30f7acd6a9a378cc0aeb0bd0ddfe30d">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9394337417063147",
+    enable_page_level_ads: true
+  });
+</script>
+<title>《以太坊官方文档》什么是以太坊（What is Ethereum?） | 并发编程网 &#8211; ifeve.com</title>
+<meta name="description" content="让天下没有难学的技术" />
+
+<link rel="alternate" type="application/rss+xml" title="并发编程网 &#8211; ifeve.com RSS Feed" href="http://ifeve.com/feed/" />
+<link rel="alternate" type="application/atom+xml" title="并发编程网 &#8211; ifeve.com Atom Feed" href="http://ifeve.com/feed/atom/" /> 
+<link rel="pingback" href="http://ifeve.com/xmlrpc.php" />
+
+<link rel="stylesheet" href="http://ifeve.com/wp-content/themes/flat/style.css" type="text/css" />
+<link rel="stylesheet" href="http://ifeve.com/wp-content/themes/flat/comment-style.css" type="text/css" />
+
+ 
+<link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="并发编程网 - ifeve.com &raquo; 《以太坊官方文档》什么是以太坊（What is Ethereum?）评论Feed" href="http://ifeve.com/what-is-ethereum/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/ifeve.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='wpfp-css' href='http://ifeve.com/wp-content/plugins/wp-favorite-posts/wpfp.css' type='text/css' />
+<link rel='stylesheet' id='yarppWidgetCss-css'  href='http://ifeve.com/wp-content/plugins/yet-another-related-posts-plugin/style/widget.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='jquery-ui-css'  href='//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='dwqa-style-css'  href='http://ifeve.com/wp-content/plugins/dw-question-answer/templates/assets/css/style.css?ver=180720161355' type='text/css' media='all' />
+<link rel='stylesheet' id='dwqa-rtl-css'  href='http://ifeve.com/wp-content/plugins/dw-question-answer/templates/assets/css/rtl.css?ver=180720161355' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-postratings-css'  href='http://ifeve.com/wp-content/plugins/wp-postratings/css/postratings-css.css?ver=1.85' type='text/css' media='all' />
+<script type='text/javascript' src='http://ifeve.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://ifeve.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='http://ifeve.com/wp-content/plugins/wp-favorite-posts/wpfp.js?ver=4.9.8'></script>
+<link rel='https://api.w.org/' href='http://ifeve.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ifeve.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ifeve.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='《Python官方文档》5.数据结构' href='http://ifeve.com/python-5/' />
+<link rel='next' title='《以太坊官方文档》Ethereum Clients&#8212;Choosing a client' href='http://ifeve.com/ethereum-clients-choosing-a-client/' />
+<meta name="generator" content="WordPress 4.9.8" />
+<link rel="canonical" href="http://ifeve.com/what-is-ethereum/" />
+<link rel='shortlink' href='http://ifeve.com/?p=39638' />
+<link rel="alternate" type="application/json+oembed" href="http://ifeve.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fifeve.com%2Fwhat-is-ethereum%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://ifeve.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fifeve.com%2Fwhat-is-ethereum%2F&#038;format=xml" />
+
+<!-- StarBox - the Author Box for Humans 3.0.6, visit: http://wordpress.org/plugins/starbox/ -->
+<!-- /StarBox - the Author Box for Humans -->
+
+<link rel='stylesheet' id='frontend.css-css'  href='http://ifeve.com/wp-content/plugins/starbox//themes/fancy/css/frontend.css?ver=3.0.6' type='text/css' media='all' />
+<script type='text/javascript' src='http://ifeve.com/wp-content/plugins/starbox//themes/fancy/js/frontend.js?ver=3.0.6'></script>
+<link rel='stylesheet' id='hidedefault.css-css'  href='http://ifeve.com/wp-content/plugins/starbox//themes/admin/css/hidedefault.css?ver=3.0.6' type='text/css' media='all' />
+<link rel="amphtml" href="http://ifeve.com/what-is-ethereum/amp/"><style type="text/css" id="syntaxhighlighteranchor"></style>
+
+<script type="text/javascript" src="http://ifeve.com/wp-content/themes/flat/js/jscript.js"></script>
+<script type="text/javascript" src="http://ifeve.com/wp-content/themes/flat/js/comment.js"></script>
+<script type="text/javascript" src="http://ifeve.com/wp-content/themes/flat/js/rollover.js"></script>
+
+<!--[if IE 7]>
+<link rel="stylesheet" href="http://ifeve.com/wp-content/themes/flat/ie7.css" type="text/css" />
+<![endif]-->
+<!--[if IE 8]>
+<link rel="stylesheet" href="http://ifeve.com/wp-content/themes/flat/ie8.css" type="text/css" />
+<![endif]-->
+
+
+<style type="text/css">
+a, .post .title a:hover, .post_meta a:hover, #bread_crumb ul li a:hover, #previous_post a:hover, #next_post a:hover, .post a.more-link:hover, #right_col li a:hover, #copyright li a:hover, #archive_headline #keyword,
+   #comments_wrapper a:hover, #comment_header_right .comment_switch_active a, #comment_header_right .comment_switch_active a:hover, #comment_pager .current
+   { color:#00A19E; }
+
+#no_post a.back:hover, #wp-calendar td a:hover, #wp-calendar #prev a:hover, #wp-calendar #next a:hover, .page_navi a:hover, #submit_comment:hover
+ { background-color:#00A19E; }
+
+#guest_info input:focus, #comment_textarea textarea:focus
+ { border:1px solid #00A19E; }
+
+a:hover
+ { color:#BDC900; }
+
+body { font-size:14px; }
+
+#header { background:url(http://ifeve.com/wp-content/uploads/flat/bg.png) left top; }
+.logo_text a { color:#F5F5F5; }
+#site_description {  border-top:1px solid #BBBBBB; color:#D2D9CC; }
+
+
+</style>
+
+</head>
+
+<body>
+
+ <div id="header">
+  <div class="header_menu">
+    <ul id="menu-%e4%b8%bb%e8%8f%9c%e5%8d%95" class="menu"><li id="menu-item-16594" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-16594"><a href="http://ifeve.com">首页</a></li>
+<li id="menu-item-3432" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3432"><a href="http://ifeve.com/wp-login.php">登录</a></li>
+<li id="menu-item-9219" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-9219"><a href="http://ifeve.com/category/java/">JAVA</a>
+<ul class="sub-menu">
+	<li id="menu-item-16108" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16108"><a href="http://ifeve.com/java-io/">Java IO 教程</a></li>
+	<li id="menu-item-5283" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5283"><a href="http://ifeve.com/java-nio-all/">Java NIO 教程</a></li>
+	<li id="menu-item-17514" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17514"><a href="http://ifeve.com/java-reflection/">JAVA Reflection教程</a></li>
+	<li id="menu-item-16239" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16239"><a href="http://ifeve.com/java-network">Java 网络教程</a></li>
+	<li id="menu-item-4416" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4416"><a href="http://ifeve.com/java-concurrency-thread-directory/">Java并发和多线程</a></li>
+	<li id="menu-item-2767" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2767"><a href="http://ifeve.com/jmm-cookbook/">Java内存模型指南</a></li>
+	<li id="menu-item-2747" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2747"><a href="http://ifeve.com/jmm-faq/">Java内存模型FAQ</a></li>
+	<li id="menu-item-2765" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2765"><a href="http://ifeve.com/syn-jmm/">同步与Java内存模型</a></li>
+	<li id="menu-item-5789" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5789"><a href="http://ifeve.com/oracle-java-concurrency-tutorial/">Oracle官方并发教程</a></li>
+	<li id="menu-item-15316" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15316"><a href="http://ifeve.com/jvm-optimize/">JVM性能优化系列</a></li>
+	<li id="menu-item-15313" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15313"><a href="http://ifeve.com/useful-jvm-flags/">JVM实用参数系列</a></li>
+</ul>
+</li>
+<li id="menu-item-7938" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7938"><a href="http://ifeve.com/category/c/">C++</a></li>
+<li id="menu-item-9220" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-9220"><a href="http://ifeve.com/category/framework/">Framework</a>
+<ul class="sub-menu">
+	<li id="menu-item-12798" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12798"><a href="http://ifeve.com/disruptor/">Disruptor 框架指南</a></li>
+	<li id="menu-item-12783" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12783"><a title="Netty" href="http://ifeve.com/category/netty/">Netty</a></li>
+	<li id="menu-item-12791" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12791"><a href="http://ifeve.com/category/scala/">Scala</a></li>
+	<li id="menu-item-12312" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12312"><a href="http://ifeve.com/getting-started-with-stom-index/">Storm 入门</a></li>
+	<li id="menu-item-9218" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9218"><a href="http://ifeve.com/google-guava/">Guava 官方指南</a></li>
+	<li id="menu-item-20471" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20471"><a href="http://ifeve.com/velocity-guide/">Apache Velocity 官方指南</a></li>
+	<li id="menu-item-21439" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-21439"><a href="http://ifeve.com/storm-translation/">Apache Storm 官方文档</a></li>
+</ul>
+</li>
+<li id="menu-item-555" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-555"><a href="http://ifeve.com/category/concurrency-translation/">其他译文</a>
+<ul class="sub-menu">
+	<li id="menu-item-2777" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2777"><a href="http://ifeve.com/java-concurrent/">并发基础</a></li>
+	<li id="menu-item-3340" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3340"><a href="http://ifeve.com/aqs/">j.u.c同步框架</a></li>
+	<li id="menu-item-2769" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2769"><a href="http://ifeve.com/fj/">Fork Join框架</a></li>
+	<li id="menu-item-9221" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9221"><a href="http://ifeve.com/doug-lea/">Doug Lea 论文</a></li>
+	<li id="menu-item-4643" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4643"><a href="http://ifeve.com/mechanical-sympathy/">Mechanical Sympathy</a></li>
+	<li id="menu-item-6397" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6397"><a href="http://ifeve.com/stm/">软件事务内存导论</a></li>
+	<li id="menu-item-10845" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10845"><a href="http://ifeve.com/jsr133-cn/">JSR133中文版</a></li>
+</ul>
+</li>
+<li id="menu-item-103" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-103"><a href="http://ifeve.com/category/talk-concurrent/">本站原创</a>
+<ul class="sub-menu">
+	<li id="menu-item-2763" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2763"><a href="http://ifeve.com/talk-concurrency/">聊聊并发</a></li>
+	<li id="menu-item-2753" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2753"><a href="http://ifeve.com/java-memory-model-0/">深入理解Java内存模型</a></li>
+	<li id="menu-item-4862" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4862"><a href="http://ifeve.com/from-javaeye-sys-struct/">从Java视角理解系统结构</a></li>
+	<li id="menu-item-4627" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4627"><a href="http://ifeve.com/ali-itu-agile/">阿里内贸团队敏捷实践</a></li>
+</ul>
+</li>
+<li id="menu-item-7119" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-7119"><a href="http://ifeve.com/category/%e5%b9%b6%e5%8f%91%e4%b9%a6%e7%b1%8d/">并发书籍</a>
+<ul class="sub-menu">
+	<li id="menu-item-10846" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10846"><a href="http://ifeve.com/art-of-java-concurrent-program/">《Java 并发编程的艺术》迷你书</a></li>
+	<li id="menu-item-6042" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6042"><a href="http://ifeve.com/perfbook/">《深入理解并行编程》</a></li>
+	<li id="menu-item-9172" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9172"><a href="http://ifeve.com/c-plus-plus-concurrency-in-action/">《C++ 并发编程》</a></li>
+	<li id="menu-item-7785" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7785"><a href="http://ifeve.com/java-7-concurrency-cookbook/">《Java 7 并发编程指南》</a></li>
+	<li id="menu-item-7120" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7120"><a href="http://ifeve.com/jvm-concurrency">《Java 虚拟机并发编程》</a></li>
+	<li id="menu-item-12360" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12360"><a href="http://ifeve.com/getting-started-with-stom-index/">《Storm入门》中文版</a></li>
+</ul>
+</li>
+<li id="menu-item-17079" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17079"><a href="http://ifeve.com/questions/">面试题</a></li>
+<li id="menu-item-22180" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22180"><a href="http://ifeve.com/my-favorite/">我的收藏</a></li>
+<li id="menu-item-9171" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-9171"><a href="http://ifeve.com/need-you/">加入我们</a>
+<ul class="sub-menu">
+	<li id="menu-item-3246" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3246"><a href="http://ifeve.com/contribute/">我要投稿</a></li>
+	<li id="menu-item-6854" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6854"><a href="http://ifeve.com/neitui/">内推阿里</a></li>
+</ul>
+</li>
+<li id="menu-item-105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-105"><a href="http://ifeve.com/about-site/">关于本站</a>
+<ul class="sub-menu">
+	<li id="menu-item-11306" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-11306"><a href="http://ifeve.com/category/%e6%b4%bb%e5%8a%a8/">活动</a></li>
+	<li id="menu-item-1487" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1487"><a href="http://ifeve.com/sitemap.html">文章归档</a></li>
+	<li id="menu-item-29361" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29361"><a href="http://ifeve.com/author/">本站作者</a></li>
+	<li id="menu-item-131" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-131"><a href="http://ifeve.com/about-site/about-me/">关于清英</a></li>
+	<li id="menu-item-7600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7600"><a href="http://ifeve.com/ads/">广告合作</a></li>
+</ul>
+</li>
+</ul>    </div>
+  <!-- logo -->
+  <h1 class="logo_text"><a href="http://ifeve.com/">并发编程网 - ifeve.com</a></h1>
+<h2 id='site_description'>让天下没有难学的技术</h2>
+ </div>
+
+ <div id="main_content" class="clearfix">
+
+  <div id="left_col">
+      <div id="bread_crumb">
+    <ul class="clearfix">
+     <li id="bc_home"><a href="http://ifeve.com/" title="首页">首页</a></li>
+     <li id="bc_cat"><a href="http://ifeve.com/category/%e5%8c%ba%e5%9d%97%e9%93%be/">区块链</a></li>     <li class="last">《以太坊官方文档》什么是以太坊（What is Ethereum?）</li>
+    </ul>
+   </div>
+   
+   
+   <div class="post_wrap clearfix" id="single">
+    <div class="post">
+     <h3 class="title"><span>《以太坊官方文档》什么是以太坊（What is Ethereum?）</span></h3>
+     <div class="post_content">
+      <h2>什么是以太坊</h2>
+<p>以太坊是一个开放的区块链平台，他允许任何人构建和使用运行在区块链技术上的去中心化应用。与比特币相似，没有人可以控制或者拥有以太坊 &#8211; 以太坊是一项由世界各地人一起构建的开源项目。但是与比特币协议不同，以太坊设计得适应性强和灵活。在以太坊平台创建新应用很容易，使用以太坊Homestead release（以太坊第二版本），所有人可以安全地使用这些应用。</p>
+<p><span id="more-39638"></span></p>
+<h2>下一代区块链</h2>
+<p>区块链技术是比特币技术的基础，“比特币：一种对等的电子现金系统”第一次被比特币的神秘作者中本聪在他2008年发布的白皮书中描述。虽然在原始文献中已经讨论过使区块链拥有更广泛的用途，但是直到几年后区块链技术才描述为专业术语。区块链是一个分布式计算架构，每一个网络节点执行和记录相同的交易，这些内容被分组成块。同一时间只能添加一个块，每个块包含一个数学证明，验证他按照前一个块顺序排列。通过这种方式，区块链通过整个网络达成分布式数据库共识。密码系统使个人账户与分类账（交易）交互安全。维护和验证网络节点通过编码到协议中的数学强制经济来激励。</p>
+<p>在比特币的情况下，分布式数据库被设想成账户余额表，分类账和交易是比特币令牌的转移去促进个体间无信任的金融交易。但是随着比特币开始吸引开发者和技术专家的关注，新的项目开始使用比特币网络而不是价值令牌转移。其中许多采取山寨币，使用自有加密的单独区块链，这些山寨币改善原有的比特币协议去添加新的特性和功能。在2013末，以太坊的发明者维塔里克•布特林提出一个具有重新编码以执行复杂计算能力的单链，他可以包含许多其他项目。</p>
+<p>在2014年，以太坊创始人维塔里克•布特林，加文伍德和杰夫瑞威尔克开始研究下一代区块链，他们的目标是实现一个通用的，无信任的智能合约平台。</p>
+<h2>以太虚拟机</h2>
+<p>以太坊是一个可编程的区块链。相较于给予用户一系列预定义操作（例如比特币交易），以太坊允许用户去创建他们希望的任何复杂操作。就这样，以太坊作为一个平台服务于不同种类的去中心化应用，以太坊包括但不仅限于加密货币。</p>
+<p>以太坊在狭义上指定义一个去中心化应用平台的一系列协议。以以太虚拟机为中心，他可以执行任何复杂度的算法代码。用计算机科学术语描述，以太坊就是图灵机。开发者可以使用友善的编程语言模仿存在的语言例如JavaScript和Python来创建能够运行在以太虚拟机上的应用。</p>
+<p>和其他任何的区块链一样，以太坊也包含一个点对点的网络协议。以太坊区块链数据库通过链接在网络上的许多节点来维护和更新。每一个网络节点运行在以太虚拟机上执行一样的指令。因为这个原因，以太坊有些时候也被形象地描述为世界计算机。</p>
+<p>大量通过完全以太坊网络计算机并行计算并没有使得计算更加高效。事实上，这个过程使得在以太坊上的计算相较于传统电脑更慢和更昂贵。相反，每个运行在以太虚拟机上的节点为了在区块链上保持一致。去中心化共识给予以太坊极高的容错水平，确保零停机时间，并使存储在区块链上的数据永远不可修改和审查。</p>
+<p>以太坊平台本身是无特征或价值不确定的。与编程语言相似，企业家和开发人员应该决定使用他做什么。然而，很明显，某些应用程序类型从以太坊能力中获益更多。具体地说，以太坊适用于自动化链接或促进跨网络的协调组操作的应用程序。例如，用于协调点对点市场的应用程序，或者复杂金融合同的自动化。比特币允许个人在不涉及金融机构，银行和政府机构等中间人进行现金交易。以太坊的影响可能更深远。理论上，运行在以太坊上的代码可以自动可靠地进行任何复杂性的财务交互或交换。除了金融应用程序之外，任何信任，安全性和持久性都很重要的环境&#8212;-例如，资产注册，投票，治理和物联网&#8212;-都可能受到以太坊平台的巨大影响。</p>
+<h2>以太坊如何工作</h2>
+<p>以太坊包含许多与比特币相似的特性和技术，同时也介绍许多以太坊本身的修改和改革。然而，比特币区块链是纯粹的交易清单，以太坊的基础单位是账号。以太坊区块链跟踪每个账户，并且以太坊区块链上的状态转换都是在账户之间传输价值和信息。有两种类型的账户：</p>
+<ul>
+<li>外部拥有的账户，由私钥控制</li>
+<li>合约账户，由其合同代码控制，并且只能被外部拥有账户激活</li>
+</ul>
+<p>对于大多数用户来说，基本的区别是，人类用户控制外部拥有的账户&#8212;-因为他们能够控制对外部拥有的账户进行控制的私钥。另一方面，合约账户受其内部代码管理。如果他们是由人类用户控制，那是因为他们被编程为由特定地址外部拥有的账户控制，而外部拥有的私钥反过来又要被拥有控制外部账户的私钥的人控制。流行的术语&#8221;智能合约&#8221;指的是合同账户中的代码&#8212;-当交易被发送到该账户时执行的程序。用户可以通过将代码部署到区块链来创建新的契约。</p>
+<p>合约账户只有在外部拥有的账户发出指令的时候才能执行操作。因此，合约账户不可能执行本地操作，比如随机数生成或者API调用&#8212;-只有在外部拥有账户的提示下，他才能执行这些操作。这是因为以太坊需要节点能够就计算结果达成一致，这就要求保证严格的确定性的执行。</p>
+<p>就像比特币一样，用户必须向网络支付小额交易费。这可以保护以太坊区块链避免不必要的或者恶意的计算任务，比如DDoS攻击或者无限循环。交易的发送方必须为其激活的程序的每一个步骤付费，包括计算和内存存储。这些费用是用以太坊的本地价值令牌标记和支付的。</p>
+<p>这些交易费用由验证网络的节点收取。这些矿工是在以太坊中接受，传播，验证和执行交易的节点。然后，矿工把交易分组&#8212;-其中包括许多以太坊区块链中账户状态的更新&#8212;-归纳到所谓的块，并且然后矿工们相互竞争为了让他们的块能够成为区块链中下一个要添加的块。矿工们开采每一块成功的区块都能够得到以太坊的奖励。这为人们将硬件和电力投入到以太坊网络提供经济激励。</p>
+<p>就像在比特币网络中一样，矿工被分配任务解决一个复杂的数学问题，以便成功地挖掘一个区块。这被称为工作证明。任何需要大量资源来解决算法问题的计算问题比验证该解决方案所需要的资源更多，是更好的工作证明的候选。为了阻止由于经常使用专用硬件（如ASICs）而导致的集中化，就像比特币网络中发生一样，以太坊选择一个难以记忆的计算问题。如果问题需要内存和CPU，理想的硬件实际上是通用计算机。这些使得以太坊的工作证明ASIC具有抵抗性，区块链的安全分布更为分散，区块链的开采主要是专门的硬件，例如比特币。</p>
+<h2>Learn about Ethereum</h2>
+<p>[to be extended]</p>
+<h2>PR videos with some pathos:</h2>
+<ul class="simple">
+<li><a class="reference external" href="https://www.youtube.com/watch?v=j23HnORQXvs">Ethereum: the World Computer</a></li>
+<li><a class="reference external" href="https://vimeo.com/88959651">Ethereum – your turn</a></li>
+</ul>
+<h2>Blockchain and Ethereum 101</h2>
+<ul class="simple">
+<li><a class="reference external" href="https://medium.com/@nik5ter/explain-bitcoin-like-im-five-73b4257ac833">Explain bitcoin like I’m five</a> &#8211; an excellent introduction to blockchain technology and bitcoin to the mildly techsavvy layperson.</li>
+<li><a class="reference external" href="https://medium.com/@creole/7-a-simple-view-of-ethereum-e276f76c980b">https://medium.com/@creole/7-a-simple-view-of-ethereum-e276f76c980b</a></li>
+<li><a class="reference external" href="http://blog.chain.com/post/92660909216/explaining-ethereum">http://blog.chain.com/post/92660909216/explaining-ethereum</a></li>
+<li><a class="reference external" href="http://ethereum.stackexchange.com/questions/45/how-would-i-explain-ethereum-to-a-non-technical-friend">Explain Ethereum to non-technical people Q&amp;A on stackexchange</a></li>
+<li>Reddit threads on ELI5-ing Ethereum:</li>
+</ul>
+<p><a class="reference external" href="https://www.reddit.com/r/ethereum/comments/43brik/explaining_ethereum_to_friends/">[1]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/3c132d/eli5_what_you_guys_do_here/">[2]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/1vvz13/eli5_ethereum/">[3]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/1vb1gc/is_ethereum_an_alt_coin_can_anyone_eli5/">[4]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/4279dh/eli5_what_exactly_is_ethereum/">[5]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/2hl10p/eli5_ethereum/">[6]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/41y8by/the_best_way_i_can_eli5_ethereum_to_someone/">[7]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/44b69e/i_dont_understand_the_technology/">[8]</a><br />
+<a class="reference external" href="https://medium.com/@nik5ter/explain-bitcoin-like-im-five-73b4257ac833">[9]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/1vb1gc/is_ethereum_an_alt_coin_can_anyone_eli5/">[10]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/2dpgwy/eli5_ethereum/">[11]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/47u5y9/explain_what_ethereum_is_to_a_bitcoin_trader/">[12]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/27wsgq/eli5_ethereum_its_uses_its_features_its_future/">[13]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/4936d3/are_you_new_to_ethereum_here_are_many/">[14]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/4279dh/eli5_what_exactly_is_ethereum/">[15]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/3n37dp/explaining_ethereum_ecosystem_for_normal/">[16]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/271qdz/can_someone_explain_the_concept_of_gas_in_ethereum/">[17]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/3hg7id/why_should_the_average_person_care_about_ethereum/">[18]</a><br />
+<a class="reference external" href="https://www.reddit.com/r/ethereum/comments/43exre/what_are_the_advantages_of_ethereum_over_other/">[19]</a></p>
+<h2>Videos</h2>
+<ul class="simple">
+<li><a class="reference external" href="http://change.is/video/ethereum-the-world-computer-featuring-dr-gavin-wood">http://change.is/video/ethereum-the-world-computer-featuring-dr-gavin-wood</a></li>
+</ul>
+<h2>Infographics</h2>
+<ul class="simple">
+<li><a class="reference external" href="https://blog.ethereum.org/wp-content/uploads/2015/06/Ethereum-image-infographic-beginners-guide.png">Ethereum explained&#8230;[to your mother]</a></li>
+<li><a class="reference external" href="http://decentral.ca/wp-content/uploads/2016/03/infographic.jpg">http://decentral.ca/wp-content/uploads/2016/03/infographic.jpg</a></li>
+<li><a class="reference external" href="https://medium.com/@angelomilan/ethereum-explained-to-my-mom-infographic-673e32054c1c#.n9kzhme6v">https://medium.com/@angelomilan/ethereum-explained-to-my-mom-infographic-673e32054c1c#.n9kzhme6v</a></li>
+</ul>
+<h2>Comparison to alternatives</h2>
+<ul class="simple">
+<li><a class="reference external" href="https://www.reddit.com/r/ethereum/comments/23aejv/eli5_what_is_the_qnce_between_ethereum_and/">NXT</a></li>
+<li><a class="reference external" href="https://www.reddit.com/r/ethereum/comments/22r49u/how_is_maidsafe_different_then_etherium/">MaidSafe</a></li>
+</ul>
+<p><!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) --></p>
+<div style="margin-top: 15px; font-style: italic">
+<p><strong>原创文章，转载请注明：</strong> 转载自<a href="http://ifeve.com/">并发编程网 &#8211; ifeve.com</a><strong>本文链接地址:</strong> <a href="http://ifeve.com/what-is-ethereum/">《以太坊官方文档》什么是以太坊（What is Ethereum?）</a></p>
+</div>
+<p><a href="http://mstx.im" target=“_blank"><img src="http://ifeve.com/wp-content/uploads/2018/07/WechatIMG4974.jpeg"></a></p>
+
+                         <div class="abh_box abh_box_down abh_box_"><ul class="abh_tabs"> <li class="abh_about abh_active"><a href="#abh_about">About</a></li> <li class="abh_posts"><a href="#abh_posts">Latest Posts</a></li></ul><div class="abh_tab_content"><section class="vcard abh_about_tab abh_tab" style="display:block"><div class="abh_image"><a href="http://ifeve.com/author/lunatic_genius/" class="url" title="Lunatic_Genius"><img alt='' src='http://2.gravatar.com/avatar/ee89f9bfd1372f5dab3caf5501b6c544?s=80&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/ee89f9bfd1372f5dab3caf5501b6c544?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></div><div class="abh_social"> </div><div class="abh_text"><h3 class="fn name" ><a href="http://ifeve.com/author/lunatic_genius/" class="url">Lunatic_Genius</a></h3><div class="abh_job" ></div><div class="description note abh_description" ></div></div> </section><section class="abh_posts_tab abh_tab" ><div class="abh_image"><a href="http://ifeve.com/author/lunatic_genius/" class="url" title="Lunatic_Genius"><img alt='' src='http://2.gravatar.com/avatar/ee89f9bfd1372f5dab3caf5501b6c544?s=80&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/ee89f9bfd1372f5dab3caf5501b6c544?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></div><div class="abh_social"> </div><div class="abh_text"><h4 >Latest posts by Lunatic_Genius <span class="abh_allposts">(<a href="http://ifeve.com/author/lunatic_genius/">see all</a>)</span></h4><div class="abh_description note" ><ul>				<li>					<a href="http://ifeve.com/what-is-ethereum/">《以太坊官方文档》什么是以太坊（What is Ethereum?）</a><span> - 2018年8月2日</span>				</li></ul></div></div> </section></div> </div><span class='wpfp-span'><img src='http://ifeve.com/wp-content/plugins/wp-favorite-posts/img/star.png' alt='Favorite' title='Favorite' class='wpfp-img' /><img src='http://ifeve.com/wp-content/plugins/wp-favorite-posts/img/loading.gif' alt='Loading' title='Loading' class='wpfp-hide wpfp-img' /><a class='wpfp-link' href='?wpfpaction=add&amp;postid=39638' title='添加本文到我的收藏' rel='nofollow'>添加本文到我的收藏</a></span><div class='yarpp-related'>
+<h3>Related posts:</h3><ol>
+<li><a href="http://ifeve.com/ethereum-clients-choosing-a-client/" rel="bookmark" title="《以太坊官方文档》Ethereum Clients&#8212;Choosing a client">《以太坊官方文档》Ethereum Clients&#8212;Choosing a client </a></li>
+<li><a href="http://ifeve.com/ethereum/" rel="bookmark" title="《以太坊官方文档》翻译邀请">《以太坊官方文档》翻译邀请 </a></li>
+<li><a href="http://ifeve.com/%e3%80%8akubernetes%e5%ae%98%e6%96%b9%e6%96%87%e6%a1%a3%e3%80%8b%e7%94%a8%e6%9a%b4%e9%9c%b2%e7%9a%84ip%e5%9c%b0%e5%9d%80%e5%8e%bb%e8%ae%bf%e9%97%ae%e9%9b%86%e7%be%a4%e4%b8%ad%e7%9a%84%e4%b8%80/" rel="bookmark" title="《kubernetes官方文档》用暴露的ip地址去访问集群中的一个应用">《kubernetes官方文档》用暴露的ip地址去访问集群中的一个应用 </a></li>
+<li><a href="http://ifeve.com/cds-plan/" rel="bookmark" title="招募译者翻译并发数据结构">招募译者翻译并发数据结构 </a></li>
+<li><a href="http://ifeve.com/%e3%80%8akubernetes%e5%ae%98%e6%96%b9%e6%96%87%e6%a1%a3%e3%80%8b%e4%bd%bf%e7%94%a8%e6%9c%8d%e5%8a%a1%e8%ae%bf%e9%97%ae%e9%9b%86%e7%be%a4%e4%b8%ad%e7%9a%84%e5%ba%94%e7%94%a8/" rel="bookmark" title="《kubernetes官方文档》使用服务访问集群中的应用">《kubernetes官方文档》使用服务访问集群中的应用 </a></li>
+<li><a href="http://ifeve.com/rabbitmq-routing/" rel="bookmark" title="《RabbitMQ官方指南》路由">《RabbitMQ官方指南》路由 </a></li>
+<li><a href="http://ifeve.com/linkerd-introduction/" rel="bookmark" title="《Linkerd官方文档》Linkerd介绍">《Linkerd官方文档》Linkerd介绍 </a></li>
+<li><a href="http://ifeve.com/disruptor-memory-barriers/" rel="bookmark" title="Dissecting the Disruptor: Demystifying Memory Barriers">Dissecting the Disruptor: Demystifying Memory Barriers </a></li>
+<li><a href="http://ifeve.com/wildfly-1/" rel="bookmark" title="WildFly评估之WildFly的模块化系统">WildFly评估之WildFly的模块化系统 </a></li>
+<li><a href="http://ifeve.com/linkerd-run-dc-os/" rel="bookmark" title="《Linkerd官方文档》在DC / OS中运行Linkerd">《Linkerd官方文档》在DC / OS中运行Linkerd </a></li>
+<li><a href="http://ifeve.com/disruptor2/" rel="bookmark" title="Disruptor 2.0 &#8211; All Change Please">Disruptor 2.0 &#8211; All Change Please </a></li>
+<li><a href="http://ifeve.com/logging-stop-the-world-pauses-in-jvm/" rel="bookmark" title="通过JVM日志来进行安全点分析">通过JVM日志来进行安全点分析 </a></li>
+<li><a href="http://ifeve.com/%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f%e7%ae%80%e5%8d%95%e6%80%bb%e7%bb%93/" rel="bookmark" title="设计模式简单总结">设计模式简单总结 </a></li>
+<li><a href="http://ifeve.com/ifeve-201412-top10/" rel="bookmark" title="并发网2014.12月阅读量Top10">并发网2014.12月阅读量Top10 </a></li>
+<li><a href="http://ifeve.com/our_collectors/" rel="bookmark" title="我们的垃圾收集器">我们的垃圾收集器 </a></li>
+</ol>
+</div>
+           </div><!-- END .post_content -->
+    </div>
+    <div class="meta">
+          <ul>
+      <li class="post_date clearfix">
+       <span class="date">02</span>
+       <span class="month">Aug</span>
+       <span class="year">2018</span>
+      </li>
+      
+<li class="post_comment">
+424 人阅读</li>
+
+      <li class="post_author"><a href="http://ifeve.com/author/lunatic_genius/" title="由Lunatic_Genius发布" rel="author">Lunatic_Genius</a></li>      <li class="post_category"><a href="http://ifeve.com/category/%e5%8c%ba%e5%9d%97%e9%93%be/" rel="category tag">区块链</a></li>       <li class="post_category"><div id="post-ratings-39638" class="post-ratings" itemscope itemtype="http://schema.org/Article" data-nonce="49e4481b5b"><img id="rating_39638_1" src="http://ifeve.com/wp-content/plugins/wp-postratings/images/stars_crystal/rating_off.gif" alt="好烂啊" title="好烂啊" onmouseover="current_rating(39638, 1, '好烂啊');" onmouseout="ratings_off(0, 0, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;" /><img id="rating_39638_2" src="http://ifeve.com/wp-content/plugins/wp-postratings/images/stars_crystal/rating_off.gif" alt="没价值" title="没价值" onmouseover="current_rating(39638, 2, '没价值');" onmouseout="ratings_off(0, 0, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;" /><img id="rating_39638_3" src="http://ifeve.com/wp-content/plugins/wp-postratings/images/stars_crystal/rating_off.gif" alt="凑合看看" title="凑合看看" onmouseover="current_rating(39638, 3, '凑合看看');" onmouseout="ratings_off(0, 0, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;" /><img id="rating_39638_4" src="http://ifeve.com/wp-content/plugins/wp-postratings/images/stars_crystal/rating_off.gif" alt="还不错" title="还不错" onmouseover="current_rating(39638, 4, '还不错');" onmouseout="ratings_off(0, 0, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;" /><img id="rating_39638_5" src="http://ifeve.com/wp-content/plugins/wp-postratings/images/stars_crystal/rating_off.gif" alt="超赞" title="超赞" onmouseover="current_rating(39638, 5, '超赞');" onmouseout="ratings_off(0, 0, 0);" onclick="rate_post();" onkeypress="rate_post();" style="cursor: pointer; border: 0px;" /> (还没有评分)<br /><span class="post-ratings-text" id="ratings_39638_text"></span><meta itemprop="headline" content="《以太坊官方文档》什么是以太坊（What is Ethereum?）" /><meta itemprop="description" content="什么是以太坊
+以太坊是一个开放的区块链平台，他允许任何人构建和使用运行在区块链技术上的去中心化应用。与比特币相似，没有人可以控制或者拥有以太坊 - 以太坊是一项由世界各地人一起构建的开源项目。但是与比特币协议不同，以太坊设计得适应性强和灵活。在以太坊平台创建新应用很容易，使用以太坊Homestead release（以太坊第二版本），所有人可以安全地使用这些应用。
+
+
+下一代区块链
+区块..." /><meta itemprop="datePublished" content="2018-08-02T22:34:17+00:00" /><meta itemprop="dateModified" content="2018-08-02T22:44:06+00:00" /><meta itemprop="url" content="http://ifeve.com/what-is-ethereum/" /><meta itemprop="author" content="Lunatic_Genius" /><meta itemprop="mainEntityOfPage" content="http://ifeve.com/what-is-ethereum/" /><div style="display: none;" itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="并发编程网 - ifeve.com" /><div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject"><meta itemprop="url" content="" /></div></div></div><div id="post-ratings-39638-loading" class="post-ratings-loading">
+            <img src="http://ifeve.com/wp-content/plugins/wp-postratings/images/loading.gif" width="16" height="16" class="post-ratings-image" />Loading...</div></li>       <li class="post_comment"><a href="http://ifeve.com/what-is-ethereum/#comments">只有一条评论</a></li>           </ul>
+         </div>
+   </div><!-- END .post_wrap -->
+
+   
+      <div id="comments_wrapper">
+    
+
+
+
+
+<div id="comment_header" class="clearfix">
+
+ <ul id="comment_header_left">
+  <li id="add_comment"><a href="#respond">发表评论</a></li>
+  <li id="comment_feed"><a href="http://ifeve.com/comments/feed/" title="RSS订阅评论">RSS订阅评论</a></li>
+ </ul>
+
+ <ul id="comment_header_right">
+   <li id="trackback_closed">Trackback 关闭</li>
+   <li id="comment_closed">评论 (0)</li>
+ </ul>
+
+
+</div><!-- END #comment_header -->
+
+<div id="comments">
+
+ <div id="comment_area">
+  <!-- start commnet -->
+  <ol class="commentlist">
+	    <li class="comment">
+     <div class="comment-content"><p>暂无评论</p></div>
+    </li>
+	  </ol>
+  <!-- comments END -->
+
+  
+ </div><!-- #comment-list END -->
+
+
+ <div id="trackback_area">
+ <!-- start trackback -->
+  <!-- trackback end -->
+ </div><!-- #trackbacklist END -->
+
+ 
+
+
+ 
+ <div class="comment_form_wrapper" id="respond">
+    您必须 <a href="http://ifeve.com/wp-login.php">登陆</a> 后才能发表评论 </div>
+
+ </div><!-- #comment end -->   </div>
+   
+      <div id="previous_next_post_single">
+    <div class="clearfix">
+     <p id="previous_post"><a href="http://ifeve.com/python-5/" rel="prev">《Python官方文档》5.数据结构</a></p>     <p id="next_post"><a href="http://ifeve.com/ethereum-clients-choosing-a-client/" rel="next">《以太坊官方文档》Ethereum Clients&#8212;Choosing a client</a></p>    </div>
+   </div>
+   
+
+  </div><!-- END #left_col -->
+
+  <div id="container"></div>
+
+    <div id="right_col">
+   
+
+<div class="side_box clearfix" id="side_meta_content">
+
+  <ul id="social_link" class="clearfix">
+    <li class="rss_button"><a class="target_blank" href="http://ifeve.com/feed/">rss</a></li>
+       </ul>
+ 
+  <div id="search_area">
+    <form method="get" id="searchform" action="http://ifeve.com/">
+   <div><input id="search_button" class="rollover" type="image" src="http://ifeve.com/wp-content/themes/flat/img/search_button.gif" alt="搜索一下" title="搜索一下" /></div>
+   <div><input id="search_input" type="text" value="搜索一下" name="s" onfocus="if (this.value == '搜索一下') this.value = '';" onblur="if (this.value == '') this.value = '搜索一下';" /></div>
+  </form>
+   </div>
+ 
+</div>
+
+
+<div id="side_top">
+
+ <div class="widget_text side_box widget_custom_html" id="custom_html-3">
+<div class="textwidget custom-html-widget"><!-- <p><a target="_blank" href="https://www.itiger.com/accounts?invite=KLKHB"><img src="http://ifeve.com/wp-content/uploads/2018/06/48961529840765_.pic_.jpg"/>
+</a>
+ -->
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 首页－右上－2 -->
+<ins class="adsbygoogle" style="display: inline-block; width: 336px; height: 280px;" data-ad-client="ca-pub-9394337417063147" data-ad-slot="8872369516"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+
+
+<!-- <img src="http://ifeve.com/wp-content/uploads/2018/06/qrcode_for_gh_87611be4f171_258.jpg"/> -->
+
+<!-- <a target="_blank" href="http://edu.bjlemon.com:81/index.html"><img src="http://ifeve.com/wp-content/uploads/2018/06/qrcode_for_gh_87611be4f171_258.jpg"/>
+ --></div></div>
+		<div class="side_box widget_recent_entries" id="recent-posts-2">
+		<h3 class="side_title">近期文章</h3>
+		<ul>
+											<li>
+					<a href="http://ifeve.com/%e5%ae%b9%e5%99%a8docker%e4%b8%ad%e8%bf%90%e8%a1%8cjava%e9%9c%80%e5%85%b3%e6%b3%a8%e7%9a%84%e5%87%a0%e4%b8%aa%e5%b0%8f%e9%97%ae%e9%a2%98/">容器(docker)中运行java需关注的几个小问题</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e5%a6%82%e4%bd%95%e4%bc%98%e9%9b%85%e7%9a%84%e4%bd%bf%e7%94%a8%e5%92%8c%e7%90%86%e8%a7%a3%e7%ba%bf%e7%a8%8b%e6%b1%a0/">如何优雅的使用和理解线程池</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/python3-6-12/">《Python3.6官方文档》– 第12章 虚拟环境和包</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/python-3-6-13/">《Python3.6官方文档》– 第13章  接下来</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/hashmap-concurrenthashmap-%e7%9b%b8%e4%bf%a1%e7%9c%8b%e5%ae%8c%e8%bf%99%e7%af%87%e6%b2%a1%e4%ba%ba%e8%83%bd%e9%9a%be%e4%bd%8f%e4%bd%a0%ef%bc%81/">HashMap? ConcurrentHashMap? 相信看完这篇没人能难住你！</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/raft%e8%ae%ba%e6%96%87%e8%af%bb%e4%b9%a6%e7%ac%94%e8%ae%b0/">Raft论文读书笔记</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e3%80%8apython3-6%e5%ae%98%e6%96%b9%e6%96%87%e6%a1%a3%e3%80%8b-%e7%ac%ac%e4%ba%8c%e7%ab%a0-%e4%bd%bf%e7%94%a8python%e8%a7%a3%e9%87%8a%e5%99%a8/">《Python3.6官方文档》– 第二章 使用python解释器</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e4%bd%a0%e7%9c%9f%e7%9a%84%e4%ba%86%e8%a7%a3%e5%bb%b6%e6%97%b6%e9%98%9f%e5%88%97%e5%90%97%e4%b8%80/">你真的了解延时队列吗(一)</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/mysq-stream-search/">MySQL中流式查询使用</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/python3-6-10/">《Python3.6官方文档》– 第十章</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/ethereum-clients-choosing-a-client/">《以太坊官方文档》Ethereum Clients&#8212;Choosing a client</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/what-is-ethereum/">《以太坊官方文档》什么是以太坊（What is Ethereum?）</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/python-5/">《Python官方文档》5.数据结构</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/netty%e4%ba%8c-%e4%bb%8e%e7%ba%bf%e7%a8%8b%e6%a8%a1%e5%9e%8b%e7%9a%84%e8%a7%92%e5%ba%a6%e7%9c%8b-netty-%e4%b8%ba%e4%bb%80%e4%b9%88%e6%98%af%e9%ab%98%e6%80%a7%e8%83%bd%e7%9a%84%ef%bc%9f/">Netty(二) 从线程模型的角度看 Netty 为什么是高性能的？</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e5%88%9d%e8%b0%88%e6%9e%b6%e6%9e%84/">初谈架构</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/rocketmq-concept/">分布式消息中间件 RocketMQ：概述与源码编译篇</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/guava-%e6%ba%90%e7%a0%81%e5%88%86%e6%9e%90%ef%bc%88cache-%e5%8e%9f%e7%90%86%e3%80%90%e4%ba%8c%e9%98%b6%e6%ae%b5%e3%80%91%ef%bc%89/">Guava 源码分析（Cache 原理【二阶段】）</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/apache-pulsar%e4%bb%8b%e7%bb%8d/">Apache Pulsar介绍</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/ethereum/">《以太坊官方文档》翻译邀请</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/springmybaitsconfig/">Spring&amp;Mybaits数据库配置解惑</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e3%80%8apython3-6%e5%ae%98%e6%96%b9%e6%96%87%e6%a1%a3%e3%80%8b-%e7%ac%ac%e5%8d%81%e4%b8%80%e7%ab%a0/">《Python3.6官方文档》– 第十一章</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e4%b8%80%e6%ac%a1%e7%ba%bf%e4%b8%8a%e9%97%ae%e9%a2%98%e6%8e%92%e6%9f%a5%e6%89%80%e5%bc%95%e5%8f%91%e7%9a%84%e6%80%9d%e8%80%83/">一次线上问题排查所引发的思考</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/mysql-xa/">MySQL 中基于 XA 实现的分布式事务</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/am-hierarchy/">《架构方法论》分层架构</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/db_problem/">何为脏读、不可重复读、幻读</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e6%88%90%e8%b4%a5%e5%8f%96%e5%86%b3%e4%ba%8e%e8%a7%81%e8%af%86/">认知升级-成败取决于见识</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/tcc/">分布式事务- TCC编程式模式</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e3%80%8apython3-6%e5%ae%98%e6%96%b9%e6%96%87%e6%a1%a3%e3%80%8b-%e7%ac%ac%e4%b8%80%e7%ab%a0/">《Python3.6官方文档》– 第一章</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/%e6%88%91%e7%9a%84%e9%98%bf%e9%87%8c%e9%9d%a2%e8%af%95%e4%b9%8b%e8%b7%af/">我的阿里面试之路</a>
+									</li>
+											<li>
+					<a href="http://ifeve.com/3pc/">分布式事务- 三阶段协议</a>
+									</li>
+					</ul>
+		</div>
+<div class="widget_text side_box widget_custom_html" id="custom_html-5">
+<div class="textwidget custom-html-widget"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 首页－右上－3 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-9394337417063147"
+     data-ad-slot="4721371513"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div>
+<div class="side_box widget_views" id="views-4">
+<h3 class="side_title">热门文章</h3>
+<ul>
+<li><a href="http://ifeve.com/what-is-ethereum/"  title="Google Guava官方教程（中文版）">Google Guava官方教程（中文版）</a> 610,631 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="Java NIO系列教程（一） Java NIO 概述">Java NIO系列教程（一） Java NIO 概述</a> 454,623 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="Java并发性和多线程介绍目录">Java并发性和多线程介绍目录</a> 321,629 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="Java NIO 系列教程">Java NIO 系列教程</a> 310,866 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="Java NIO系列教程（十二） Java NIO与IO">Java NIO系列教程（十二） Java NIO与IO</a> 249,994 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="Java8初体验（二）Stream语法详解">Java8初体验（二）Stream语法详解</a> 227,075 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="Java NIO系列教程（六） Selector">Java NIO系列教程（六） Selector</a> 224,195 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="Java NIO系列教程（三） Buffer">Java NIO系列教程（三） Buffer</a> 220,884 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="Java NIO系列教程（二） Channel">Java NIO系列教程（二） Channel</a> 216,564 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="《Storm入门》中文版">《Storm入门》中文版</a> 181,746 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="69道Spring面试题和答案">69道Spring面试题和答案</a> 177,688 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="Netty 5用户指南">Netty 5用户指南</a> 173,071 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="并发框架Disruptor译文">并发框架Disruptor译文</a> 158,566 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="面试题">面试题</a> 155,228 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="Java 7 并发编程指南中文版">Java 7 并发编程指南中文版</a> 143,776 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="Java NIO系列教程（八） SocketChannel">Java NIO系列教程（八） SocketChannel</a> 139,624 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="[Google Guava] 3-缓存">[Google Guava] 3-缓存</a> 134,980 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="[Google Guava] 2.3-强大的集合工具类：ja...">[Google Guava] 2.3-强大的集合工具类：ja...</a> 134,756 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="聊聊并发（三）Java线程池的分析和使用">聊聊并发（三）Java线程池的分析和使用</a> 128,224 人阅读 </li><li><a href="http://ifeve.com/what-is-ethereum/"  title="如何创建并运行java线程">如何创建并运行java线程</a> 123,981 人阅读 </li></ul>
+</div>
+<div class="widget_text side_box widget_custom_html" id="custom_html-4">
+<div class="textwidget custom-html-widget"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 首页－右边－4 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-9394337417063147"
+     data-ad-slot="6198104715"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div>
+</div>
+<div id="side_middle" class="clearfix">
+ <div id="side_left">
+  <div class="side_box_short widget_categories" id="categories-2">
+<h3 class="side_title">分类目录</h3>
+		<ul>
+	<li class="cat-item cat-item-415"><a href="http://ifeve.com/category/android/" >Android</a> (3)
+</li>
+	<li class="cat-item cat-item-1101"><a href="http://ifeve.com/category/architecture/" >Architecture</a> (2)
+</li>
+	<li class="cat-item cat-item-289"><a href="http://ifeve.com/category/c/" >C++</a> (12)
+</li>
+	<li class="cat-item cat-item-366"><a href="http://ifeve.com/category/cpu-2/" >CPU</a> (2)
+</li>
+	<li class="cat-item cat-item-73"><a href="http://ifeve.com/category/framework/" >Framework</a> (74)
+<ul class='children'>
+	<li class="cat-item cat-item-387"><a href="http://ifeve.com/category/framework/akka/" >akka</a> (20)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-458"><a href="http://ifeve.com/category/go/" >GO</a> (6)
+</li>
+	<li class="cat-item cat-item-617"><a href="http://ifeve.com/category/groovy/" >groovy</a> (6)
+</li>
+	<li class="cat-item cat-item-310"><a href="http://ifeve.com/category/guava-2/" >guava</a> (24)
+</li>
+	<li class="cat-item cat-item-69"><a href="http://ifeve.com/category/java/" >JAVA</a> (901)
+</li>
+	<li class="cat-item cat-item-127"><a href="http://ifeve.com/category/jvm/" >JVM</a> (45)
+</li>
+	<li class="cat-item cat-item-300"><a href="http://ifeve.com/category/linux/" >linux</a> (10)
+</li>
+	<li class="cat-item cat-item-1061"><a href="http://ifeve.com/category/microservices/" >microservices</a> (1)
+</li>
+	<li class="cat-item cat-item-280"><a href="http://ifeve.com/category/netty/" >Netty</a> (32)
+</li>
+	<li class="cat-item cat-item-1107"><a href="http://ifeve.com/category/python/" >Python</a> (1)
+</li>
+	<li class="cat-item cat-item-632"><a href="http://ifeve.com/category/react/" >react</a> (6)
+</li>
+	<li class="cat-item cat-item-623"><a href="http://ifeve.com/category/redis/" >redis</a> (25)
+</li>
+	<li class="cat-item cat-item-166"><a href="http://ifeve.com/category/scala/" >Scala</a> (11)
+</li>
+	<li class="cat-item cat-item-672"><a href="http://ifeve.com/category/spark/" >spark</a> (19)
+</li>
+	<li class="cat-item cat-item-1011"><a href="http://ifeve.com/category/spring/" >Spring</a> (23)
+</li>
+	<li class="cat-item cat-item-388"><a href="http://ifeve.com/category/storm/" >storm</a> (44)
+</li>
+	<li class="cat-item cat-item-620"><a href="http://ifeve.com/category/thinking/" >thinking</a> (3)
+</li>
+	<li class="cat-item cat-item-485"><a href="http://ifeve.com/category/velocity/" >Velocity</a> (10)
+</li>
+	<li class="cat-item cat-item-279"><a href="http://ifeve.com/category/web/" >Web</a> (18)
+</li>
+	<li class="cat-item cat-item-980"><a href="http://ifeve.com/category/zookeeper/" >zookeeper</a> (1)
+</li>
+	<li class="cat-item cat-item-148"><a href="http://ifeve.com/category/notice/" >公告</a> (5)
+</li>
+	<li class="cat-item cat-item-1103"><a href="http://ifeve.com/category/%e5%8c%ba%e5%9d%97%e9%93%be/" >区块链</a> (3)
+</li>
+	<li class="cat-item cat-item-378"><a href="http://ifeve.com/category/bigdata/" >大数据</a> (34)
+</li>
+	<li class="cat-item cat-item-138"><a href="http://ifeve.com/category/%e5%a5%bd%e6%96%87%e6%8e%a8%e8%8d%90/" >好文推荐</a> (32)
+</li>
+	<li class="cat-item cat-item-244"><a href="http://ifeve.com/category/%e5%b9%b6%e5%8f%91%e4%b9%a6%e7%b1%8d/" >并发书籍</a> (97)
+</li>
+	<li class="cat-item cat-item-29"><a href="http://ifeve.com/category/concurrency-translation/" title="发布国外并发编程相关文献译文。">并发译文</a> (416)
+</li>
+	<li class="cat-item cat-item-979"><a href="http://ifeve.com/category/%e6%84%9f%e6%82%9f/" >感悟</a> (5)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://ifeve.com/category/ask/" title="可以在这里发表并发编程的问题。如何发表？用QQ登陆，然后点击“新建文章”，管理员审核后就可以发表。">技术问答</a> (12)
+</li>
+	<li class="cat-item cat-item-147"><a href="http://ifeve.com/category/%e6%95%8f%e6%8d%b7%e7%ae%a1%e7%90%86/" >敏捷管理</a> (6)
+</li>
+	<li class="cat-item cat-item-1"><a href="http://ifeve.com/category/talk-concurrent/" >本站原创</a> (89)
+</li>
+	<li class="cat-item cat-item-367"><a href="http://ifeve.com/category/%e6%9e%b6%e6%9e%84/" >架构</a> (37)
+</li>
+	<li class="cat-item cat-item-305"><a href="http://ifeve.com/category/%e6%b4%bb%e5%8a%a8/" >活动</a> (6)
+</li>
+	<li class="cat-item cat-item-414"><a href="http://ifeve.com/category/%e7%bd%91%e7%bb%9c/" >网络</a> (7)
+</li>
+	<li class="cat-item cat-item-1100"><a href="http://ifeve.com/category/%e9%9d%a2%e8%af%95/" >面试</a> (1)
+</li>
+		</ul>
+</div>
+ </div>
+ <div id="side_right">
+  <div class="side_box_short widget_tag_cloud" id="tag_cloud-4">
+<h3 class="side_title">标签</h3>
+<div class="tagcloud"><a href="http://ifeve.com/tag/actor/" class="tag-cloud-link tag-link-226 tag-link-position-1" style="font-size: 12.46017699115pt;" aria-label="actor (17个项目)">actor</a>
+<a href="http://ifeve.com/tag/basic/" class="tag-cloud-link tag-link-213 tag-link-position-2" style="font-size: 11.469026548673pt;" aria-label="Basic (14个项目)">Basic</a>
+<a href="http://ifeve.com/tag/classes/" class="tag-cloud-link tag-link-251 tag-link-position-3" style="font-size: 8.6194690265487pt;" aria-label="classes (8个项目)">classes</a>
+<a href="http://ifeve.com/tag/collections/" class="tag-cloud-link tag-link-260 tag-link-position-4" style="font-size: 10.230088495575pt;" aria-label="collections (11个项目)">collections</a>
+<a href="http://ifeve.com/tag/concurrency/" class="tag-cloud-link tag-link-111 tag-link-position-5" style="font-size: 20.265486725664pt;" aria-label="concurrency (76个项目)">concurrency</a>
+<a href="http://ifeve.com/tag/concurrent/" class="tag-cloud-link tag-link-214 tag-link-position-6" style="font-size: 11.097345132743pt;" aria-label="Concurrent (13个项目)">Concurrent</a>
+<a href="http://ifeve.com/tag/concurrent-data-structure/" class="tag-cloud-link tag-link-322 tag-link-position-7" style="font-size: 11.097345132743pt;" aria-label="concurrent data structure (13个项目)">concurrent data structure</a>
+<a href="http://ifeve.com/tag/concurrenthashmap/" class="tag-cloud-link tag-link-61 tag-link-position-8" style="font-size: 8pt;" aria-label="ConcurrentHashMap (7个项目)">ConcurrentHashMap</a>
+<a href="http://ifeve.com/tag/customizing/" class="tag-cloud-link tag-link-250 tag-link-position-9" style="font-size: 8.6194690265487pt;" aria-label="Customizing (8个项目)">Customizing</a>
+<a href="http://ifeve.com/tag/executor/" class="tag-cloud-link tag-link-177 tag-link-position-10" style="font-size: 13.203539823009pt;" aria-label="Executor (20个项目)">Executor</a>
+<a href="http://ifeve.com/tag/executor-framework/" class="tag-cloud-link tag-link-231 tag-link-position-11" style="font-size: 12.70796460177pt;" aria-label="Executor framework (18个项目)">Executor framework</a>
+<a href="http://ifeve.com/tag/faq/" class="tag-cloud-link tag-link-39 tag-link-position-12" style="font-size: 11.097345132743pt;" aria-label="faq (13个项目)">faq</a>
+<a href="http://ifeve.com/tag/fork/" class="tag-cloud-link tag-link-232 tag-link-position-13" style="font-size: 10.601769911504pt;" aria-label="fork (12个项目)">fork</a>
+<a href="http://ifeve.com/tag/forkjoin/" class="tag-cloud-link tag-link-224 tag-link-position-14" style="font-size: 9.2389380530973pt;" aria-label="Fork/Join (9个项目)">Fork/Join</a>
+<a href="http://ifeve.com/tag/fork-join/" class="tag-cloud-link tag-link-53 tag-link-position-15" style="font-size: 8.6194690265487pt;" aria-label="fork join (8个项目)">fork join</a>
+<a href="http://ifeve.com/tag/framework/" class="tag-cloud-link tag-link-1018 tag-link-position-16" style="font-size: 14.194690265487pt;" aria-label="Framework (24个项目)">Framework</a>
+<a href="http://ifeve.com/tag/functional-programming/" class="tag-cloud-link tag-link-460 tag-link-position-17" style="font-size: 9.7345132743363pt;" aria-label="Functional Programming (10个项目)">Functional Programming</a>
+<a href="http://ifeve.com/tag/guava/" class="tag-cloud-link tag-link-309 tag-link-position-18" style="font-size: 12.46017699115pt;" aria-label="Guava (17个项目)">Guava</a>
+<a href="http://ifeve.com/tag/io/" class="tag-cloud-link tag-link-129 tag-link-position-19" style="font-size: 14.566371681416pt;" aria-label="IO (26个项目)">IO</a>
+<a href="http://ifeve.com/tag/java/" class="tag-cloud-link tag-link-1016 tag-link-position-20" style="font-size: 22pt;" aria-label="JAVA (106个项目)">JAVA</a>
+<a href="http://ifeve.com/tag/java8/" class="tag-cloud-link tag-link-342 tag-link-position-21" style="font-size: 11.097345132743pt;" aria-label="java8 (13个项目)">java8</a>
+<a href="http://ifeve.com/tag/jmm/" class="tag-cloud-link tag-link-31 tag-link-position-22" style="font-size: 15.681415929204pt;" aria-label="jmm (32个项目)">jmm</a>
+<a href="http://ifeve.com/tag/join/" class="tag-cloud-link tag-link-233 tag-link-position-23" style="font-size: 10.601769911504pt;" aria-label="join (12个项目)">join</a>
+<a href="http://ifeve.com/tag/jvm/" class="tag-cloud-link tag-link-1019 tag-link-position-24" style="font-size: 13.203539823009pt;" aria-label="JVM (20个项目)">JVM</a>
+<a href="http://ifeve.com/tag/lock/" class="tag-cloud-link tag-link-17 tag-link-position-25" style="font-size: 14.318584070796pt;" aria-label="lock (25个项目)">lock</a>
+<a href="http://ifeve.com/tag/memory-barriers/" class="tag-cloud-link tag-link-75 tag-link-position-26" style="font-size: 9.7345132743363pt;" aria-label="Memory Barriers (10个项目)">Memory Barriers</a>
+<a href="http://ifeve.com/tag/netty/" class="tag-cloud-link tag-link-1027 tag-link-position-27" style="font-size: 13.203539823009pt;" aria-label="Netty (20个项目)">Netty</a>
+<a href="http://ifeve.com/tag/nio/" class="tag-cloud-link tag-link-1021 tag-link-position-28" style="font-size: 12.46017699115pt;" aria-label="NIO (17个项目)">NIO</a>
+<a href="http://ifeve.com/tag/oauth-2-0/" class="tag-cloud-link tag-link-380 tag-link-position-29" style="font-size: 8.6194690265487pt;" aria-label="OAuth 2.0 (8个项目)">OAuth 2.0</a>
+<a href="http://ifeve.com/tag/pattern-matching/" class="tag-cloud-link tag-link-167 tag-link-position-30" style="font-size: 8.6194690265487pt;" aria-label="pattern-matching (8个项目)">pattern-matching</a>
+<a href="http://ifeve.com/tag/ringbuffer/" class="tag-cloud-link tag-link-91 tag-link-position-31" style="font-size: 8pt;" aria-label="RingBuffer (7个项目)">RingBuffer</a>
+<a href="http://ifeve.com/tag/scala/" class="tag-cloud-link tag-link-1023 tag-link-position-32" style="font-size: 13.699115044248pt;" aria-label="Scala (22个项目)">Scala</a>
+<a href="http://ifeve.com/tag/service-mesh/" class="tag-cloud-link tag-link-1063 tag-link-position-33" style="font-size: 8.6194690265487pt;" aria-label="service mesh (8个项目)">service mesh</a>
+<a href="http://ifeve.com/tag/slf4j/" class="tag-cloud-link tag-link-813 tag-link-position-34" style="font-size: 8.6194690265487pt;" aria-label="slf4j (8个项目)">slf4j</a>
+<a href="http://ifeve.com/tag/spark/" class="tag-cloud-link tag-link-634 tag-link-position-35" style="font-size: 12.46017699115pt;" aria-label="spark (17个项目)">spark</a>
+<a href="http://ifeve.com/tag/spark%e5%ae%98%e6%96%b9%e6%96%87%e6%a1%a3/" class="tag-cloud-link tag-link-635 tag-link-position-36" style="font-size: 12.46017699115pt;" aria-label="spark官方文档 (17个项目)">spark官方文档</a>
+<a href="http://ifeve.com/tag/stm/" class="tag-cloud-link tag-link-199 tag-link-position-37" style="font-size: 10.601769911504pt;" aria-label="stm (12个项目)">stm</a>
+<a href="http://ifeve.com/tag/storm/" class="tag-cloud-link tag-link-351 tag-link-position-38" style="font-size: 16.672566371681pt;" aria-label="Storm (39个项目)">Storm</a>
+<a href="http://ifeve.com/tag/synchronization/" class="tag-cloud-link tag-link-216 tag-link-position-39" style="font-size: 11.716814159292pt;" aria-label="synchronization (15个项目)">synchronization</a>
+<a href="http://ifeve.com/tag/synchronized/" class="tag-cloud-link tag-link-15 tag-link-position-40" style="font-size: 9.7345132743363pt;" aria-label="Synchronized (10个项目)">Synchronized</a>
+<a href="http://ifeve.com/tag/thread/" class="tag-cloud-link tag-link-11 tag-link-position-41" style="font-size: 17.29203539823pt;" aria-label="thread (44个项目)">thread</a>
+<a href="http://ifeve.com/tag/tomcat/" class="tag-cloud-link tag-link-347 tag-link-position-42" style="font-size: 9.2389380530973pt;" aria-label="tomcat (9个项目)">tomcat</a>
+<a href="http://ifeve.com/tag/volatile/" class="tag-cloud-link tag-link-25 tag-link-position-43" style="font-size: 11.469026548673pt;" aria-label="volatile (14个项目)">volatile</a>
+<a href="http://ifeve.com/tag/%e5%a4%9a%e7%ba%bf%e7%a8%8b/" class="tag-cloud-link tag-link-197 tag-link-position-44" style="font-size: 9.7345132743363pt;" aria-label="多线程 (10个项目)">多线程</a>
+<a href="http://ifeve.com/tag/%e5%b9%b6%e5%8f%91%e8%af%91%e6%96%87%ef%bc%8cjava-%ef%bc%8cmaven/" class="tag-cloud-link tag-link-1034 tag-link-position-45" style="font-size: 16.300884955752pt;" aria-label="并发译文，Java ，Maven (36个项目)">并发译文，Java ，Maven</a></div>
+</div>
+ </div>
+</div>
+<div id="side_bottom">
+ <div class="widget_text side_box widget_custom_html" id="custom_html-2">
+<div class="textwidget custom-html-widget"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 摩天大楼 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:600px"
+     data-ad-client="ca-pub-9394337417063147"
+     data-ad-slot="6358703113"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!-- 
+<script type="text/javascript">
+    /*自适应 创建于 June 30, 2016*/
+    var cpro_id = "u2690738";
+
+<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/i.js"></script>
+ -->
+
+<!-- CNZZ -->
+<script src="http://s22.cnzz.com/stat.php?id=5003572&web_id=5003572&show=pic" language="JavaScript"></script></div></div>
+</div>
+
+  </div>
+  
+  <div id="footer">
+
+<ul id="copyright">
+    <li>版权所有 &copy;&nbsp; <a href="http://ifeve.com/">并发编程网 &#8211; ifeve.com</a></li>
+    <li>ICP号: <a href="http://www.miibeian.gov.cn" target="_blank">浙ICP备12046809号</a></li>
+ <li>	
+<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602005873" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="" style="float:left;"/>浙公网安备 33010602005873号</a></li>
+   </ul>
+		 
+		 
+
+ </div>
+
+	
+ </div><!-- END #main_content -->
+
+  <p id="return_top"><a href="#header">return top</a></p>
+ 
+<link rel='stylesheet' id='yarppRelatedCss-css'  href='http://ifeve.com/wp-content/plugins/yet-another-related-posts-plugin/style/related.css?ver=4.9.8' type='text/css' media='all' />
+<script type='text/javascript' src='http://ifeve.com/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='http://ifeve.com/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='http://ifeve.com/wp-includes/js/jquery/ui/tabs.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='http://ifeve.com/wp-includes/js/comment-reply.min.js?ver=4.9.8'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var ratingsL10n = {"plugin_url":"http:\/\/ifeve.com\/wp-content\/plugins\/wp-postratings","ajax_url":"http:\/\/ifeve.com\/wp-admin\/admin-ajax.php","text_wait":"Please rate only 1 item at a time.","image":"stars_crystal","image_ext":"gif","max":"5","show_loading":"1","show_fading":"1","custom":"0"};
+var ratings_mouseover_image=new Image();ratings_mouseover_image.src="http://ifeve.com/wp-content/plugins/wp-postratings/images/stars_crystal/rating_over.gif";;
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://ifeve.com/wp-content/plugins/wp-postratings/js/postratings-js.js?ver=1.85'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var viewsCacheL10n = {"admin_ajax_url":"http:\/\/ifeve.com\/wp-admin\/admin-ajax.php","post_id":"39638"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://ifeve.com/wp-content/plugins/wp-postviews/postviews-cache.js?ver=1.68'></script>
+<script type='text/javascript' src='http://ifeve.com/wp-includes/js/wp-embed.min.js?ver=4.9.8'></script>
+</body>
+</html>
+
+<script src="http://ajax.useso.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+<script src="http://coolshell.cn//wp-content/themes/inove/js/jquery.bpopup-0.8.0.min.js"></script>
+
+<!-- Dynamic page generated in 1.477 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2018-08-22 19:02:03 -->
+
+<!-- Compression = gzip -->
+<!-- super cache -->

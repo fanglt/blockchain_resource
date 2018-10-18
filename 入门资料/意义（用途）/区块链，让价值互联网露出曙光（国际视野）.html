@@ -1,0 +1,731 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0082)http://paper.people.com.cn/rmrb/html/2017-01/10/nw.D110000renmrb_20170110_1-23.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="utf-8"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="content-language" content="utf-8">
+<meta name="robots" content="all">
+<meta name="author" content="第023版">
+<meta name="copyright" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="filetype" content="1">
+<meta name="publishedtype" content="1">
+<meta name="pagetype" content="1">
+<meta name="catalogs" content="rmrbdzb">
+<meta name="contentid" content="rmrbdzb_20170110_1-23">
+<meta name="publishdate" content="2017-01-10">
+<link href="./区块链，让价值互联网露出曙光（国际视野）_files/mulu_4.css" type="text/css" rel="stylesheet" rev="stylesheet" media="all">
+<title>区块链，让价值互联网露出曙光（国际视野）</title>
+<script language="Javascript" src="./区块链，让价值互联网露出曙光（国际视野）_files/prototype.js"></script>
+<script language="Javascript" src="./区块链，让价值互联网露出曙光（国际视野）_files/mp.js"></script>
+<script language="Javascript" src="./区块链，让价值互联网露出曙光（国际视野）_files/calendar2.js"></script>
+<script language="Javascript" src="./区块链，让价值互联网露出曙光（国际视野）_files/new.js"></script>
+<script language="Javascript" src="./区块链，让价值互联网露出曙光（国际视野）_files/range.js"></script>
+<script language="Javascript" src="./区块链，让价值互联网露出曙光（国际视野）_files/jspoints111.js"></script>
+<style>
+a.ared:link {
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+}
+a.ared:visited {
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+}
+a.ared:hover {
+	font-size: 12px;
+	color: #006699;
+	text-decoration: none;
+}
+</style>
+<style>
+.head_c2{display:block;float:left;margin:0 15px 0 0;width:91px;color:#004873;height:21px;padding:0 2px 0 2px;background:#fff;border:1px solid #66B1EB;text-align:left;}
+.head_c3{float:right; margin:2px 0 0 0;}
+</style>
+<script type="text/javascript">
+function nTabs(tabObj,obj){
+	var tabList = document.getElementById(tabObj).getElementsByTagName("li");
+	for(i=0; i <tabList.length; i++)
+	{
+		if (tabList[i].id == obj.id)
+		{
+			document.getElementById(tabObj+"_Title"+i).className = "active";
+    		document.getElementById(tabObj+"_Content"+i).style.display = "block";
+		}else{
+			document.getElementById(tabObj+"_Title"+i).className = "normal";
+			document.getElementById(tabObj+"_Content"+i).style.display = "none";
+		}
+	}
+}
+function CopyAll()
+
+{
+
+         var obj = document.getElementById("articleContent");
+
+         if(obj!=null){
+
+                   var content = obj.innerText;
+
+                   window.clipboardData.setData("Text",content);           
+
+                   alert("复制成功");
+
+         }                 
+
+}
+
+function zoomIn() {
+ newZoom= parseInt(ozoom.style.zoom)+10+'%'
+ ozoom.style.zoom =newZoom;
+ } 
+function zoomOut() {
+ newZoom= parseInt(ozoom.style.zoom)-10+'%'
+ ozoom.style.zoom =newZoom;
+ } 
+function submitCheck()
+ {
+ if(document.all("content1").value.length>1000){
+	 alert("评论内容超过1000字！");
+	 return false;
+	 }
+	 if(document.all("content1").value.indexOf("<script")!=-1 ||document.all("content1").value.indexOf("<\/")!=-1){
+	 alert("评论内容含有特殊字符!");
+	 return false;
+	 }
+	 if(document.all("content1").value == "")
+	 {
+	 alert("必须填写评论内容！");
+	 return false;
+	 }
+	 var isnodecomment = document.commentform.isnodecomm.value; 
+	 document.commentform.nispagename.value = escape(document.getElementById("pageNameForJiaoHu").innerText.replace(/(^\s*)|(\s*$)/g, ""));
+	 document.commentform.paperdate.value = document.getElementById("paperdatediv").innerText.replace(/(^\s*)|(\s*$)/g, ""); 
+	 document.commentform.content.value=escape(document.commentform.content1.value);
+	 document.commentform.author.value=escape(document.commentform.author1.value);
+	 document.commentform.submit();
+	 alert("您的留言已经成功提交！");
+	 document.commentform.content1.value="";
+ }
+
+function viewComment(){ 		
+         document.viewform.nispagename.value = escape(document.getElementById("pageNameForJiaoHu").innerText.replace(/(^\s*)|(\s*$)/g, ""));		 
+         document.viewform.paperdate.value = document.getElementById("paperdatediv").innerText.replace(/(^\s*)|(\s*$)/g, ""); 	
+		
+ 		 document.viewform.submit();		
+ 	}
+ function dohit(){
+  if (document.readyState == 'complete' )
+     {
+  document.frames("hitClickIframe").document.hitform.url.value = location.href;
+  if(document.commentform.isnodecomm.value == '1'){
+  document.frames("hitClickIframe").document.hitform.nodeid.value = document.commentform.nodeid.value;
+  }else{
+  document.frames("hitClickIframe").document.hitform.articleid.value = document.commentform.articleid.value;
+  }
+  document.frames("hitClickIframe").document.hitform.submit();
+  document.hitClickIframe.style.display="none";
+  }else
+  window.setTimeout("dohit()","300");
+}
+	
+	function getDate()
+	{
+		  var url = window.location.pathname.split('/');		  	
+		  var length = url.length;  		  
+		  document.getElementById("newsIframe").src = "http://paperpost.people.com.cn/"+url[1]+"-"+url[length-3]+"-"+url[length-2]+".html";
+	}
+</script>
+<script type="text/javascript">
+ var focus_width=260;
+ var focus_height=180;
+ var text_height=20;
+ var swf_height = focus_height+text_height;
+ var pics ="";
+ var links ="";
+ var texts ="";
+ var resCount=0;
+ function showArtPics()
+ {
+ if(resCount>0)
+ {
+ pics = pics.substring(0, pics.length-1);
+ links = links.substring(0, links.length-1);
+ texts = texts.substring(0, texts.length-1);
+ var content = "";
+ content += '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ focus_width +'" height="'+ swf_height +'">';
+ content += '<param name="allowScriptAccess" value="sameDomain"><param name="movie" value="../../../tplimg/picflash.swf"><param name="quality" value="high"><param name="bgcolor" value="#ffffff">';
+ content += '<param name="menu" value="false"/><param name="wmode" value="opaque"/>';
+ content += '<param name="FlashVars" value="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'">';
+ content += '<embed src="../../../tplimg/picflash.swf" wmode="opaque" FlashVars="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'" menu="false" bgcolor="#ffffff" quality="high" width="'+ focus_width +'" height="'+ focus_height +'" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />';
+ content += '<\/object>';
+ document.getElementById("showArtPicsDiv").innerHTML = content;
+ }
+}
+</script>
+<script type="text/javascript" src="./区块链，让价值互联网露出曙光（国际视野）_files/common.js"></script><link type="text/css" rel="stylesheet" href="chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/style.css"><script type="text/javascript" charset="utf-8" src="chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/page_context.js"></script></head>
+<body onload="checkContent();createStarsPage();initialize();initMPPage();getDate();dohit();showArtPics();" screen_capture_injected="true"><span id="leveldiv" title="点击查看内容" style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; Z-INDEX: 100; LEFT: 233px; BORDER-BOTTOM-WIDTH: 0px; WIDTH: 210px; CURSOR: hand; POSITION: absolute; TOP: 123px; HEIGHT: 34px; BORDER-RIGHT-WIDTH: 0px"></span>
+
+<div class="div_bg"><div class="div_center">
+  <!--左侧版面图部分-->
+  <div class="left_c">
+    <div class="ban">
+      <div>
+        <map name="PagePicMap"><area coords="2,27,309,27,309,561,2,561" shape="polygon" href="http://paper.people.com.cn/rmrb/html/2017-01/10/nw.D110000renmrb_20170110_1-23.htm"><area coords="307,107,394,107,394,535,307,535" shape="polygon" href="http://paper.people.com.cn/rmrb/html/2017-01/10/nw.D110000renmrb_20170110_2-23.htm"></map><img width="400" height="575" src="./区块链，让价值互联网露出曙光（国际视野）_files/rmrb2017011023_b.jpg" border="0" usemap="#PagePicMap">
+      </div>
+    </div>
+    <div class="ban_t">
+      <div>
+        <ul>
+          <li>
+            23版:国际
+&nbsp;
+            <a href="http://paper.people.com.cn/rmrb/page/2017-01/10/23/rmrb2017011023.pdf"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/ico4.gif" border="0"></a>
+            PDF版下载 
+            <span>
+                 <a class="preart" href="http://paper.people.com.cn/rmrb/html/2017-01/10/nbs.D110000renmrb_22.htm"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/left_ico.gif" border="0"> 上一版</a>&nbsp;&nbsp;<a class="preart" href="http://paper.people.com.cn/rmrb/html/2017-01/10/nbs.D110000renmrb_24.htm">下一版 <img src="./区块链，让价值互联网露出曙光（国际视野）_files/right_ico.gif" border="0"></a>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="tool">
+      <input type="image" onclick="javascript:window.open(&#39;http://ardownload.adobe.com/pub/adobe/reader/win/8.x/8.1/chs/AdbeRdr810_zh_CN.exe&#39;)" src="./区块链，让价值互联网露出曙光（国际视野）_files/button.gif" name="" style="float:left;padding-left:40px">
+      <img src="./区块链，让价值互联网露出曙光（国际视野）_files/button1.gif" style="display:none">
+      <img src="./区块链，让价值互联网露出曙光（国际视野）_files/button2.gif" style="display:none">
+<a href="http://paper.people.com.cn/rmrb/html/2017-01/10/node_1921.htm"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/button3.gif" border="0" style="float:right;padding-right:40px"></a>
+    </div>
+	<!-- -->
+	
+    <div class="title" style="margin-top:10px">
+      <div>我给文章打分</div>
+    </div>
+    <div class="da_c" style="width:366px;margin-bottom:10px">
+      <form id="pointsform" name="pointsform" action="http://paperpost.people.com.cn/comment/showArticlePoint.jsp" method="post" target="pointsIframe" style=" display:none;">
+                  <input type="hidden" name="paperdate">
+        <input type="hidden" name="nodename1">
+        <input type="hidden" name="channelname1">
+        <input type="hidden" name="title1">
+        <input type="hidden" value="2" name="attr">
+        <!--attr 2 数字报刊 1 翔宇-->
+        <input type="hidden" value="2" name="isnodecomm">
+        <!--isnodecomm 2 文章评论 1 版面或栏目评论-->
+        <input type="hidden" value="2" name="pointtype">
+        <!--pointtype 2 计算平均分（现阶段必须设为2） 1 统计类型-->
+        <!--此列为插件生成的组件-->
+        <input name="nodeid" type="hidden" value="1944"><input name="nodename" type="hidden" value="23"><input name="nodetype" type="hidden" value="0"><input name="nodeurl" type="hidden" value="null.htm"><input name="channelid" type="hidden" value="1921"><input name="channelname" type="hidden" value="人民日报"><input name="articleid" type="hidden" value="1742394"><input name="author" type="hidden" value="肖  风"><input name="title" type="hidden" value="区块链，让价值互联网露出曙光（国际视野）"><input name="keyword" type="hidden" value=""><input name="weburl" type="hidden" value="./nw.D110000renmrb_20170110_1-23.htm"><input name="pubtime" type="hidden" value="2017-01-10">
+        <div id="paperdatediv">
+          2017-January-10
+        </div>
+      </form>
+      <form name="pForm" id="pForm">
+        <input type="radio" name="pointVal" value="1" onclick="pv(1)">
+        1分&nbsp;&nbsp;
+        <input type="radio" name="pointVal" value="2" onclick="pv(2)">
+        2分&nbsp;&nbsp;
+        <input type="radio" name="pointVal" value="3" onclick="pv(3)" checked="checked">
+        3分&nbsp;&nbsp;
+        <input type="radio" name="pointVal" value="4" onclick="pv(4)">
+        4分&nbsp;&nbsp;
+        <input type="radio" name="pointVal" value="5" onclick="pv(5)">
+        5分 &nbsp;        
+		<img src="./区块链，让价值互联网露出曙光（国际视野）_files/ti.gif" alt="" border="0" style="cursor:hand " onclick="submitPoints(document.pForm.Input2.value);">
+        <!--<p>本版得分:<span>4.1分</span>(共有<span>19</span>位网友打分)</p>-->
+        <input name="Input2" type="hidden" value="3">
+      </form>
+      <iframe id="pointsIframe" name="pointsIframe" src="./区块链，让价值互联网露出曙光（国际视野）_files/saved_resource.html" frameborder="0" width="350" scrolling="no" height="30" style="margin-left:0px"></iframe>
+    </div>
+    <div class="title">
+      <div>新闻排行榜</div>
+    </div>
+    <div class="pai">
+      <div>
+        <!--
+	    <span>1</span><a href="">我看到了你，也看到了我的种点</a><br />
+		<span>2</span><a href="">我看到了你，也看到了我的种点</a><br />
+		<span>3</span><a href="">我看到了你，也看到了我的种点</a><br />
+		<span>4</span><a href="">我看到了你，也看到了我的种点</a><br />
+		<span>5</span><a href="">我看到了你，也看到了我的种点</a><br />
+		<span>6</span><a href="">我看到了你，也看到了我的种点</a><br />
+		<span>7</span><a href="">我看到了你，也看到了我的种点</a><br />
+		<span>8</span><a href="">我看到了你，也看到了我的种点</a><br />
+		<span>9</span><a href="">我看到了你，也看到了我的种点</a><br />
+		<span>10</span><a href="">我看到了你，也看到了我的种点</a><br />-->
+        <iframe name="newsIframe" id="newsIframe" border="0" height="240" width="95%" frameborder="0" src="./区块链，让价值互联网露出曙光（国际视野）_files/rmrb-2017-01-10.html"></iframe>
+        <br>
+        <iframe name="hitClickIframe" id="hitClickIframe" height="0" width="0" border="0" frameborder="0" src="./区块链，让价值互联网露出曙光（国际视野）_files/hitPost.html"></iframe>
+      </div>
+    </div>
+    <div class="title">
+      <div id="bqsm">版权声明</div>
+    </div>
+    <div class="pai f_link" id="bqsm_nr" style="line-height:25px">　　《人民日报》（电子版）的一切内容(包括但不限于文字、图片、PDF、图表、标志、标识、商标、版面设计、专栏目录与名称、内容分类标准以及为读者提供的任何信息)仅供人民网读者阅读、学习研究使用，未经人民网股份有限公司及/或相关权利人书面授权，任何单位及个人不得将《人民日报》（电子版）所登载、发布的内容用于商业性目的，包括但不限于转载、复制、发行、制作光盘、数据库、触摸展示等行为方式，或将之在非本站所属的服务器上作镜像。否则，人民网股份有限公司将采取包括但不限于网上公示、向有关部门举报、诉讼等一切合法手段，追究侵权者的法律责任。</div><!-- -->  
+  </div>
+  <!--右侧目录部分-->
+  <div class="right_c">
+    <div style="margin:0 auto;width:530px;height:70px;text-align:right;padding:8px 0 0 20px;">
+      <div style="height:70px;">
+        <div style="float:left; width:390px;">
+          <div style="height:23px; padding:10px 0px;">
+            <div onmouseover="document.getElementById(&#39;rmrbbx&#39;).style.display = &#39;block&#39;;" onmouseout="document.getElementById(&#39;rmrbbx&#39;).style.display = &#39;none&#39;;" class="head_c2">
+              <div style="float:left">日&nbsp;报</div>
+              <div class="head_c3"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/ico10.gif" border="0" alt=""></div>
+            </div>
+            <div onmouseover="document.getElementById(&#39;rmrbbx1&#39;).style.display = &#39;block&#39;;" onmouseout="document.getElementById(&#39;rmrbbx1&#39;).style.display = &#39;none&#39;;" class="head_c2">
+              <div style="float:left">周&nbsp;报</div>
+              <div class="head_c3"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/ico10.gif" border="0" alt=""></div>
+            </div>
+            <div onmouseover="document.getElementById(&#39;rmrbbx2&#39;).style.display = &#39;block&#39;;" onmouseout="document.getElementById(&#39;rmrbbx2&#39;).style.display = &#39;none&#39;;" class="head_c2">
+              <div style="float:left">杂&nbsp;志</div>
+              <div class="head_c3"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/ico10.gif" border="0" alt=""></div>
+            </div>
+          </div>
+          <div style="text-align:left;">
+            <div style="float:left; width:370px;"><div id="riqi_" style="float:left;">
+            人民日报
+            2017年01月10日 星期二
+            </div><div id="peopledata" style="float:right; display:none" class="peopledata"></div>
+		  <div style="float:left; color:#004773; display:none; padding-left:5px;" id="infowelcome">&nbsp;欢迎您：<span id="disname" class="un">用户ID名称</span></div></div>
+         </div>
+        </div>
+        <div style="float:left;"><a href="http://www.people.com.cn/"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/logo.jpg" border="0" alt="人民网"></a></div>
+      </div>
+    </div>
+    <div style="margin:0 auto; color:#004773; height:20px; width:500px; padding:8px 10px 10px 20px; text-align: left;float:left;">
+      <div style="float:left; width:50px;">往期回顾</div>
+      <div style="float:left; width:60px; padding-top:2px;"><a onclick="autoShowDate();" style="cursor:hand;" title="鼠标点击，显示日历牌"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/ico1.gif" border="0" alt=""></a></div>
+      <div style="float:left; width:80px;display:none" id="paperSearch"><a href="http://search.people.com.cn/rmw/GB/bkzzsearch/index.jsp" target="_blank">人民网检索</a></div>
+      <div style="float:left; display:none; font-weight:bold;" id="usercenter"><a href="http://paper.people.com.cn/rmrb/notice/notice.htm" class="ared" target="_blank">《人民日报》数字报取消收费的通知</a></div>
+      <div style="float:right; text-align:right;"><a href="http://paper.people.com.cn/rmrb/html/2017-01/10/nbs.D110000renmrb_23.htm">返回目录</a></div>
+    </div>
+    <div class="mobilepaper" id="mobilepaper" style="display: block; height: 30px;"><a href="http://data.people.com.cn/rmrb/index.html" class="ared" style="font-size:16px" target="_blank"><span style="font-weight:bold;">人民日报图文数据库（1946-2017）</span></a><br><div style="height:1px;background-color:#99CCFF;margin-left:5px;line-height:1px;clear:both;display:block;overflow:hidden"></div></div>
+  <!--目录与标题-->
+    <div style="margin:15px auto 0 auto; width:550px;">
+      <div class="text_c"><br>
+        
+<h3></h3>
+<h1>区块链，让价值互联网露出曙光（国际视野）</h1>
+<h2></h2>
+
+<h4>肖  风</h4>
+        <div class="lai" style="padding-top:5px;"> 《
+          人民日报
+          》（
+          2017年01月10日
+&nbsp;
+          23
+          版）</div>
+        <div class="c_c">
+        	<div align="center" style="padding:10px 0 15px 0">
+            </div>
+ 
+                                <table class="pci_c" width="400"><tbody><tr><td align="center"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/1483991186878_1.jpg"></td></tr> <tr><td><p>　　2014年2月20日，美国波士顿火车站内安装比特币自动柜员机。比特币是一种数字货币，能够被匿名买卖，在网络世界中能够代替现金或者信用卡使用。图为顾客正在使用比特币自动柜员机进行交易。<br>　　人民视觉</p></td></tr></tbody></table>
+ 
+                                <table class="pci_c" width="400"><tbody><tr><td align="center"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/1483991192338_1.jpg"></td></tr> <tr><td><p>　　中国人民银行（央行）数字货币大事记。<br>　　人民视觉</p></td></tr></tbody></table>
+          <div id="ozoom" style="zoom:100%;">
+            <div id="showArtPicsDiv" align="center"></div>
+            <script language="javascript">
+							/*	if(picResCount>0){
+									document.getElementById("picres").style.display="block";
+									document.write("<br />");
+								}*/
+ 			  				</script>
+ 			
+            <!--enpcontent--><p>　　二十国集团（G20）杭州峰会首次将数字经济列为一项重要议题，并通过了《G20数字经济发展与合作倡议》。区块链是数字货币的技术载体，是发展数字经济的重要形态。它不仅可能重塑货币市场、支付系统、金融服务及经济形态的方方面面，而且将会改变人们生活的多个领域</p><p>　　</p><p>　　学理基础是共识算法和智能合约</p><p>　　2009年1月上线运行的区块链技术，被誉为第二代互联网，人们预测它必可能会像第一代互联网一样，给人们生活带来翻天覆地的变化。一般意义上，我们把第一代互联网叫做信息互联网，主要是利用互联网技术来更快更好地进行信息传输，中国的“BAT”（百度、阿里巴巴和腾讯）这三家公司，其实做的都是信息传播的生意；区块链技术的运用，预示着价值互联网时代的到来。所谓价值互联网，就是使得人们能够在互联网上，像传递信息一样方便、快捷、低成本地传递价值，尤其是资金。</p><p>　　区块链技术是一种互联网数据库技术，其特点是去中心化、公开透明，让每个人均可参与数据库记录。这是一种全民参与记账的方式，所有的系统背后都有一个数据库，也就是一个大账本。那么谁来记这个账本就变得很重要。目前就是谁的系统谁来记账，各个银行的账本就是各个银行在记，支付宝的账本就是阿里巴巴在记。但现在区块链系统中，系统中的每个人都可以有机会参与记账。在一定时间段内如果有新的交易数据变化，系统中每个人都可以来进行记账，系统会评判这段时间内记账最快最好的人，将其记录的内容写到账本，并将这段时间内账本内容发给系统内其他人进行备份。这样系统中的每个人都有了一本完整的账本。因此，这些数据就会变得非常安全。篡改者需要同时修改超过半数的系统节点数据才能真正地篡改数据，其代价极高，导致几乎不可能。</p><p>　　同时资金传递不再需要金融中介来作为信任背书，而是依靠一整套数学算法来约束，人们可以点对点地发起自助金融交换。毕竟，点对点的交换可以省去不菲的中介费用。据粗略统计，全球每年的小额跨境汇款，光手续费就要花费近200亿美元，如果用区块链解决方案，这笔费用几乎可以完全省去。</p><p>　　区块链如何实现信息社会的分布式架构？首先，作为分布式账本技术，它第一次对几百年来一成不变的记账方法——复式记账法，作了较大的改进。这个改进有可能改变金融行业的清结算方法，变净额交收为实时全额交收。交收方式的改变意味着金融系统也可以像区块链一样，24小时运转，实时结算，实时到账。其次，作为分布式数据库技术，它可以建立一个共享信息的公共系统，任何人都可以成为数据录入员，任何人都拥有完整的数据。依靠一套共识算法，就可以保证数据的真实、准确和透明，该数据库记录的数据可追踪、可审计、不可篡改。第三，作为可编程技术，汇丰银行去年的一份研究报告认为，各国央行可以利用区块链的可编程技术，追踪央行发行的法定数字货币的流动，精准地执行货币政策。区块链业界也在使用区块链的可编程性，创设能够帮助人们自动执行约定的计算机程序，即智能合约。智能合约技术成熟后，不仅金融交易完全自动化，节省大量的中后台行政人员，而且可编程经济时代将能真正实现。</p><p>　　区块链其实并不新鲜，早在上世纪60年代就有人开始进行学术探讨。当时有数学家就发表过论文，探讨区块链的基础算法——共识算法。上世纪90年代初，一位叫尼克扎博的密码学家也开始探讨智能合约。智能合约是指当一个预先编好的条件被触发时，智能合约执行相应的合同条款。可以说，区块链技术有幸诞生在2009年，只是在移动互联网时代，区块链各项相关技术在分布式网络技术上得以集成而已。</p><p>　　除了技术背景之外，我们还可以看到区块链的经济学背景——哈耶克的自由主义经济学。从社会思潮来看，区块链技术的发展明显受到著名社会学家凯文·凯利的《失控》的影响。《失控》是一本论述人类社会、自然万物和科学技术如何进化的书籍，凯文·凯利在书里把工业社会的进化论总结为基于机械逻辑的进化论，把信息社会的进化论总结为基于生物逻辑的进化论。基于生物逻辑的进化论可以概括为三个词：分布式、去中心、自组织。</p><p>　　金融街和物联网得风气之先</p><p>　　区块链应用前景几乎不可限量。金融行业因为是最数字化的行业，所以被认为是可以最先应用区块链技术的行业。目前，大部分区块链创业者的目标，确实是瞄准各种各样的金融行业应用，比较成熟的已经有支付、跨境汇款、众筹、数字资产交易等。还有几十个金融应用场景，正在各大金融机构的区块链创新实验室里进行试验、验证，不久的将来陆续加入到金融行业的生产环境中。预计10年之后，区块链技术将成为金融行业核心生产系统的基础平台，金融业面貌必将焕然一新。与对待互联网金融的态度不同，这次全球主要金融机构在金融科技（FinTech）上行动非常积极。不仅华尔街的几位重量级人物纷纷跨界到区块链行业创业；而且全球最重要的两个区块链联盟都设立在纽约；据报道，2016年对金融科技的风险投资，纽约也超过了硅谷。</p><p>　　区块链技术的另一个巨大应用前景在物联网方面。美国国际商业机器公司（IBM）2014年发表的物联网白皮书《设备民主》给出了这样一个结论：当2050年联网在线的设备达到1000亿台时，通信带宽以及中心数据库都不可能承担传输、存储和处理这个当量的数据，而且这个数量级设备的身份认证也是现有技术无法管理好的。区块链也许是千亿设备级物联网的最优雅的解决方案。要真正地实现所有权与使用权分离的共享经济社会，区块链技术也许确实是最优的解决方案：把租车人的身份和汽车的身份都登记在区块链总账上，那么租车就像下楼开自己的车一样方便，车辆的出租方也能在区块链上以秒级时间确认租车人的身份，如果再加上智能合约，一切都自动完成，拥有它与使用它也就完全没有区别了。</p><p>　　我们已经从信息互联网时代走向价值互联网时代，互联网正在成为各行各业的基础设施。作为第二代互联网，区块链技术是互联网TCP/IP结构中与超文本传输协议（HTTP）同等重要的价值传输协议，也可以说，HTTP与区块链价值传输协议（BLOCKCHAIN）是互联网应用协议中最核心的两个协议。因为信息互联网，人类社会已经发生了翻天覆地的变化，社会福利因此大幅增加；因为价值互联网，人类社会也必将迎来一场更完美的革命。</p><p>　　正是因为这样的共识，&nbsp;一些国家政府对区块链持积极态度。对区块链上的第一个产品——数字货币比特币，欧盟承认比特币是货币，按照货币监管；美国把比特币归为资产，等同于石油等大宗商品。区块链是金融科技的基础设施和核心技术之一，一些国家还设立了沙盒机制支持区块链技术等金融科技。沙盒机制是指在计算机世界，一个新的系统要上线应用，为安全起见，一般都会先设置一个测试环境，在测试之后才能进入真正的生产系统中。英国、新加坡和澳大利亚三国监管机构还宣布认可对方的沙盒机制，创业公司在任何一方沙盒的实验成果在三国都通用。近一年，美英等国的央行都宣称正在研究发行法定数字货币。</p><p>　　区块链技术已经进入了加速发展的新阶段。最初区块链是由一群草根技术极客们以社区的方式开发；近几年一批创业者们开始利用风险投资基金的支持，从小做起；2016年，微软、IBM、英特尔等公司纷纷进入区块链行业，预计区块链技术的成熟速度将会加快。</p><p>　　借区块链发展或可弯道超车</p><p>　　全球市值最大的10家互联网公司分布在中美两国。预计在第二代互联网——价值互联网时代，这个市场格局仍能够保持。美国互联网公司胜在既有市场规模，又有原创技术；中国互联网公司目前还只是拥有市场规模，缺乏原创技术。</p><p>　　目前区块链技术还处于发展的初期阶段，离金融行业的实际应用尚有一段距离。区块链的两个核心技术，即共识算法和加密算法，都存在很大优化、完善的空间，甚至也还有创新创造的空间。抓住区块链发展的关键机遇期，也许能提供给我们一次弯道超车、领先世界的机会。</p><p>　　不妨可以考虑使用区块链的可编程性，实现依靠智能合约自动执行央行的货币政策。所谓“买酱油的钱不能打醋”。我们还可以借助区块链技术，建立一个智能债券平台。在智能债券平台上，债券的发行、交易、结算全部自动化，不再需要银行的中后台进行交易后的清结算，就可以利用可编程性约定发行的规模、利率，也可以约定投资者限制、发行债券的资金用途、募集资金的流通范围等。智能债券平台只允许“一带一路”沿线国家在这个智能债券平台上发债融资。区块链可编程性可以保证在这个智能债券平台上发行的债券，其资金会真正用在“一带一路”建设中。因为智能合约会自动按照事先的约定来识别条件并自动执行约定，不给任何人修改的可能。这对中国资本市场为“一带一路”提供精准的金融支持，提供了一种可靠的技术保证。</p><p>　　金融科技的核心技术主要在于两点：人工智能和区块链。以阿尔法围棋（AIphaGo）为标志，人工智能在经历60年的缓慢发展后，开始进入指数级增长时代；以区块链为标志，一场重构金融行业底层基础设施的工程正在快速展开。中国在互联网金融领域领先全球，互联网金融企业的前三大公司都诞生在中国。但在金融科技上，我们距欧美国家的行动有些许落后。</p><p>　　我国可以联合创新区块链技术，占领全球区块链的制高点，努力做到区块链技术的自主可控。创业者们需要耐心地从底层技术开发做起，拥有应用场景的机构要积极拥抱新事物，以开放心态积极与区块链创业者合作。政府对区块链技术的监管政策和鼓励措施都不应过度，一方面应该“让子弹再飞一会儿”，有一定基础之后，再制定监管政策和行业标准，另一方面也要防止一哄而上，拔苗助长。</p><p>　　（作者为中国基金业协会互联网金融专业委员会主席）</p><p>　　制图：蔡华伟</p><!--/enpcontent-->
+<input type="checkbox" value="0" name="titlecheckbox" sourceid="&lt;Source&gt;SourcePh&lt;/Source&gt;" style="display:none">
+		               
+		                    
+		               
+		                    
+               
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:5px 15px;" id="xgyd">
+    </div>
+    <!--工具条-->
+    <div class="tool_t">
+      <a href="http://paper.people.com.cn/rmrb/html/2017-01/10/nbs.D110000renmrb_23.htm">返回目录</a>
+&nbsp;&nbsp;&nbsp;<a href="http://paper.people.com.cn/rmrb/html/2017-01/10/nw.D110000renmrb_20170110_1-23.htm#" onclick="zoomIn();">放大</a><a href="http://paper.people.com.cn/rmrb/html/2017-01/10/nw.D110000renmrb_20170110_1-23.htm#" onclick="zoomOut();"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/ico6.gif" border="0" alt="">缩小</a><a href="http://paper.people.com.cn/rmrb/html/2017-01/10/nw.D110000renmrb_20170110_1-23.htm#" onclick="CopyAll();"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/ico7.gif" border="0" alt="">全文复制</a>&nbsp;&nbsp;&nbsp;
+      <a class="preart" href="http://paper.people.com.cn/rmrb/html/2017-01/10/nw.D110000renmrb_20170110_2-23.htm">下一篇 <img src="./区块链，让价值互联网露出曙光（国际视野）_files/ico9.gif" border="0"></a>
+    </div>
+    <!-- 以下是供复制全文用 -->
+    <div style="display:none" id="articleContent">
+      
+			<!--enpcontent--><p>　　二十国集团（G20）杭州峰会首次将数字经济列为一项重要议题，并通过了《G20数字经济发展与合作倡议》。区块链是数字货币的技术载体，是发展数字经济的重要形态。它不仅可能重塑货币市场、支付系统、金融服务及经济形态的方方面面，而且将会改变人们生活的多个领域</p><p>　　</p><p>　　学理基础是共识算法和智能合约</p><p>　　2009年1月上线运行的区块链技术，被誉为第二代互联网，人们预测它必可能会像第一代互联网一样，给人们生活带来翻天覆地的变化。一般意义上，我们把第一代互联网叫做信息互联网，主要是利用互联网技术来更快更好地进行信息传输，中国的“BAT”（百度、阿里巴巴和腾讯）这三家公司，其实做的都是信息传播的生意；区块链技术的运用，预示着价值互联网时代的到来。所谓价值互联网，就是使得人们能够在互联网上，像传递信息一样方便、快捷、低成本地传递价值，尤其是资金。</p><p>　　区块链技术是一种互联网数据库技术，其特点是去中心化、公开透明，让每个人均可参与数据库记录。这是一种全民参与记账的方式，所有的系统背后都有一个数据库，也就是一个大账本。那么谁来记这个账本就变得很重要。目前就是谁的系统谁来记账，各个银行的账本就是各个银行在记，支付宝的账本就是阿里巴巴在记。但现在区块链系统中，系统中的每个人都可以有机会参与记账。在一定时间段内如果有新的交易数据变化，系统中每个人都可以来进行记账，系统会评判这段时间内记账最快最好的人，将其记录的内容写到账本，并将这段时间内账本内容发给系统内其他人进行备份。这样系统中的每个人都有了一本完整的账本。因此，这些数据就会变得非常安全。篡改者需要同时修改超过半数的系统节点数据才能真正地篡改数据，其代价极高，导致几乎不可能。</p><p>　　同时资金传递不再需要金融中介来作为信任背书，而是依靠一整套数学算法来约束，人们可以点对点地发起自助金融交换。毕竟，点对点的交换可以省去不菲的中介费用。据粗略统计，全球每年的小额跨境汇款，光手续费就要花费近200亿美元，如果用区块链解决方案，这笔费用几乎可以完全省去。</p><p>　　区块链如何实现信息社会的分布式架构？首先，作为分布式账本技术，它第一次对几百年来一成不变的记账方法——复式记账法，作了较大的改进。这个改进有可能改变金融行业的清结算方法，变净额交收为实时全额交收。交收方式的改变意味着金融系统也可以像区块链一样，24小时运转，实时结算，实时到账。其次，作为分布式数据库技术，它可以建立一个共享信息的公共系统，任何人都可以成为数据录入员，任何人都拥有完整的数据。依靠一套共识算法，就可以保证数据的真实、准确和透明，该数据库记录的数据可追踪、可审计、不可篡改。第三，作为可编程技术，汇丰银行去年的一份研究报告认为，各国央行可以利用区块链的可编程技术，追踪央行发行的法定数字货币的流动，精准地执行货币政策。区块链业界也在使用区块链的可编程性，创设能够帮助人们自动执行约定的计算机程序，即智能合约。智能合约技术成熟后，不仅金融交易完全自动化，节省大量的中后台行政人员，而且可编程经济时代将能真正实现。</p><p>　　区块链其实并不新鲜，早在上世纪60年代就有人开始进行学术探讨。当时有数学家就发表过论文，探讨区块链的基础算法——共识算法。上世纪90年代初，一位叫尼克扎博的密码学家也开始探讨智能合约。智能合约是指当一个预先编好的条件被触发时，智能合约执行相应的合同条款。可以说，区块链技术有幸诞生在2009年，只是在移动互联网时代，区块链各项相关技术在分布式网络技术上得以集成而已。</p><p>　　除了技术背景之外，我们还可以看到区块链的经济学背景——哈耶克的自由主义经济学。从社会思潮来看，区块链技术的发展明显受到著名社会学家凯文·凯利的《失控》的影响。《失控》是一本论述人类社会、自然万物和科学技术如何进化的书籍，凯文·凯利在书里把工业社会的进化论总结为基于机械逻辑的进化论，把信息社会的进化论总结为基于生物逻辑的进化论。基于生物逻辑的进化论可以概括为三个词：分布式、去中心、自组织。</p><p>　　金融街和物联网得风气之先</p><p>　　区块链应用前景几乎不可限量。金融行业因为是最数字化的行业，所以被认为是可以最先应用区块链技术的行业。目前，大部分区块链创业者的目标，确实是瞄准各种各样的金融行业应用，比较成熟的已经有支付、跨境汇款、众筹、数字资产交易等。还有几十个金融应用场景，正在各大金融机构的区块链创新实验室里进行试验、验证，不久的将来陆续加入到金融行业的生产环境中。预计10年之后，区块链技术将成为金融行业核心生产系统的基础平台，金融业面貌必将焕然一新。与对待互联网金融的态度不同，这次全球主要金融机构在金融科技（FinTech）上行动非常积极。不仅华尔街的几位重量级人物纷纷跨界到区块链行业创业；而且全球最重要的两个区块链联盟都设立在纽约；据报道，2016年对金融科技的风险投资，纽约也超过了硅谷。</p><p>　　区块链技术的另一个巨大应用前景在物联网方面。美国国际商业机器公司（IBM）2014年发表的物联网白皮书《设备民主》给出了这样一个结论：当2050年联网在线的设备达到1000亿台时，通信带宽以及中心数据库都不可能承担传输、存储和处理这个当量的数据，而且这个数量级设备的身份认证也是现有技术无法管理好的。区块链也许是千亿设备级物联网的最优雅的解决方案。要真正地实现所有权与使用权分离的共享经济社会，区块链技术也许确实是最优的解决方案：把租车人的身份和汽车的身份都登记在区块链总账上，那么租车就像下楼开自己的车一样方便，车辆的出租方也能在区块链上以秒级时间确认租车人的身份，如果再加上智能合约，一切都自动完成，拥有它与使用它也就完全没有区别了。</p><p>　　我们已经从信息互联网时代走向价值互联网时代，互联网正在成为各行各业的基础设施。作为第二代互联网，区块链技术是互联网TCP/IP结构中与超文本传输协议（HTTP）同等重要的价值传输协议，也可以说，HTTP与区块链价值传输协议（BLOCKCHAIN）是互联网应用协议中最核心的两个协议。因为信息互联网，人类社会已经发生了翻天覆地的变化，社会福利因此大幅增加；因为价值互联网，人类社会也必将迎来一场更完美的革命。</p><p>　　正是因为这样的共识，&nbsp;一些国家政府对区块链持积极态度。对区块链上的第一个产品——数字货币比特币，欧盟承认比特币是货币，按照货币监管；美国把比特币归为资产，等同于石油等大宗商品。区块链是金融科技的基础设施和核心技术之一，一些国家还设立了沙盒机制支持区块链技术等金融科技。沙盒机制是指在计算机世界，一个新的系统要上线应用，为安全起见，一般都会先设置一个测试环境，在测试之后才能进入真正的生产系统中。英国、新加坡和澳大利亚三国监管机构还宣布认可对方的沙盒机制，创业公司在任何一方沙盒的实验成果在三国都通用。近一年，美英等国的央行都宣称正在研究发行法定数字货币。</p><p>　　区块链技术已经进入了加速发展的新阶段。最初区块链是由一群草根技术极客们以社区的方式开发；近几年一批创业者们开始利用风险投资基金的支持，从小做起；2016年，微软、IBM、英特尔等公司纷纷进入区块链行业，预计区块链技术的成熟速度将会加快。</p><p>　　借区块链发展或可弯道超车</p><p>　　全球市值最大的10家互联网公司分布在中美两国。预计在第二代互联网——价值互联网时代，这个市场格局仍能够保持。美国互联网公司胜在既有市场规模，又有原创技术；中国互联网公司目前还只是拥有市场规模，缺乏原创技术。</p><p>　　目前区块链技术还处于发展的初期阶段，离金融行业的实际应用尚有一段距离。区块链的两个核心技术，即共识算法和加密算法，都存在很大优化、完善的空间，甚至也还有创新创造的空间。抓住区块链发展的关键机遇期，也许能提供给我们一次弯道超车、领先世界的机会。</p><p>　　不妨可以考虑使用区块链的可编程性，实现依靠智能合约自动执行央行的货币政策。所谓“买酱油的钱不能打醋”。我们还可以借助区块链技术，建立一个智能债券平台。在智能债券平台上，债券的发行、交易、结算全部自动化，不再需要银行的中后台进行交易后的清结算，就可以利用可编程性约定发行的规模、利率，也可以约定投资者限制、发行债券的资金用途、募集资金的流通范围等。智能债券平台只允许“一带一路”沿线国家在这个智能债券平台上发债融资。区块链可编程性可以保证在这个智能债券平台上发行的债券，其资金会真正用在“一带一路”建设中。因为智能合约会自动按照事先的约定来识别条件并自动执行约定，不给任何人修改的可能。这对中国资本市场为“一带一路”提供精准的金融支持，提供了一种可靠的技术保证。</p><p>　　金融科技的核心技术主要在于两点：人工智能和区块链。以阿尔法围棋（AIphaGo）为标志，人工智能在经历60年的缓慢发展后，开始进入指数级增长时代；以区块链为标志，一场重构金融行业底层基础设施的工程正在快速展开。中国在互联网金融领域领先全球，互联网金融企业的前三大公司都诞生在中国。但在金融科技上，我们距欧美国家的行动有些许落后。</p><p>　　我国可以联合创新区块链技术，占领全球区块链的制高点，努力做到区块链技术的自主可控。创业者们需要耐心地从底层技术开发做起，拥有应用场景的机构要积极拥抱新事物，以开放心态积极与区块链创业者合作。政府对区块链技术的监管政策和鼓励措施都不应过度，一方面应该“让子弹再飞一会儿”，有一定基础之后，再制定监管政策和行业标准，另一方面也要防止一哄而上，拔苗助长。</p><p>　　（作者为中国基金业协会互联网金融专业委员会主席）</p><p>　　制图：蔡华伟</p><!--/enpcontent-->
+			
+    </div>
+    <!--结束工具条-->
+    	<iframe id="postIframe&quot;" name="postIframe" src="./区块链，让价值互联网露出曙光（国际视野）_files/commesDetail.html" frameborder="0" width="555" scrolling="no" height="437" style="margin-left:0px"></iframe>
+    <!--我要评报-->
+    <div class="title da_t">
+      <div><div style="float:left;width:350px;background:none;margin:0px;padding:0px;height:25px">我要评报 <a href="http://www.people.com.cn/GB/50142/104580/index.html" target="_blank">&nbsp;|&nbsp;关于人民日报社</a></div><div style="width:80px;float:right;margin-right:20p;background:none;padding:0px"><a href="http://paper.people.com.cn/rmrb/html/2017-01/10/nw.D110000renmrb_20170110_1-23.htm#liuyan" onclick="getElementById
+(&#39;liuyans&#39;).style.display=
+(getElementById(&#39;liuyans&#39;).style.display==&#39;none&#39;?&#39;block&#39;
+:&#39;none&#39;);">隐藏留言须知</a></div></div>
+    </div>
+    <div class="note">
+		<div name="pageNameForJiaoHu" id="pageNameForJiaoHu" style="display:none">
+       	 国际
+    	</div>
+      <form name="commentform" action="http://paperpost.people.com.cn/comment/saveArtComment.jsp" method="post" target="tempForm">
+&nbsp;&nbsp;&nbsp;&nbsp;署名:
+        <input type="text" style="width:95px;height:18px;border:1px solid #7F9DB9;" maxlength="64" name="author1">
+&nbsp;&nbsp;
+        <input name="isGuest" type="hidden" id="isGuest" value="ture">
+        <!--匿名发表-->
+        <p>
+          <textarea name="content1" cols="50" rows="6" id="content1"></textarea>
+          <img src="./区块链，让价值互联网露出曙光（国际视野）_files/fb.gif" alt="" border="0" style="cursor:hand " onclick="return submitCheck();">
+		  <br><br><br><!--img src="../../../tplimg/ckpl.gif"  alt="" border="0" style="cursor:hand " onclick="return viewComment();" /-->
+        </p>
+        <input type="hidden" name="nodename1">
+        <input type="hidden" name="channelname1">
+        <input name="title1" type="hidden" value="">
+        <input name="attr" type="hidden" value="2">
+        <input name="isnodecomm" type="hidden" value="2">
+        <input type="hidden" name="author">
+        <input type="hidden" name="content">
+		<input type="hidden" name="paperdate">
+		<input type="hidden" name="nispagename"><br>
+                <span id="liuyans">
+          1.遵守中华人民共和国有关法律、法规，尊重网上道德，承担一切因您的行为而直接或间接引起的法律责任。 
+            <br>
+            2.人民网拥有管理笔名和留言的一切权力。 <br>
+            3.您在人民网留言板发表的言论，人民网有权在网站内转载或引用。 <br>
+          </span>
+        <input name="nodeid" type="hidden" value="1944"><input name="nodename" type="hidden" value="23"><input name="nodetype" type="hidden" value="0"><input name="nodeurl" type="hidden" value="null.htm"><input name="channelid" type="hidden" value="1921"><input name="articleid" type="hidden" value="1742394"><input name="author" type="hidden" value="肖  风"><input name="title" type="hidden" value="区块链，让价值互联网露出曙光（国际视野）"><input name="keyword" type="hidden" value=""><input name="weburl" type="hidden" value="./nw.D110000renmrb_20170110_1-23.htm"><input name="pubtime" type="hidden" value="2017-01-10">
+        <input name="password" type="password" id="password" style="WIDTH: 95px; HEIGHT: 18px;display:none" maxlength="64">
+        <input type="radio" name="rankRadio" style=" display:none;" value="5">
+        <input type="radio" name="rankRadio" style=" display:none;" value="4">
+        <input type="radio" name="rankRadio" style=" display:none;" value="3">
+        <input type="radio" name="rankRadio" style=" display:none;" value="2">
+        <input type="radio" checked="" name="rankRadio" style=" display:none;" value="1">
+      </form>
+      <form name="viewform" action="http://paperpost.people.com.cn/comment/comment.jsp" method="post"> 
+        <input name="attr" type="hidden" value="2">
+        <input name="isnodecomm" type="hidden" value="2">
+        <input type="hidden" value="1" name="view">
+		<input type="hidden" name="paperdate" id="paperdate">
+		<input name="nispagename" type="hidden" id="nispagename">
+        <input name="nodeid" type="hidden" value="1944"><input name="nodename" type="hidden" value="23"><input name="nodetype" type="hidden" value="0"><input name="nodeurl" type="hidden" value="null.htm"><input name="channelid" type="hidden" value="1921"><input name="articleid" type="hidden" value="1742394"><input name="author" type="hidden" value="肖  风"><input name="title" type="hidden" value="区块链，让价值互联网露出曙光（国际视野）"><input name="keyword" type="hidden" value=""><input name="weburl" type="hidden" value="./nw.D110000renmrb_20170110_1-23.htm"><input name="pubtime" type="hidden" value="2017-01-10">
+      </form>
+    </div>
+    <!--我要评报-->
+  </div>
+<!--结束内容部分-->
+<!--版权部分-->
+<div class="copyright"><p class="p1"><span class="red">人 民 网 版 权 所 有 ，未 经 书 面 授 权 禁 止 使 用</span><br><span class="black">Copyright © 1997-2013 by www.people.com.cn.  all rights reserved</span><a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=0102000101300040" target="_blank"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/gongshang.gif" width="40" style="float:right;margin:-45px 0px 0 10px;" height="48" alt="" align="middle" border="0"></a></p></div>
+    <!--日报-->
+    <div id="rmrbbx" style="display:none;position:absolute;top:50px;left:50%;margin-left:-40px;" onmouseover="document.getElementById(&#39;rmrbbx&#39;).style.display = &#39;block&#39;;" onmouseout="document.getElementById(&#39;rmrbbx&#39;).style.display = &#39;none&#39;;">
+      <table width="100" border="0" cellpadding="0" cellspacing="1" bordercolor="#007CD2" bgcolor="#007CD2">
+        <tbody><tr>
+          <td bgcolor="#D8EFFF" style="padding: 3px;"><table width="100" border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td bgcolor="#FFFFFF" style="padding: 1px;" valign="top">
+                  <table width="100" border="0" cellpadding="0" cellspacing="0" height="23">
+                    <tbody><tr>
+                      <td width="99" bgcolor="#ffffff" align="center" valign="top"><table width="85" border="0" cellpadding="0" cellspacing="0" style="margin: 5px 0;">
+                          <tbody><tr>
+                            <td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/rmrb/paperindex.htm" target="_blank">人民日报</a></td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                          <tr>
+                            <td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/rmrbhwb/paperindex.htm" target="_blank">人民日报海外版</a></td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                          <tr>
+                            <td height="20" align="left" class="fontstyle"><a href="http://www.huanqiu.com/" target="_blank">环球时报</a></td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                          <tr>
+                            <td height="20" align="left" class="fontstyle"><a href="http://epaper.stcn.com/" target="_blank">证券时报</a></td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                      </tbody></table></td>
+                    </tr>
+                </tbody></table></td>
+              </tr>
+          </tbody></table></td>
+        </tr>
+      </tbody></table>
+    </div>
+    <!--结束日报-->
+    <!--周报-->
+    <div id="rmrbbx1" style="display:none;position:absolute;top:50px;left:50%;margin-left:75px;" onmouseover="document.getElementById(&#39;rmrbbx1&#39;).style.display = &#39;block&#39;;" onmouseout="document.getElementById(&#39;rmrbbx1&#39;).style.display = &#39;none&#39;;">
+      <table width="100" border="0" cellpadding="0" cellspacing="1" bordercolor="#007CD2" bgcolor="#007CD2">
+        <tbody><tr>
+          <td bgcolor="#D8EFFF" style="padding: 3px;"><table width="100" border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td bgcolor="#FFFFFF" style="padding: 1px;" valign="top">
+                  <table width="100" border="0" cellpadding="0" cellspacing="0" height="23">
+                    <tbody><tr>
+                      <td width="99" bgcolor="#ffffff" align="center" valign="top"><table width="85" border="0" cellpadding="0" cellspacing="0" style="margin: 5px 0;">
+                      	  <tbody><tr>
+                            <td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/gjjrb/paperindex.htm" target="_blank">国际金融报</a></td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                          <tr>
+							<td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/zgnyb/paperindex.htm" target="_blank">中国能源报</a></td>
+						  </tr>						  
+                          <tr>
+							<td height="1"></td>
+                          </tr>
+                          <tr>
+                            <td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/smsb/paperindex.htm" target="_blank">生命时报</a></td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                          <tr>
+                            <td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/jksb/paperindex.htm" target="_blank">健康时报</a></td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                          <tr>
+                            <td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/fcyym/paperindex.htm" target="_blank">讽刺与幽默</a></td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                          <tr>
+                            <td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/zgcsb/paperindex.htm" target="_blank">中国城市报</a></td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                      </tbody></table></td>
+                    </tr>
+                </tbody></table></td>
+              </tr>
+          </tbody></table></td>
+        </tr>
+      </tbody></table>
+    </div>
+    <!--结束周报-->
+    <div id="rmrbbx2" style="display:none;position:absolute;top:50px;left:50%;margin-left:190px;" onmouseover="document.getElementById(&#39;rmrbbx2&#39;).style.display = &#39;block&#39;;" onmouseout="document.getElementById(&#39;rmrbbx2&#39;).style.display = &#39;none&#39;;">
+<table width="110" border="0" cellpadding="0" cellspacing="1" bordercolor="#007CD2" bgcolor="#007CD2">
+        <tbody><tr>
+          <td bgcolor="#D8EFFF" style="padding: 3px;"><table width="110" border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td bgcolor="#FFFFFF" style="padding: 1px;" valign="top">
+                  <table width="115" border="0" cellpadding="0" cellspacing="0" height="23">
+                    <tbody><tr>
+                      <td width="115" bgcolor="#ffffff" align="center" valign="top"><table width="115" border="0" cellpadding="0" cellspacing="0" style="margin: 5px 0 0 3px;">
+                          <tbody><tr>
+                            <td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/xwzx/paperindex.htm" target="_blank">新闻战线</a></td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                          <tr>
+                            <td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/dd/paperindex.htm" target="_blank">大地</a></td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                          <tr>
+                            <td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/hqrw/paperindex.htm" target="_blank">环球人物</a></td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                          <tr>
+                            <td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/rmlt/paperindex.htm" target="_blank">人民论坛</a></td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                          <tr>
+                            <td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/rmwz/paperindex.htm" target="_blank">人民文摘</a></td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                          <tr>
+                            <td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/zgjjzk/paperindex.htm" target="_blank">中国经济周刊</a></td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                          <tr>
+                            <td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/xaq/paperindex.htm" target="_blank">新安全</a></td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                          <tr>
+                   			<td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/mszk/paperindex.htm" target="_blank">民生周刊</a></td>
+                		  </tr>
+                		  <tr>
+                   			<td height="1"></td>
+                		  </tr>
+                          <tr>
+                   			<td height="20" align="left" class="fontstyle"><a href="http://history.people.com.cn/GB/198819/index.html" target="_blank">国家人文历史</a></td>
+                			</tr>
+                		<tr>
+                   			<td height="1"></td>
+                		</tr>
+                		<tr>
+                   <td height="20" align="left" class="fontstyle"><a href="http://paper.people.com.cn/zgby/paperindex.htm" target="_blank">中国报业</a></td>
+                		</tr>
+                		<tr>
+                   			<td height="1"></td>
+                </tr>
+                      </tbody></table></td>
+
+                    </tr>
+                </tbody></table></td>
+              </tr>
+          </tbody></table></td>
+        </tr>
+      </tbody></table>
+    </div>
+    <!--结束杂志-->
+<script language="JavaScript">
+<!--
+document.write("<div id=detail style=position:absolute;width:300px;></div>");
+//-->
+</script><div id="detail" style="position:absolute;width:300px;"></div>
+    <!-------rqdh版面导航------>
+    <div id="daydh" style="display:none; position:absolute; left:50%;margin-left:-100px; top:110px; filter:alpha(opacity=90);" onmouseover="document.getElementById(&#39;daydh&#39;).style.display=&#39;block&#39;;">
+      <form name="CLD" style="padding:0px;margin:0px;">
+        <table width="210" border="0" cellpadding="0" cellspacing="1" bordercolor="#007CD2" bgcolor="#007CD2">
+          <tbody><tr>
+            <td bgcolor="#D8EFFF" style="padding: 3px;"><table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" bgcolor="#D8EFFF">
+              <tbody><tr>
+                <td><table width="100%" align="center" border="0" cellpadding="1" cellspacing="1">
+                  <tbody><tr class="default" align="center">
+                    <td height="15" colspan="7" bgcolor="#FFFFFF"><table width="100%" border="0" cellpadding="2" cellspacing="0">
+                      <tbody><tr align="center">
+                        <td align="left" nowrap=""><img src="./区块链，让价值互联网露出曙光（国际视野）_files/d1.gif" width="7" height="11" style="cursor:hand;" onclick="turnpage(SY,0)"></td>
+                        <td><select class="jumpmenu" onchange="changeMPCld()" name="SY">
+                          <script language="JavaScript">
+					for(i=2006;i<2051;i++)
+					document.write('<option>'+i+'</option>')
+        			</script><option>2016</option><option>2017</option>
+                        </select>
+                        </td>
+                        <td><img src="./区块链，让价值互联网露出曙光（国际视野）_files/d.gif" width="7" height="11" style="cursor:hand;" onclick="turnpage(SY,1)"></td>
+                        <td align="center" nowrap=""><img src="./区块链，让价值互联网露出曙光（国际视野）_files/d1.gif" width="7" height="11" style="cursor:hand;" onclick="turnpage(SM,0)"></td>
+                        <td><select class="jumpmenu" onchange="changeMPCld()" name="SM">
+                          <script language="JavaScript">
+				<!--
+					for(i=1;i<13;i++) document.write('<option>'+i+'</option>')
+				//-->
+        			</script><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option>
+                        </select>
+                        </td>
+                        <td><img src="./区块链，让价值互联网露出曙光（国际视野）_files/d.gif" width="7" height="11" style="cursor:hand;" onclick="turnpage(SM,1)"></td>
+                        <td align="right" nowrap=""><strong><font id="GZ" fface="Arial, Helvetica, sans-serif"></font></strong></td>
+                      </tr>
+                    </tbody></table></td>
+                  </tr>
+                  <tr align="middle" bgcolor="#FFFFFF" class="default">
+                    <td bgcolor="#027CD1" align="center" class="fontstyle01"><b><font face="Arial, Helvetica, sans-serif">日</font></b></td>
+                    <td bgcolor="#027CD1" align="center" class="fontstyle01"><b><font face="Arial, Helvetica, sans-serif">一</font></b></td>
+                    <td bgcolor="#027CD1" align="center" class="fontstyle01"><b><font face="Arial, Helvetica, sans-serif">二</font></b></td>
+                    <td bgcolor="#027CD1" align="center" class="fontstyle01"><b><font face="Arial, Helvetica, sans-serif">三</font></b></td>
+                    <td bgcolor="#027CD1" align="center" class="fontstyle01"><b><font face="Arial, Helvetica, sans-serif">四</font></b></td>
+                    <td bgcolor="#027CD1" align="center" class="fontstyle01"><b><font face="Arial, Helvetica, sans-serif">五</font></b></td>
+                    <td bgcolor="#027CD1" align="center" class="fontstyle01"><b><font face="Arial, Helvetica, sans-serif">六</font></b> </td>
+                  </tr>
+                  <script language="JavaScript">
+		<!--
+			var gNum;
+			for(i=0;i<6;i++)
+			{
+				document.write('<tr align=center>');
+				for(j=0;j<7;j++)
+				{
+					gNum = i*7+j;
+					document.write('<td  bgcolor="#FFFFFF" class="default" align=center id="GD' + gNum +'" style="cursor: default;" width="14%"><a href="" id="CD' + gNum + '"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onMouseOver="mOvr(' + gNum +')" onMouseOut="mOut()" id="SD' + gNum +'"');
+					document.write('></font></span></a><br><font id="LD' + gNum + '" size=2 class=pt9 style=display:none></font></td>');
+				}
+				document.write('</tr>');
+			}
+		//-->
+        	</script><tr align="center"><td bgcolor="#FFFFFF" class="default" align="center" id="GD0" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/01/nbs.D110000renmrb_01.htm" id="CD0"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(0)" onmouseout="mOut()" id="SD0" class="" color="">1</font></span></a><br><font id="LD0" size="2" class="pt9" style="display:none">十二</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD1" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/02/nbs.D110000renmrb_01.htm" id="CD1"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(1)" onmouseout="mOut()" id="SD1" class="" color="">2</font></span></a><br><font id="LD1" size="2" class="pt9" style="display:none">十三</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD2" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/03/nbs.D110000renmrb_01.htm" id="CD2"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(2)" onmouseout="mOut()" id="SD2" class="" color="">3</font></span></a><br><font id="LD2" size="2" class="pt9" style="display:none">十四</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD3" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/04/nbs.D110000renmrb_01.htm" id="CD3"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(3)" onmouseout="mOut()" id="SD3" class="" color="">4</font></span></a><br><font id="LD3" size="2" class="pt9" style="display:none">十五</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD4" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/05/nbs.D110000renmrb_01.htm" id="CD4"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(4)" onmouseout="mOut()" id="SD4" class="" color="">5</font></span></a><br><font id="LD4" size="2" class="pt9" style="display:none">十六</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD5" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/06/nbs.D110000renmrb_01.htm" id="CD5"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(5)" onmouseout="mOut()" id="SD5" class="" color="">6</font></span></a><br><font id="LD5" size="2" class="pt9" style="display:none">十七</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD6" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/07/nbs.D110000renmrb_01.htm" id="CD6"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(6)" onmouseout="mOut()" id="SD6" class="" color="">7</font></span></a><br><font id="LD6" size="2" class="pt9" style="display:none">十八</font></td></tr><tr align="center"><td bgcolor="#FFFFFF" class="default" align="center" id="GD7" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/08/nbs.D110000renmrb_01.htm" id="CD7"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(7)" onmouseout="mOut()" id="SD7" class="" color="">8</font></span></a><br><font id="LD7" size="2" class="pt9" style="display:none">十九</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD8" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/09/nbs.D110000renmrb_01.htm" id="CD8"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(8)" onmouseout="mOut()" id="SD8" class="" color="">9</font></span></a><br><font id="LD8" size="2" class="pt9" style="display:none">二十</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD9" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/10/nbs.D110000renmrb_01.htm" id="CD9"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(9)" onmouseout="mOut()" id="SD9" class="todaycolor" color="red">10</font></span></a><br><font id="LD9" size="2" class="pt9" style="display:none">廿一</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD10" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/11/nbs.D110000renmrb_01.htm" id="CD10"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(10)" onmouseout="mOut()" id="SD10" class="" color="">11</font></span></a><br><font id="LD10" size="2" class="pt9" style="display:none">廿二</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD11" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/12/nbs.D110000renmrb_01.htm" id="CD11"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(11)" onmouseout="mOut()" id="SD11" class="" color="">12</font></span></a><br><font id="LD11" size="2" class="pt9" style="display:none">廿三</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD12" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/13/nbs.D110000renmrb_01.htm" id="CD12"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(12)" onmouseout="mOut()" id="SD12" class="" color="">13</font></span></a><br><font id="LD12" size="2" class="pt9" style="display:none">廿四</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD13" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/14/nbs.D110000renmrb_01.htm" id="CD13"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(13)" onmouseout="mOut()" id="SD13" class="" color="">14</font></span></a><br><font id="LD13" size="2" class="pt9" style="display:none">廿五</font></td></tr><tr align="center"><td bgcolor="#FFFFFF" class="default" align="center" id="GD14" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/15/nbs.D110000renmrb_01.htm" id="CD14"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(14)" onmouseout="mOut()" id="SD14" class="" color="">15</font></span></a><br><font id="LD14" size="2" class="pt9" style="display:none">廿六</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD15" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/16/nbs.D110000renmrb_01.htm" id="CD15"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(15)" onmouseout="mOut()" id="SD15" class="" color="">16</font></span></a><br><font id="LD15" size="2" class="pt9" style="display:none">廿七</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD16" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/17/nbs.D110000renmrb_01.htm" id="CD16"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(16)" onmouseout="mOut()" id="SD16" class="" color="">17</font></span></a><br><font id="LD16" size="2" class="pt9" style="display:none">廿八</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD17" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/18/nbs.D110000renmrb_01.htm" id="CD17"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(17)" onmouseout="mOut()" id="SD17" class="" color="">18</font></span></a><br><font id="LD17" size="2" class="pt9" style="display:none">廿九</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD18" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/19/nbs.D110000renmrb_01.htm" id="CD18"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(18)" onmouseout="mOut()" id="SD18" class="" color="">19</font></span></a><br><font id="LD18" size="2" class="pt9" style="display:none">十二月</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD19" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/20/nbs.D110000renmrb_01.htm" id="CD19"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(19)" onmouseout="mOut()" id="SD19" class="" color="">20</font></span></a><br><font id="LD19" size="2" class="pt9" style="display:none">初二</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD20" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/21/nbs.D110000renmrb_01.htm" id="CD20"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(20)" onmouseout="mOut()" id="SD20" class="" color="">21</font></span></a><br><font id="LD20" size="2" class="pt9" style="display:none">初三</font></td></tr><tr align="center"><td bgcolor="#FFFFFF" class="default" align="center" id="GD21" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/22/nbs.D110000renmrb_01.htm" id="CD21"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(21)" onmouseout="mOut()" id="SD21" class="" color="">22</font></span></a><br><font id="LD21" size="2" class="pt9" style="display:none">初四</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD22" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/23/nbs.D110000renmrb_01.htm" id="CD22"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(22)" onmouseout="mOut()" id="SD22" class="" color="">23</font></span></a><br><font id="LD22" size="2" class="pt9" style="display:none">初五</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD23" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/24/nbs.D110000renmrb_01.htm" id="CD23"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(23)" onmouseout="mOut()" id="SD23" class="" color="">24</font></span></a><br><font id="LD23" size="2" class="pt9" style="display:none">初六</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD24" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/25/nbs.D110000renmrb_01.htm" id="CD24"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(24)" onmouseout="mOut()" id="SD24" class="" color="">25</font></span></a><br><font id="LD24" size="2" class="pt9" style="display:none">初七</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD25" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/26/nbs.D110000renmrb_01.htm" id="CD25"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(25)" onmouseout="mOut()" id="SD25" class="" color="">26</font></span></a><br><font id="LD25" size="2" class="pt9" style="display:none">初八</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD26" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/27/nbs.D110000renmrb_01.htm" id="CD26"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(26)" onmouseout="mOut()" id="SD26" class="" color="">27</font></span></a><br><font id="LD26" size="2" class="pt9" style="display:none">初九</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD27" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/28/nbs.D110000renmrb_01.htm" id="CD27"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(27)" onmouseout="mOut()" id="SD27" class="" color="">28</font></span></a><br><font id="LD27" size="2" class="pt9" style="display:none">初十</font></td></tr><tr align="center"><td bgcolor="#FFFFFF" class="default" align="center" id="GD28" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/29/nbs.D110000renmrb_01.htm" id="CD28"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(28)" onmouseout="mOut()" id="SD28" class="" color="">29</font></span></a><br><font id="LD28" size="2" class="pt9" style="display:none">十一</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD29" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/30/nbs.D110000renmrb_01.htm" id="CD29"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(29)" onmouseout="mOut()" id="SD29" class="" color="">30</font></span></a><br><font id="LD29" size="2" class="pt9" style="display:none">十二</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD30" style="cursor: default;" width="14%"><a href="http://paper.people.com.cn/rmrb/html/2017-01/31/nbs.D110000renmrb_01.htm" id="CD30"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(30)" onmouseout="mOut()" id="SD30" class="" color="">31</font></span></a><br><font id="LD30" size="2" class="pt9" style="display:none">十三</font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD31" style="cursor: default;" width="14%"><a href="" id="CD31"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(31)" onmouseout="mOut()" id="SD31" class=""></font></span></a><br><font id="LD31" size="2" class="pt9" style="display:none"></font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD32" style="cursor: default;" width="14%"><a href="" id="CD32"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(32)" onmouseout="mOut()" id="SD32" class=""></font></span></a><br><font id="LD32" size="2" class="pt9" style="display:none"></font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD33" style="cursor: default;" width="14%"><a href="" id="CD33"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(33)" onmouseout="mOut()" id="SD33" class=""></font></span></a><br><font id="LD33" size="2" class="pt9" style="display:none"></font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD34" style="cursor: default;" width="14%"><a href="" id="CD34"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(34)" onmouseout="mOut()" id="SD34" class=""></font></span></a><br><font id="LD34" size="2" class="pt9" style="display:none"></font></td></tr><tr align="center"><td bgcolor="#FFFFFF" class="default" align="center" id="GD35" style="cursor: default;" width="14%"><a href="" id="CD35"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(35)" onmouseout="mOut()" id="SD35" class=""></font></span></a><br><font id="LD35" size="2" class="pt9" style="display:none"></font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD36" style="cursor: default;" width="14%"><a href="" id="CD36"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(36)" onmouseout="mOut()" id="SD36" class=""></font></span></a><br><font id="LD36" size="2" class="pt9" style="display:none"></font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD37" style="cursor: default;" width="14%"><a href="" id="CD37"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(37)" onmouseout="mOut()" id="SD37" class=""></font></span></a><br><font id="LD37" size="2" class="pt9" style="display:none"></font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD38" style="cursor: default;" width="14%"><a href="" id="CD38"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(38)" onmouseout="mOut()" id="SD38" class=""></font></span></a><br><font id="LD38" size="2" class="pt9" style="display:none"></font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD39" style="cursor: default;" width="14%"><a href="" id="CD39"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(39)" onmouseout="mOut()" id="SD39" class=""></font></span></a><br><font id="LD39" size="2" class="pt9" style="display:none"></font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD40" style="cursor: default;" width="14%"><a href="" id="CD40"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(40)" onmouseout="mOut()" id="SD40" class=""></font></span></a><br><font id="LD40" size="2" class="pt9" style="display:none"></font></td><td bgcolor="#FFFFFF" class="default" align="center" id="GD41" style="cursor: default;" width="14%"><a href="" id="CD41"><span class="date" style="font-family:Verdana, Arial;font-size:11px;"><font _onmouseover="mOvr(41)" onmouseout="mOut()" id="SD41" class=""></font></span></a><br><font id="LD41" size="2" class="pt9" style="display:none"></font></td></tr>
+                </tbody></table></td>
+              </tr>
+            </tbody></table></td>
+          </tr>
+          <tr><td align="center" height="22"><a href="http://paper.people.com.cn/rmrb/html/2017-01/10/nw.D110000renmrb_20170110_1-23.htm#" onclick="autoShowDate();">关闭</a></td></tr>
+        </tbody></table>
+      </form>
+    </div>
+    <!-------rqdh版面导航END------>
+<!-------文章显示标题开始------>
+<div style="display:none">
+  <table width="265" border="0" cellspacing="0" cellpadding="0" style="margin-top:3px;">
+
+  <tbody><tr>
+	<td width="16" align="left"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/icon07.jpg"></td>
+	<td width="271" align="left" class="fontstyle" height="22">
+<a href="http://paper.people.com.cn/rmrb/html/2017-01/10/nw.D110000renmrb_20170110_1-23.htm"><div style="display:inline" id="mp_nw.D110000renmrb_20170110_1-23">区块链，让价值互联网露出曙光（国际视野）</div></a>
+	</td>
+  </tr>
+  <tr><td background="./区块链，让价值互联网露出曙光（国际视野）_files/dian01.jpg" colspan="2" height="1"></td></tr>
+  <tr>
+	<td width="16" align="left" bgcolor="#D8EFFF"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/icon07.jpg"></td>
+	<td width="271" align="left" class="fontstyle" height="22" bgcolor="#D8EFFF">
+<a href="http://paper.people.com.cn/rmrb/html/2017-01/10/nw.D110000renmrb_20170110_2-23.htm"><div style="display:inline" id="mp_nw.D110000renmrb_20170110_2-23">发力起跑线  淬火成刀剑（观点）</div></a>
+	</td>
+  </tr>
+  <tr><td background="./区块链，让价值互联网露出曙光（国际视野）_files/dian01.jpg" colspan="2" height="1"></td></tr>
+
+</tbody></table>
+</div>
+<!-------文章显示标题结束------>
+<img src="./区块链，让价值互联网露出曙光（国际视野）_files/left_ico.gif" style="display:none;"> <img src="./区块链，让价值互联网露出曙光（国际视野）_files/right_ico.gif" style="display:none;"> <img src="./区块链，让价值互联网露出曙光（国际视野）_files/ico10.gif" style="display:none;"> <img src="./区块链，让价值互联网露出曙光（国际视野）_files/ico8.gif" style="display:none;"> <img src="./区块链，让价值互联网露出曙光（国际视野）_files/ico9.gif" style="display:none;"> <img src="./区块链，让价值互联网露出曙光（国际视野）_files/ti.gif" style="display:none;"> <img src="./区块链，让价值互联网露出曙光（国际视野）_files/fb.gif" style="display:none;">
+</div></div>
+<script>writeErWeiMa();</script><div id="wxmenu2" class="fixed2" style="display:block;left:87.85%"><div><a href="http://www.people.com.cn/GB/123231/365206/index.html" target="_blank" title="人民日报手机客户端" alt="人民日报手机客户端"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/rmrbkhd.jpg" border="0"></a><a target="_top" href="javascript:closeMenu(&#39;wxmenu2&#39;);" style="top:-36px;position:relative;float:right;left:-2px;" alt="关闭" title="关闭"><img src="./区块链，让价值互联网露出曙光（国际视野）_files/close.jpg" border="0"></a></div><div class="rmrbkhd" style="height:421px;"><div style="height:5px;width:100%;"></div><div><a href="https://itunes.apple.com/cn/app/ren-min-ri-bao-guan-fang-shou/id625077646?l=en&amp;mt=8" target="_blank" title="ISO下载" alt="ISO下载"><img style="margin-left:6px" src="./区块链，让价值互联网露出曙光（国际视野）_files/rmrbkhdiso.jpg" border="0"></a></div><div style="height:5px;width:100%;"></div><div><a href="http://rmrbdata.people.com.cn/soft/rmrb.apk" target="_blank" title="Android下载" alt="Android下载"><img style="margin-left:6px" src="./区块链，让价值互联网露出曙光（国际视野）_files/rmrbkhdandroid.jpg" border="0"></a></div><div style="height:5px;width:100%;"></div><div><a href="http://paper.people.com.cn/rmrb/html/2017-01/10/nw.D110000renmrb_20170110_1-23.htm#" target="_top" title="微信扫一扫,使用小程序" alt="微信扫一扫,使用小程序"><img style="margin-left:6px" src="./区块链，让价值互联网露出曙光（国际视野）_files/rmrbweixinxiaochengxu.jpg" border="0"></a></div></div><div><div class="rmrgsjb"><div style="height:116px;width:100%;"></div><div style="width:100%;text-align:right;"></div></div>
+<iframe id="tempForm" name="tempForm" src="" frameborder="0" width="0" scrolling="no" height="0"></iframe>
+
+
+<script language="javascript">
+function checkContent(){
+if(document.getElementById('ozoom')!=null&&document.getElementById('ozoom').offsetHeight<=357)
+	document.getElementById('ozoom').style.height = '357px';
+}
+</script>
+<script language="Javascript" src="./区块链，让价值互联网露出曙光（国际视野）_files/disname2.js"></script><div style="display:none"><script src="./区块链，让价值互联网露出曙光（国际视野）_files/h.js" type="text/javascript"></script><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=634d72f7004dc0d4fb6aff00de988bf1" target="_blank"><img border="0" src="./区块链，让价值互联网露出曙光（国际视野）_files/21.gif" width="0" height="20"></a></div>
+<script language="Javascript" src="./区块链，让价值互联网露出曙光（国际视野）_files/webdig_test.js"></script><script id="tr_statobj" src="./区块链，让价值互联网露出曙光（国际视野）_files/webdig.js" type="text/javascript"></script><script type="text/javascript"> wd_paramtracker('_wdxid=000000000000000000000000000000000000000000');</script>
+
+<!--mpproperty <founder-date>
+2017-01-10
+</founder-date>
+<founder-author>
+肖  风
+</founder-author>
+<founder-title>区块链，让价值互联网露出曙光（国际视野）
+</founder-title>
+<founder-nodename></founder-nodename>
+<founder-keyword>
+
+</founder-keyword><founder-ChannelID>
+1,921
+</founder-ChannelID><founder-imp>0</founder-imp>
+<founder-subtitle></founder-subtitle>
+<founder-type>1</founder-type>
+<founder-introtitle></founder-introtitle>
+<founder-pagepicurl>../../../page/2017-01/10/23/rmrb2017011023_b.jpg</founder-pagepicurl>
+<founder-pagenum>23</founder-pagenum>
+<founder-papername>人民日报</founder-papername>
+<founder-nodeid>1,944</founder-nodeid> /mpproperty-->
+
+
+</div></div></body></html>

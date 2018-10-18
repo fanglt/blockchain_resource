@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html><head>
+        <meta name="baidu-site-verification" content="HmwwEvMGyf">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <title>区块链的运行原理和发展 - 区块链知识库</title>
+        <meta name="Keywords" content="知识库,微信开发,机器学习,swift,Android,Python,Java,大数据,云计算,PHP,Ruby,C++,JavaScript">
+        <meta name="Description" content="CSDN知识库，按照技术领域和知识结构对海量技术资源进行筛选整理，并通过相关机制进行审核收录。保证入库知识的系统性与优质性。并且所含技术知识图谱有清晰的学习脉络，是技术开发者完善自我知识体系、提升进阶的参照坐标">
+        <link href="http://lib.csdn.net/images/web/favicon.ico" rel="SHORTCUT ICON">
+        <link rel="stylesheet" href="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/bootstrap.css">
+        <link rel="stylesheet" href="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/common.css">
+        <link rel="stylesheet" href="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/icon.css">
+        <link rel="stylesheet" href="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/font-awesome.css">
+        <link rel="stylesheet" href="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/iconfont.css">
+        <link rel="stylesheet" href="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/colors.css" id="colors">
+        <link rel="stylesheet" href="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/kl_read.css">
+        <script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/7dc04976a0"></script><script src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/nr-1071.js"></script><script src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/jquery-1.js" type="text/javascript"></script>
+        <script src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/bootstrap.js" type="text/javascript"></script>
+        <script src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/statist.js" type="text/javascript"></script>
+        <script src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/view-history.js" type="text/javascript"></script>
+        <!--语法高亮-->
+        <link rel="stylesheet" href="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shCore.css">
+        <link rel="stylesheet" href="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shThemeDefault.css">
+        <script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shCore.js"></script>
+        <!--语法高亮end-->
+        <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"agent":"","beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"7dc04976a0","applicationID":"15009246","applicationTime":36.605997,"transactionName":"Z10AZEZSD0VTUExYCV4XJ0hEQQRFQVlLHiF1bE0fHhkAREZaW10DHwIMUVlWTgxbVw==","queueTime":0,"ttGuid":"f1e5ae10dbf000","agentToken":null}; window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var o=t[n]={exports:{}};e[n][0].call(o.exports,function(t){var o=e[n][1][t];return r(o||t)},o,o.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(e,t,n){function r(){}function o(e,t,n){return function(){return i(e,[f.now()].concat(u(arguments)),t?null:this,n),t?void 0:this}}var i=e("handle"),a=e(2),u=e(3),c=e("ee").get("tracer"),f=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,t){s[t]=o(d+t,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,o="function"==typeof t;return i(l+"tracer",[f.now(),e,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return t.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],n),e}finally{c.emit("fn-end",[f.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=o(l+t)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,f.now()])}},{}],2:[function(e,t,n){function r(e,t){var n=[],r="",i=0;for(r in e)o.call(e,r)&&(n[i]=t(r,e[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],3:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,o=n-t||0,i=Array(o<0?0:o);++r<o;)i[r]=e[t+r];return i}t.exports=r},{}],4:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function o(e){function t(e){return e&&e instanceof r?e:e?c(e,u,i):i()}function n(n,r,o,i){if(!d.aborted||i){e&&e(n,r,o);for(var a=t(o),u=m(n),c=u.length,f=0;f<c;f++)u[f].apply(a,r);var p=s[y[n]];return p&&p.push([b,n,r,a]),a}}function l(e,t){v[e]=m(e).concat(t)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(n)}function g(e,t){f(e,function(e,n){t=t||"feature",y[n]=t,t in s||(s[t]=[])})}var v={},y={},b={on:l,emit:n,get:w,listeners:m,context:t,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",c=e("gos"),f=e(2),s={},p={},d=t.exports=o();d.backlog=s},{}],gos:[function(e,t,n){function r(e,t,n){if(o.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[t]=r,r}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){o.buffer([e],r),o.emit(e,t,n)}var o=e("ee").get("handle");t.exports=r,r.ee=o},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!x++){var e=h.info=NREUM.info,t=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return s.abort();f(y,function(t,n){e[t]||(e[t]=n)}),c("mark",["onload",a()+h.offset],null,"api");var n=d.createElement("script");n.src="https://"+e.agent,t.parentNode.insertBefore(n,t)}}function o(){"complete"===d.readyState&&i()}function i(){c("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),c=e("handle"),f=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1071.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=t.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+    <script src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/share.js"></script><script type="text/javascript" charset="utf-8" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/tracking-1.js"></script><script type="text/javascript" charset="utf-8" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/main-1.js"></script><link rel="stylesheet" href="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/share_style0_32.css"></head>
+<body>
+<div id="wx_pic" style="margin:0 auto;display:none;">
+    <img src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/logos.jpg">
+</div>
+
+<style>
+	.fine.addfine.isfine{
+		background-position: -190px -250px;
+	}
+	.fine.addfine.isfine:hover{
+		background-position: -133px -250px;
+	}
+</style>
+<link rel="stylesheet" href="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/jquery-ui.css">
+<script src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/jquery-ui.js"></script>
+<style type="text/css">.ui-tooltip{background:#d7eefb!important;color:#688ca1!important;font:12px"Helvetica Neue",Sans-Serif!important;border:1px solid#99CBE7!important;padding:2px 4px!important;border-radius:2px!important;width:auto!important;box-shadow:none!important}</style>
+
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushAppleScript.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushAS3.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushBash.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushColdFusion.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushCpp.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushCSharp.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushCss.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushDelphi.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushDiff.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushErlang.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushGroovy.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushJava.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushJavaFX.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushJScript.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushPerl.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushPhp.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushPlain.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushPython.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushRuby.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushSass.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushScala.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushSql.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushVb.js"></script>
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/shBrushXml.js"></script>
+<script src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/view-history.js" type="text/javascript"></script>
+<input id="contentId" value="45803" type="hidden">
+<input id="sourceId" value="51604415" type="hidden">
+<input id="owner" value="weigao_easy" type="hidden">
+<input id="page" value="1" type="hidden">
+<input id="size" value="10" type="hidden">
+<input id="support" value="17" type="hidden">
+<div class="main clearfix">
+	<div class="mainread">
+		<div class="infortop clearfix">
+			<a href="http://lib.csdn.net/base/blockchain" target="_blank"><img src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/1476175342721_721.jpg" alt="" width="40" height="40"></a>
+			<span class="text clearfix">
+				<span class="left">
+					<a href="http://lib.csdn.net/base/blockchain" target="_blank">区块链</a><em>-</em>
+					<a href="http://lib.csdn.net/blockchain/node/757" target="_blank">基础知识</a><em>-</em>
+					<a href="http://lib.csdn.net/blockchain/knowledge/1798" target="_blank">工作原理</a>
+				</span>
+				<span class="right">
+					<i class="fa fa-eye" title="阅读数"></i><b>6350</b>
+					<span class="addAnchor" style="cursor:pointer">
+						<i class="fa fa-commenting-o" title="评论数"></i><b>2</b>
+					</span>
+				</span>
+			</span>
+		</div>
+		<div class="maincontent whitebk showbox">
+			<h1>区块链的运行原理和发展</h1>
+			<p class="author"><em>作者：</em><a href="http://my.csdn.net/weigao_easy" target="_blank">weigao_easy</a></p>
+			<div class="divtexts" style="max-height: 1600px;">
+				
+<h2>一、为什么会有区块链的创新？</h2>
+<p>第一代互联网的起点是<code>TCP/IP</code>协议，就是执行一个网络上所有节点统一格式对等传输信息的开放代码。但是这样一个并不复杂的创新对于人类的影响是划时代的，她把全球统一市场所需要的基本价值观：“自由、平等、博爱”，给程序化、协议化、可执行化了。进而派生出<code>STMP</code>邮件协议、<code>HTTP</code>域名协议等，去中心化的实现了全球信息传递的低成本高效率。正如阿里巴巴副总裁高红冰所说：</p>
+<blockquote>
+<p>“互联网就是消灭那个价值很低、成本很高的（信息）供应链——它开放、互联、对等、全球化、去中心化。”</p>
+</blockquote>
+<p>我们知道：市场的本质也是去中心化的，她自动执行也就是“等价交换”的去中心化协议，就像诺贝尔奖金获得者罗纳德•科斯总结的：“市场经济建立在两
+个深厚的认知基础上：承认无知和包容不确定性。”亚当•斯密也形容市场是：“看不见的手”！因此，市场一定需要信息去中心化的低成本流动，互联网正是适应
+了全球统一市场形成的大气候下，横空出世了。</p>
+<p>但是，第一代互联网去中心化的解决了信息的低成本高效率传输的问题，她没有解决信息的信用问题。因此，第二代互联网必须突破的是：怎样去中心化的建立全球信用？让价值传递也低成本高效率进行。</p>
+<p>那么原来的中心化信用体系有什么问题呢？众所周知：中心化的信用，如各国法币，信用价值不同，清算体系也各不兼容，给全球贸易增加了很大成本。目前
+以美元为中心的全球信用体系，在机制上存在“特里芬悖论”（实质就是一国法币无法同时兼顾解决本国经济利益和全球经济需要的冲突），因此2009年中国央
+行行长周小川呼吁超主权存储货币的产生，同年，中本聪在网上公开了第一代区块链源代码————“比特币”。</p>
+<p>&nbsp;</p>
+<h2>二、区块链系统是怎样运行的？</h2>
+<p>&nbsp;</p>
+<p>首先，中本聪很清楚建立一个支付系统的信用必须解决防止“重复支付”问题，也就是不能造假币。中心化的信用系统是靠国家机器防止造假币。“比特币”怎么办呢？中本聪的伟大创新是给每一笔交易“盖时间戳”（<code>timestamp</code>）。
+每十分钟一个区块（block：相当于网络账簿），把这十分钟的全网交易都正确的盖上时间戳。问题是谁来盖呢？中本聪并没有假设互联网上都是雷锋，他同意
+亚当.斯密的观点：市场上的人是贪婪的。他让所谓自称“矿工”的人去竞争这十分钟一个区块的记账权，竞争的规则就是正确记账的同时要去解SHA256难
+题，谁能证明自己的计算机算力最快（所谓PROOF
+ OF WORK 
+机制），ta就能竞争到这十分钟区块的合法记账权，并得到二十五个比特币的奖励。这就是所谓俗称的“挖矿”过程，实际是建立一个全网总账——区块链的去中
+心化信用过程，所以矿工更本质的职能是“记账员”！</p>
+<p>中本聪在其比特币白皮书中，比较详尽的叙述了这个信用系统建立的过程：</p>
+<p>第一步：每一笔交易为了让全网承认有效，必须广播给每个节点（node：也就是矿工）；</p>
+<p>第二步：每个矿工节点要正确无误的给这十分钟的每一笔交易盖上时间戳并记入那个区块（block）；</p>
+<p>第三步：每个矿工节点要通过解SHA256难题去竞争这个十分钟区块的合法记账权，并争取得到二十五个比特币的奖励（头四年是每十分钟五十个比特币，每四年递减一半）；</p>
+<p>第四步：如果一个矿工节点解开了这十分钟的SHA256难题，ta将向全网公布ta这十分钟区块记录的所有盖时间戳交易，并由全网其他矿工节点核对；</p>
+<p>第五步：全网其他矿工节点核对该区块记账的正确性（因为他们同时也在盖时间戳记账，只是没有竞争到合法区块记账权，因此无奖励），没有错误后他们将在该合法区块之后竞争下一个区块，这样就形成了一个合法记账的区块单链，也就是比特币支付系统的总账——区块链。<br>
+一般来说，每一笔交易，必须经过六次区块确认，也就是六个十分钟记账，才能最终在区块链上被承认合法交易。以下是比特币的记账格式：</p>
+<p>所以所谓“比特币”，就是这样一个账单系统：它包括所有者用私钥进行电子签名并支付给下一个所有者，然后由全网的“矿工”盖时间戳记账，形成区块链。</p>
+<p>&nbsp;</p>
+<h2>三、比特币的区块链金融有哪些创新？</h2>
+<p>&nbsp;</p>
+<ol>
+<li>类黄金化，尝试建立全球互联网去中心化信用，有可能让价值在全网高速低费率的流转（目前每笔转转费率是万分之一）；</li><li>货币总量由密码学协议约定；</li><li>比之于黄金，数字货币无限可分；</li><li>货币价值可以建立在大量的P2P交易之上；</li><li>&nbsp;财务管理的完全透明（每笔交易都能在区块链上查到）。</li></ol>
+<p>比特币的区块链全网记账，在全球互联网上最高建立了市值100亿美元的市值。因此，清华五道口金融学院院长吴晓灵点睛指出：区块链实验建立了分布式信用，是互联网TCP/IP的升级版，是从信息传递升级到价值传递；</p>
+<p>&nbsp;</p>
+<h2>四、比特币的区块链系统有哪些内在缺陷？</h2>
+<p>&nbsp;</p>
+<p>比特币的区块链系统自2009年在互联网上开源运行以来，有成功的地方，但也显示出一些难以克服的内在缺陷：</p>
+<ol>
+<li>总量不能随着市场的情况变化，必然暴涨暴跌；</li><li>挖矿的高碳，只有不到1%的矿工能够竞争到没十分钟区块的记账权，其他参与竞争的99%以上的矿工算力浪费；</li><li>每年10%左右的通货膨胀大大增加了比特币金融生态的成本，甚至威胁到她的生存；</li><li>作为去中心化自组织DAC系统，记账和发行功能部分运行成本过高。</li><li>作为全球支付系统，效率远远达不到全球贸易的实际要求。比特币网络每秒目前最多确认7笔交易，对比之下， Visa的网络系统每秒最快可处理10,000笔交易，支付宝的记录是2014光棍节每秒钟80,000笔！</li></ol>
+<h2>五、区块链技术2.0的发展：</h2>
+<p>&nbsp;</p>
+<p>作为区块链的2.0升级发展，首先聚焦在解决比特币记账的挖矿高碳上：</p>
+<p>在我们讨论怎么克服比特币挖矿记账高碳时，清华经济学研究所的刘涛雄教授指出，挖矿靠算力竞争，最后只有一家竞争到合法记账权，其他99%的矿工节
+点都白挖了，浪费了资源，显然不太合理，如果全网透明的知道下一家区块的合法记账权，随机的在全网产生，就免除了竞争记账的高碳！我们听后都大赞刘教授主
+意高明，因为现在比较成功的二代币NXT正是这种机制，他们的白皮书叫“透明锻造”，只是记账权花落谁家的概率是和每个矿工节点钱包的NXT代币持有量成
+正比，这个叫股权证明机制（PROOF OF STOCK）。当然，这也引发了NXT把代币分发给早期投资开发者不公平的争论！</p>
+<p>RIPPLE是一个区块链半去中心化的方案，利用“可信任网关”（trusted gateways）进行区块链记账，其信用是建立在这些网关不会同时作恶的共识记账（consensus ledger）协议上。</p>
+<p>最有雄心的尝试是以太坊（Ethereum）,她把区块链的技术和图灵完备结合起来，期望开发出一套未来满足各种区块链系统建设的基础性平台，可以
+支持各种信用货币、数字资产、智能协议甚至金融衍生品的开发.其系统设计是ETHERUM平台统一区块链记账，为所有开发者共同使用，也许她们的正式版本
+能在不久地将来发布。</p>
+<p>&nbsp;</p>
+<h2>六、区块链的创新在其他领域的可能应用：</h2>
+<p>&nbsp;</p>
+<p>现在，区块链在建立去中心化信用的尝试，已经不限于金融界，而被社会各个领域关注，特别是在中国目前一些中心性信用如“红会”，处于“塌陷”态势，区块链更能为社会管理提供一种全新的思路和技术选项，以下是我们了解的一些新进展和相关讨论：</p>
+<ol>
+<li>区块链和物联网结合，将数字资产和原子资产统一起来，抹平消费资产和现金资产的区别，扩展大众的信用，加速价值流通；（IBM-三星）</li><li>区块链上建立知识产权保护系统，对知识产权的使用全网记账，建立全球广告市场；</li><li>区块链是否可以为一带一路的新兴经济体发行协议型密码学货币提供技术支撑；</li><li>区块链+云计算可以发展成去中心化的自媒体和社区系统；</li><li>&nbsp;区块链可以搭建去中心化的股权众筹体系，让创新项目提前进入流通领域；</li><li>区块链可以发展出全透明的财务管理系统；</li><li>区块链支持建立全球去中心化公司组织。</li></ol>
+<p>总之，在这个信用已经成为紧缺资源的时代，区块链的技术创新，作为一种分布式信用的模式，为全球市场的金融、社会管理、人才评价和去中心化组织建设等，都提供了一个广阔的发展前景。</p>
+
+				<div class="divmark" style="display: block;"></div>
+			</div>
+			<div class="divcodes" style="display: block;">
+				<div class="pmores">
+					<a href="">展开更多<i class="fa fa-caret-down"></i></a>
+				</div>
+			</div>
+			<div class="pinfortext">
+				<a href="http://blog.csdn.net/weigao_easy/article/details/51604415" target="_blank">查看原文&gt;&gt;</a>
+				<span>
+					
+					<a href="javascript:void(0)" id="click_logo" title="喜欢">
+						<span><i class="fa fa-heart-o" id="support_logo"></i></span>
+						<em>17</em>
+					</a>
+					
+				</span>
+			</div>
+
+			<div class="divcontent bordertop">
+				<span class="title">看过本文的人也看了：</span>
+				<ul class="clearfix">
+					
+						
+						<li>
+							<a class="yellow" href="http://lib.csdn.net/base/blockchain/structure" target="_blank" title="区块链知识结构图">
+								<i class="cirle"></i>
+								区块链知识结构图
+							</a>
+						</li>
+						
+					
+						
+						<li>
+							<div class="csdn-tracking-statistics" data-mod="popu_248_lib_67">
+								<a basename="blockchain" knid="1798" contentid="46914" href="http://lib.csdn.net/article/blockchain/46914" target="_blank" title="区块链技术，比特币技术的汇总笔记">
+									<i class="cirle"></i>
+									区块链技术，比特币技术的汇总笔记
+								</a>
+							</div>
+						</li>
+						
+					
+						
+						<li>
+							<div class="csdn-tracking-statistics" data-mod="popu_248_lib_67">
+								<a basename="blockchain" knid="1798" contentid="45820" href="http://lib.csdn.net/article/blockchain/45820" target="_blank" title="为什么说Bitcoin是一次伟大的金融创新">
+									<i class="cirle"></i>
+									为什么说Bitcoin是一次伟大的金融创新
+								</a>
+							</div>
+						</li>
+						
+					
+						
+						<li>
+							<div class="csdn-tracking-statistics" data-mod="popu_248_lib_67">
+								<a basename="blockchain" knid="1798" contentid="45818" href="http://lib.csdn.net/article/blockchain/45818" target="_blank" title="区块链：起源、原理及应用">
+									<i class="cirle"></i>
+									区块链：起源、原理及应用
+								</a>
+							</div>
+						</li>
+						
+					
+						
+						<li>
+							<div class="csdn-tracking-statistics" data-mod="popu_248_lib_67">
+								<a basename="blockchain" knid="1798" contentid="46372" href="http://lib.csdn.net/article/blockchain/46372" target="_blank" title="一个故事告诉你比特币的原理及运作机制">
+									<i class="cirle"></i>
+									一个故事告诉你比特币的原理及运作机...
+								</a>
+							</div>
+						</li>
+						
+					
+						
+						<li>
+							<div class="csdn-tracking-statistics" data-mod="popu_248_lib_67">
+								<a basename="blockchain" knid="1798" contentid="45804" href="http://lib.csdn.net/article/blockchain/45804" target="_blank" title="讲透区块链技术原理">
+									<i class="cirle"></i>
+									讲透区块链技术原理
+								</a>
+							</div>
+						</li>
+						
+					
+				</ul>
+				<div class="clearfix">
+				</div>
+			</div>
+		</div>
+		<div class="comments">
+			<div class="commentdiv">
+				<a name="focustext" id="focustext"></a>
+				<span class="title01">发表评论</span>
+				<div class="textdiv">
+					<textarea placeholder="输入评论内容"></textarea>
+				</div>
+				<div class="subdiv">
+					
+					<input value="发表" onclick="toPassport();return false;" type="submit">
+					
+				</div>
+			</div>
+			<div class="replaydiv">
+				<p class="ptitles">
+					<em>2</em>个评论
+				</p>
+				<ul class="listreplays clearfix bottomxian" id="comment_list">
+					
+	
+	<li class="clearfix">
+		<a class="photos" href="http://my.csdn.net/q379763376" target="_blank">
+			<img src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/4_q379763376.jpg" alt="" width="50" height="50">
+		</a>
+		<div class="text">
+			<a href="http://my.csdn.net/q379763376" target="_blank">q379763376</a>
+			<p class="pcontent">
+				晦涩
+			</p>
+			<p class="editext clearfix">
+				<span class="date">2017-08-24 15:27:01</span><a href="javascript:void(0)" parent_id="7122036" onclick="showOrHide(this);return false;">回复</a>
+			</p>
+
+			<div class="replayinfor" style="display: none">
+				<div class="replaydiv">
+					<div class="jiao">
+					</div>
+					<textarea></textarea>
+				</div>
+				<div class="replaybtn">
+					<button class="replaybtns" parent_name="q379763376" parent_id="7122036" onclick="setComment(this)">回复</button>
+				</div>
+			</div>
+
+		</div>
+	</li>
+	
+
+	
+	<li class="clearfix">
+		<a class="photos" href="http://my.csdn.net/u014665061" target="_blank">
+			<img src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/4_u014665061.jpg" alt="" width="50" height="50">
+		</a>
+		<div class="text">
+			<a href="http://my.csdn.net/u014665061" target="_blank">u014665061</a>
+			<p class="pcontent">
+				应该是SMTP简单邮件传输协议吧。。。
+			</p>
+			<p class="editext clearfix">
+				<span class="date">2017-05-13 15:40:57</span><a href="javascript:void(0)" parent_id="6832018" onclick="showOrHide(this);return false;">回复</a>
+			</p>
+
+			<div class="replayinfor" style="display: none">
+				<div class="replaydiv">
+					<div class="jiao">
+					</div>
+					<textarea></textarea>
+				</div>
+				<div class="replaybtn">
+					<button class="replaybtns" parent_name="u014665061" parent_id="6832018" onclick="setComment(this)">回复</button>
+				</div>
+			</div>
+
+		</div>
+	</li>
+	
+
+<script>
+	$('.replaybtns').click(function(e){
+		$(this);
+	})
+</script>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="fixedyjfk dynamicollect" style="left: 1049.5px;">
+		
+		
+		<div class="fxd">
+			<a href="javascript:void(0);" class="fx fxh"></a>
+			<div class="wicon moveshow kl_spread">
+				<div class="bdsharebuttonbox bdshare-button-style0-32" data-bd-bind="1514351781946">
+					<a class="weibo  bds_tsina bds_mid fa fa-weibo wb" data-cmd="tsina" title="分享到新浪微博"></a>
+					<a class="weixin bds_weixin bds_mid fa fa-weixin wx" data-cmd="weixin" title="分享到微信"></a>
+				</div>
+				<script>
+	                window._bd_share_config = {
+	                    common: {
+	                        bdText: '区块链的运行原理和发展 \n' + '【区块链知识库 - 基础知识 - 
+工作原理】\n' + 'CSDN知识库，你身边的技术百科全书',
+	                        bdDesc: '区块链的运行原理和发展',
+	                        bdUrl: window.location.href,
+	                        bdPic : 
+'http://img.knowledge.csdn.net/upload/base/1476175342721_721.jpg'
+	                    },
+	                    share: [{
+	                        "bdSize": 32
+	                    }]
+	                }
+	                window._bd_share_main = 0;
+	                with 
+(document)0[(getElementsByClassName('kl_spread')[0]).appendChild(createElement('script')).src
+ = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + 
+~(-new Date() / 36e5)];
+	            </script><script src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/share_002.js"></script>
+			</div>
+		</div>
+		<a href="" class="coment"></a>
+		
+			<a href="" data-id="45803-67-1798-3" class="editbook triggerlayer collectbtn" title="添加收藏"></a>
+		
+		<a href="" class="zd" style="display: none;"></a>
+	</div>
+</div>
+
+<div class="windowLayer windowLayerwh borders library leavemessage"><div class="windowContent"><div class="leavewrap"><div class="layeropt"><div class="layer02top"><em>我要留言</em><a href="" class="closec">×</a></div><div class="layercontent"><div class="layerwrap"><p>技术领域：</p><textarea value="" placeholder="请输入20字以内技术领域描述..." id="textarea"></textarea><span class="error"><i class="fa fa-warning"></i><em></em></span></div></div><div class="layerbottom"><a href="" class="subtj">提交</a><a href="" class="cancelbtn">取消</a></div></div></div></div></div>
+<div class="windowLayer windowLayerwh borders library leavemessageinfor"><div class="windowContent"><div class="leavewrap"><div class="layeropt"><div class="layer02top"><em>我要留言</em><a href="" class="closec">×</a></div><div class="layercontent"><div class="layerwrap"><p class="infor"><i class="fa fa-check-circle"></i>留言成功，我们将在审核后加至投票列表中！</p></div></div></div></div></div></div><!--留言弹框调用 END-->
+<div class="windowLayer windowLayerwh kn_sub_collect"><div class="windowContent"><div class="layeropt"><div class="layer02top"><em>收藏提示</em><a href="" class="closec">×</a></div><div class="layercontent"><div class="layerwrap"><div class="collectwrap"><div class="checkradiro clearfix"></div></div><div class="suballbtns"><a href="http://lib.csdn.net/collection" class="confrim_btn">确定收藏</a><a href="http://lib.csdn.net/my/create/structure" class="add_btn" target="_blank">新建图谱</a></div></div></div></div></div></div>
+<div class="windowLayer windowLayerwh borders collectcancel editcollects" style="display: none;"><div class="windowContent"><div class="layer02"><a href="" class="closec">×</a><div class="layer02top"><em>取消收藏</em></div><div class="layercontent"><div class="layertop noborder"><i class="fa fa-question-circle"></i><em>确定要取消收藏吗？</em></div><div class="lastbtns"><a href="" class="addbtn addconfrim">确认</a><a href="" class="cancelbtn">取消</a></div></div></div></div></div>
+<div class="windowLayer windowLayerwh collectNewLayer"><div class="windowContent"><div class="layeropt"><div class="layer02top"><em>提示</em><a href="" class="closec">x</a></div><div class="layercontent"><div class="layerwrap"><p class="infor"><span>区块链知识库已成功保存至<a href="">我的图谱</a></span><em>现在你可以用它来管理自己的知识内容了</em></p></div></div></div></div></div>
+<div class="windowLayer windowLayerwh deletemaplayer"><div class="windowContent"><div class="layeropt"><div class="layer02top"><em>删除图谱提示</em><a href="" class="closec">×</a></div><div class="layercontent"><div class="layerwrap"><div class="deletemapwrap"><p>你保存在该图谱下的知识内容也会被删除，建议你先将内容移到其他图谱中。你确定要删除知识图谱及其内容吗？</p></div><div class="pbottom"><a href="" class="delbutn addconfrim">删除</a><a href="" class="resetbtn cancelbtn">取消</a></div></div></div></div></div></div>
+<div class="windowLayer windowLayerwh deletemaplayerall"><div class="windowContent"><div class="layeropt"><div class="layer02top"><em>删除节点提示</em><a href="" class="closec">×</a></div><div class="layercontent"><div class="layerwrap"><div class="deletemapwrap"><p>无法删除该知识节点，因该节点下仍保存有相关知识内容！</p></div><div class="pbottom"><a href="" class="confrimbutn cancelbtn">确定</a><a href="" class="resetbtn cancelbtn">取消</a></div></div></div></div></div></div>
+<div class="windowLayer windowLayerwh deletemaplayersimple"><div class="windowContent"><div class="layeropt"><div class="layer02top"><em>删除节点提示</em><a href="" class="closec">×</a></div><div class="layercontent"><div class="layerwrap"><div class="deletemapwrap"><p>你确定要删除该知识节点吗？</p></div><div class="pbottom"><a href="" class="delbutn addconfrim">删除</a><a href="" class="resetbtn cancelbtn">取消</a></div></div></div></div></div></div>
+<script>
+    //==========分享到微博微信============
+    
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new
+ Date()/36e5)];
+    //==========分享到微博微信 End============
+</script>
+
+<script>
+	if(typeof localStorage !== 'undefined' && typeof JSON !== 'undefined') {
+	    var supportHistory = new ViewHistory();
+	    supportHistory.init({
+	        limit: 1000,
+	        storageKey: 'supportHistory',
+	        primaryKey: 'id'
+	    });
+	}
+
+	var contentId = 45803;
+	if(supportHistory && !false) {
+		var histories = supportHistory.getHistories();
+		if(histories && histories.length > 0) {
+			if(histories.indexOf(contentId) != -1){
+				// 支持图标变化
+				$("#click_logo").addClass("clickbtn");
+				$("#support_logo").attr("class","fa fa-heart");
+			}
+		}
+	}
+	function toPassport(){
+		var _url = "http://passport.csdn.net/account/login?from=" + 
+encodeURI(location.href);
+		window.location = _url;
+	}
+	//点击回复 评论框显示 再次点击 隐藏s
+	function showOrHide(_obj){
+			var _replayinfor = $(_obj).parent().siblings('.replayinfor');
+			if(_replayinfor.css('display') === 'block'){
+				_replayinfor.hide();
+			}
+			else{
+				$('.replayinfor').hide();
+				_replayinfor.show();
+			}
+			return false;
+	}
+	$("#click_logo").click(function(){
+		support();
+	})
+	function support(){
+		var _url = "http://lib.csdn.net/article/support";
+		var count = $('#support').val();
+		var contentId = $('#contentId').val();
+		var knowledgeId = 
+parseInt($('a.editbook').attr('data-id').split('-')[2]);
+		var _getCookieValue = csdn.knowledge_web._getCookieValue;
+		var username = _getCookieValue('UserName');
+		var status = false; // 可支持
+		if(supportHistory) {
+			var histories = supportHistory.getHistories();
+			if(histories && histories.length > 0) {
+				if(histories.indexOf(contentId) != -1 && !username){
+					status = true;  // 已支持过
+				}
+			}
+		}
+		if(!status){
+			$.ajax({
+				type: "POST",
+	          	url: _url,
+	          	data:{
+	             	contentId: $('#contentId').val(),
+					knowledgeId: knowledgeId
+	          	},
+	          	error: function(data) {
+	          		alert(JSON.stringify(data));
+	          	},
+	          	success: function(data) {
+	            	if(data.status){
+	            		if(!data.username){
+	            			supportHistory.addHistory($('#contentId').val());
+	            		}
+	            		count = parseInt(count) + 1;
+	            		$(".main .mainread .maincontent .pinfortext a 
+em").first().text(count);
+						$('#support').val(count);
+						$("#click_logo").addClass("clickbtn");
+						$("#support_logo").attr("class","fa fa-heart");
+	              	}else{
+	                  	//alert(data.error);
+	              	}
+	          	}
+	      	});
+		}
+	}
+	function setComment(_obj){
+		var login = csdn.knowledge_web._verificaUser();
+		if(login) {
+			var count = parseInt('2');
+			var _obj = _obj;
+			var _url = "http://lib.csdn.net/comment/set";
+			var article = $('#sourceId').val();
+			var collectBtn = $("a.editbook");
+			var contentId = collectBtn.attr('data-id').split('-')[0];
+			var knowledgeId = collectBtn.attr('data-id').split('-')[2];
+
+			var owner = 'weigao_easy';
+			var parentId = $(_obj).attr('parent_id') || '';
+			//评论,直接回复博主不做修改,评论回复添加[reply]
+			var content = parentId ? '[reply]' + $(_obj).attr('parent_name') + 
+'[/reply]' + $(_obj).parent().siblings().find('textarea').val() : 
+$(_obj).parent().siblings().find('textarea').val();
+			var con_length = parentId ? content.split('[/reply]')[1].length : 
+content.length;
+			if (!con_length) {
+				//TODO:评论为空的操作
+				alert('评论不得为空!');
+				return false;
+			}
+			else if (content.length > 1000) {
+				alert('评论字数过长,应维持在1000字符以内!');
+				//TODO:评论字数大于1000的操作
+				return false;
+			}
+			var commentContainer = 
+document.getElementById('comment_list');//整个评论部分
+			var oLi = commentContainer.getElementsByTagName('li');////整个评论部分的li列表
+			//回复博主回复框不隐藏,else隐藏
+			if (!parentId)
+			//回复博主的按钮点击后,textarea置空
+				$(_obj).parent().siblings('.textdiv').find('textarea').val('');
+			else
+			//回复评论的按钮点击后,评论框隐藏,textarea置空
+				$(_obj).parents('.replayinfor').hide()
+						.find('textarea').val('');
+			$.ajax({
+				type: "GET",
+				url: _url,
+				data: {
+					article: article,
+					content: content,
+					parentid: parentId,
+					contentId: contentId,
+					owner: owner,
+					knowledgeId: knowledgeId
+				},
+				error: function (data) {
+					alert(JSON.stringify(data.error));
+				},
+				success: function (data) {
+					if (data.status) {
+						var newli = data.data;
+						var newComment = document.createElement('li');
+						//直接评论博主
+						if (!parentId) {
+							$(newComment).addClass('clearfix');
+							newComment.innerHTML = '<a class="photos" 
+href="http://my.csdn.net/' + newli.username + '" target="_blank"><img 
+src="' + newli.avatar + '" alt="" width="50" height="50"></a>'
+									+ '<div class="text"><a href="http://my.csdn.net/' + 
+newli.username + '" target="_blank">' + newli.username + '</a>'
+									+ '<p class="pcontent">' + content + '</p>'
+									+ '<p class="editext clearfix"><span class="date">' + 
+newli.create_at + '</span>'
+									+ '<a href="javascript:void(0)" parent_id="' + newli.id + '"  
+onclick="showOrHide(this);return false;">回复</a></p>'
+									+ '<div class="replayinfor" style="display: none;">'
+									+ '<div class="replaydiv"><div 
+class="jiao"></div><textarea></textarea></div>'
+									+ '<div class="replaybtn"><button class="replaybtns"  
+parent_name="' + newli.username + '" parent_id="' + newli.id + '"  
+onclick="setComment(this)">回复</button></div></div></div>';
+							//还没有人评论博主
+							if (oLi.length == 0) {
+								$(commentContainer).append(newComment);
+							}
+							//已经有评论了
+							else {
+								commentContainer.insertBefore(newComment, oLi[0]);
+							}
+						}
+						//回复评论 在oLi中 没有replayli class 且子元素或自身parent_id属性为parentId元素的元素
+						else {
+							//增加回复评论的li的class
+							$(newComment).addClass('replayli clearfix');
+							var _length = 0, upstair, _a_list;
+							_a_list = $('li.clearfix > div > p > a');
+							for (var i in _a_list) {
+								if ($(_a_list[i]).attr('parent_id') === parentId) {
+									//被回复的评论
+									upstair = $(_a_list[i]).parents('li');
+									break;
+								}
+							}
+							//被回复的评论后面是否还有直接回复博主的评论
+							if (upstair.length > 0) _length = 
+$(upstair).nextAll('li:not(.replayli)').length;
+							newComment.innerHTML = '<a class="photos" 
+href="http://my.csdn.net/' + newli.username + '" target="_blank"><img 
+src="' + newli.avatar + '" alt="" width="50" height="50"></a>'
+									+ '<div class="text subtext"><a href="http://my.csdn.net/' + 
+newli.username + '" target="_blank">' + newli.username + '</a>'
+									+ '<p class="pcontent"><em>回复<i>' + $(upstair).find('div.text >
+ a').text() + '：</i></em>' + content.split('[/reply]')[1] + '</p>'
+									+ '<p class="editext clearfix"><span class="date">' + 
+newli.create_at + '</span>'
+									+ '<a href="javascript:void(0)" parent_id="' + newli.id + '"  
+onclick="showOrHide(this);return false;">回复</a></p>'
+									+ '<div class="replayinfor" style="display: none;"><div 
+class="replaydiv"><div class="jiao"></div>'
+									+ '<textarea></textarea></div><div class="replaybtn">'
+									+ '<button class="replaybtns"  parent_name="' + newli.username +
+ '" parent_id="' + newli.id + '"  
+onclick="setComment(this)">回复</button></div></div></div>';
+							//插入新回复操作
+							if (_length > 0) {
+							//在被回复的评论之后的所有没有'replayli'class的li中的第一个之前插入新回复
+								
+$(upstair).nextAll('li:not(.replayli)').eq(0).before($(newComment));
+							}
+							else {
+								//在本条被回复的评论之后没有直接评论博主的评论,直接用append方法插入新回复
+								$(commentContainer).append(newComment);
+
+							}
+						}
+						count = parseInt(count) + 1;
+						$(".main .mainread .comments .replaydiv .ptitles 
+em").first().text(count);
+					} else {
+						alert(data.error);
+					}
+				}
+			})
+		}
+	}
+
+	$('.loadingmore').click(function(){
+	    _commentLoad(this);
+	});
+
+	function _commentLoad(event){
+		var _url = "http://lib.csdn.net/comment/loading";
+		var current = $('#page').val();
+		var page = parseInt(current)+1;
+		$.ajax({
+			type: "POST",
+          	url: _url,
+          	data:{
+            	page : page,
+             	size : $('#size').val(),
+             	contentId: $('#contentId').val(),
+             	sourceId: $('#sourceId').val(),
+             	owner: $('#owner').val()
+          	},
+          	error: function(data) {
+          		alert(JSON.stringify(data));
+          	},
+          	success: function(data) {
+            	if(data.status){
+            		if(!data.more){
+            			event.remove();
+            		}
+                  	$("#comment_list").append(data.html);
+                  	$('#page').val(data.page);
+              	}else{
+                  	//alert(data.error);
+              	}
+          	}
+      	});
+	}
+	//阅读页，点击“展开”全部显示
+	$(function(){
+		if($(".divtexts")[0].scrollHeight > 1800) {
+			$('.divtexts').css('max-height', '1600px')
+					.find('.divmark').show();
+			$('.divcodes').show();
+
+		}
+		$('.pmores').click(function (e) {
+			$('.divtexts').css('max-height', '100%')
+					.find('.divmark').hide();
+			$('.divcodes').remove();
+			e.stopPropagation();
+			return false;
+		});
+
+		if($(".fine.addfine").length>0){
+			doTooltip();
+
+			$(".fine.addfine").on("click",function(e) {
+				var This = $(this);
+				if(This.hasClass("isfine")){
+					doElite(0,This);
+				}
+				else{
+					doElite(1,This);
+				}
+			});
+
+			function doElite(action,obj){
+				var _url;
+				if(action){
+					_url = "/manager/doElite";
+				}
+				else{
+					_url = "/manager/cancelElite";
+				}
+				var cId = $('#contentId').val();
+				$.ajax({
+					type: "get",
+					url: _url,
+					data:{
+						cId:cId,
+						baseId:parseInt('67'),
+						knId:parseInt('1798'),
+						action:action
+					},
+					error: function(data) {
+						alert(JSON.stringify(data));
+					},
+					success: function(data) {
+						if(data.status){
+							if(action){
+								obj.addClass("isfine").attr("title","取消加精");
+								doTooltip(2);
+							}
+							else{
+								obj.removeClass("isfine").attr("title","文章加精");
+								doTooltip(1);
+							}
+						}
+						else{
+							//alert(data.error);
+						}
+					}
+
+				})
+
+
+			}
+			function doTooltip(action) {
+				if(!action) {
+					$(".addfine").tooltip({
+						hide: {
+							effect: "explode",
+							delay: 200
+						},
+						position: {
+							my: "left center",
+							at: "right+5 center"
+						},
+						open: function (event, ui) {
+							ui.tooltip.animate({top: ui.tooltip.position().top}, "fast");
+						}
+					});
+				}
+				else if(action == 1) {
+					$(".addfine:not(.isfine)").tooltip({
+						items: "[title]",
+						content: "文章加精"
+					})
+				}else {
+					$(".addfine.isfine").tooltip({
+						items: "[title]",
+						content: "取消加精"
+					})
+				}
+			}
+		}
+	})
+	//阅读页　每次展开一部分
+//	$(function(){
+//		if($(".divtexts")[0].scrollHeight > 4000) {
+//			$('.divtexts').css('max-height', '3200px')
+//			.find('.divmark').show();
+//			$('.divcodes').show();
+//
+//		}
+//		$('.pmores').click(function (e) {
+//			$('.divtexts').animate({'max-height':'+=5000px'},600);
+//			var maxHeight = 
+parseInt($('.divtexts').css('max-height').split('px')[0]);
+//			if(maxHeight >= ($(".divtexts")[0].scrollHeight-4000)){
+//				
+$('.divtexts').animate({'max-height':'100%'},600).find('.divmark').hide("slow");
+//
+				$('.divcodes').remove();
+//			}
+//
+//			e.stopPropagation();
+//			return false;
+//		});
+//	})
+//	function toPassport(){
+//		location.href = "http://passport.csdn.net/?backurl=" + 
+location.href;
+//	}
+</script>
+
+<script>
+	//markdown
+	$('.divtexts pre.prettyprint code').each(function () {
+		var lines = $(this).text().split('\n').length;
+		var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+		$(this).addClass('has-numbering').parent().append($numbering);
+		for (i = 1; i <= lines; i++) {
+		  $numbering.append($('<li/>').text(i));
+		};
+		$numbering.fadeIn(1700);
+	});
+	//code
+	SyntaxHighlighter.defaults['toolbar'] = false;  //去掉右上角问号图标
+	SyntaxHighlighter.all();
+</script>
+
+<!--阅读页相关事件-->
+<!--
+     can used in article/article.ejs,snippet/snippet.ejs
+-->
+<script>
+    var t = null;
+    $(".fixedyjfk").css({"left":($(".mainread").innerWidth()+$(".mainread").offset().left+10)});
+    $(window).on('resize',function(){
+        $(".fixedyjfk").css({"left":($(".mainread").innerWidth()+$(".mainread").offset().left+10)});
+    });
+    $(".fx").hover(function(){
+        clearTimeout(t);
+        t = null;
+        $(".fxd").addClass('fxd1');
+        $(".fx").addClass('fxh');
+    },function(){
+        t = setTimeout(function(){
+            $(".fxd").removeClass('fxd1');
+            $(".fx").removeClass('fxh');
+        },1000);
+    });
+    $(".wicon").on('mouseenter',function(){
+        clearTimeout(t);
+        t = null;
+        $(".fxd").addClass('fxd1');
+        $(".fx").addClass('fxh');
+    });
+    $(".wicon").on('mouseleave',function(){
+        $(".fxd").removeClass('fxd1');
+    });
+
+    $(".zd").on('click',function(event){
+        $("body,html").animate({scrollTop:0},'fast');
+        event.stopPropagation();
+        return false;
+    });
+    $(document).on('scroll',scrolls());
+    function scrolls()
+    {
+        var t,doc;
+        doc = $(this);
+        return function(){
+            clearTimeout(t);
+            t=null;
+            t=setTimeout(function(){
+                if(parseFloat(doc.scrollTop(),10)>=400)
+                {
+                    $(".zd").show();
+                }else{
+                    $(".zd").hide();
+                }
+            },100);
+        }
+    }
+    $(".coment,.addAnchor").on('click',function(){
+        if(window.location.href.indexOf('#focustext') != -1){
+            window.location.href = window.location.href;
+        }
+        else{
+            window.location.href=window.location.href+"#focustext"
+        }
+        $(".textdiv textarea").focus();
+        return false;
+    });
+</script>
+<!--微信分享弹层样式-->
+<style>
+    .bdshare-button-style0-32 a{
+        float: none;
+        width:40px;
+        height: 40px;
+        line-height: normal;
+        background:none;
+        cursor: pointer;
+        margin: 0;
+        text-indent: -100em;
+        overflow: auto;
+        color:#8295a3;
+    }
+    .bd_weixin_popup {
+        height: 260px !important;
+    }
+    .bd_weixin_popup_foot {
+        display: none;
+    }
+    .sharebtn span{
+        cursor: pointer;
+    }
+</style>
+<div class="marklayer whitebk"></div>
+<!--<script type="text/javascript" src="http://c.csdnimg.cn/public/common/toolbar/js/toolbar.js"></script>-->
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/publib_footer-1.js"></script><link rel="stylesheet" type="text/css" href="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/pub_footer_2014.css"><div class="pub_fo"><div id="pub_footerall" class="pub_footer_new"><dl><dt></dt> <dd class="foot_sub_menu"><a href="http://www.csdn.net/company/about.html" target="_blank">公司简介</a><span>|</span><a href="http://www.csdn.net/company/recruit.html" target="_blank">招贤纳士</a><span>|</span><a href="http://www.csdn.net/company/marketing.html" target="_blank">广告服务</a><span>|</span><a href="http://www.csdn.net/company/contact.html" target="_blank">联系方式</a><span>|</span><a href="http://www.csdn.net/company/statement.html" target="_blank">版权声明</a><span>|</span><a href="http://www.csdn.net/company/layer.html" target="_blank">法律顾问</a><span>|</span><a href="mailto:webmaster@csdn.net">问题报告</a><span>|</span><a target="_blank" href="http://www.csdn.net/friendlink.html">合作伙伴</a><span>|</span><a href="http://bbs.csdn.net/forums/Service" target="_blank">论坛反馈</a></dd><dd class="foot_contact"><a href="#" target="_blank" class="qq qqcustomer_s">网站客服</a><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2251809102&amp;site=qq&amp;menu=yes" target="_blank" class="qq">杂志客服</a><a href="http://e.weibo.com/csdnsupport/profile" target="_blank" class="weibo">微博客服</a><a href="mailto:webmaster@csdn.net" class="email" title="联系邮箱">webmaster@csdn.net</a><span class="phone" title="服务热线">400-660-0108</span><span class="interval">|</span><span>北京创新乐知信息技术有限公司 版权所有</span><span class="interval">|</span><span>江苏知之为计算机有限公司</span><span class="interval">|</span><span>江苏乐知网络技术有限公司</span></dd><dd class="foot_copyright"><span>京&nbsp;ICP&nbsp;证&nbsp;09002463&nbsp;号</span><span class="interval">|</span><span>Copyright © 1999-2017, CSDN.NET, All Rights Reserved&nbsp;</span><a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001032100010" target="_blank"><img src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/gongshang_logos.gif" alt="GongshangLogo" title=""></a></dd></dl></div></div><script id="noticeScript" type="text/javascript" btnid="header_notice_num" wrapid="note1" count="5" subcount="5" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/notify.js"></script><input id="aa_g_data_ids" type="hidden">
+<script type="text/javascript" src="%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86%E5%92%8C%E5%8F%91%E5%B1%95%20-%20%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9F%A5%E8%AF%86%E5%BA%93_files/knowledge_base_new.js"></script>
+
+
+
+<div style="position:fixed; top:0; left:0; overflow:hidden;"><input style="position:absolute; left:-300px;" id="focus_retriever" readonly="true" type="text"></div></body></html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
