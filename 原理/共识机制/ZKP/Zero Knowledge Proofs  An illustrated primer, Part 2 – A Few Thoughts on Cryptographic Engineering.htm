@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html class="js" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://blog.cryptographyengineering.com/xmlrpc.php">
+
+<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<title>Zero Knowledge Proofs: An illustrated primer, Part 2 – A Few Thoughts on Cryptographic Engineering</title>
+		<script src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/remote-login.php" type="text/javascript"></script>
+		<script type="text/javascript">
+		/* <![CDATA[ */
+			if ( 'function' === typeof WPRemoteLogin ) {
+				document.cookie = "wordpress_test_cookie=test; path=/";
+				if ( document.cookie.match( /(;|^)\s*wordpress_test_cookie\=/ ) ) {
+					WPRemoteLogin();
+				}
+			}
+		/* ]]> */
+		</script>
+		<link rel="dns-prefetch" href="https://s2.wp.com/">
+<link rel="dns-prefetch" href="https://s1.wp.com/">
+<link rel="dns-prefetch" href="https://matthewdgreen.wordpress.com/">
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="alternate" type="application/rss+xml" title="A Few Thoughts on Cryptographic Engineering » Feed" href="https://blog.cryptographyengineering.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="A Few Thoughts on Cryptographic Engineering » Comments Feed" href="https://blog.cryptographyengineering.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="A Few Thoughts on Cryptographic Engineering » Zero Knowledge Proofs: An illustrated primer, Part&nbsp;2 Comments Feed" href="https://blog.cryptographyengineering.com/2017/01/21/zero-knowledge-proofs-an-illustrated-primer-part-2/feed/">
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s1.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1532082729h&ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/wp-emoji-release.js" type="text/javascript" defer="defer"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="all-css-0-1" href="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/a_004.css" type="text/css" media="all">
+<link rel="stylesheet" id="independent-publisher-fonts-css" href="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/css.css" type="text/css" media="all">
+<link rel="stylesheet" id="all-css-2-1" href="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/a_003.css" type="text/css" media="all">
+<style id="independent-publisher-style-inline-css" type="text/css">
+#hero-header { background: url("https://matthewdgreen.files.wordpress.com/2016/07/2274252795_918bcffc01_b.jpg") no-repeat center; background-size: cover; background-attachment: scroll; }
+</style>
+<link rel="stylesheet" id="print-css-3-1" href="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/global-print.css" type="text/css" media="print">
+<link rel="stylesheet" id="all-css-4-1" href="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/a_002.css" type="text/css" media="all">
+<script type="text/javascript">
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/a_002.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://matthewdgreen.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="The limitations of Android N&nbsp;Encryption" href="https://blog.cryptographyengineering.com/2016/11/24/android-n-encryption/">
+<link rel="next" title="The future of&nbsp;Ransomware" href="https://blog.cryptographyengineering.com/2017/02/28/the-future-of-ransomware/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://blog.cryptographyengineering.com/2017/01/21/zero-knowledge-proofs-an-illustrated-primer-part-2/">
+<link rel="shortlink" href="https://wp.me/pE4dk-1x">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fblog.cryptographyengineering.com%2F2017%2F01%2F21%2Fzero-knowledge-proofs-an-illustrated-primer-part-2%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fblog.cryptographyengineering.com%2F2017%2F01%2F21%2Fzero-knowledge-proofs-an-illustrated-primer-part-2%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zero Knowledge Proofs: An illustrated primer, Part 2">
+<meta property="og:url" content="https://blog.cryptographyengineering.com/2017/01/21/zero-knowledge-proofs-an-illustrated-primer-part-2/">
+<meta property="og:description" content="This post is the second in a two-part series on zero-knowledge proofs. Click here&nbsp;to read&nbsp;Part 1. In this post I’m going to continue the short, (relatively) non-technical overview of zero kno…">
+<meta property="article:published_time" content="2017-01-21T18:34:11+00:00">
+<meta property="article:modified_time" content="2017-01-21T18:46:26+00:00">
+<meta property="og:site_name" content="A Few Thoughts on Cryptographic Engineering">
+<meta property="og:image" content="https://matthewdgreen.files.wordpress.com/2017/01/2380271980_b2a66bd47d_z.jpg">
+<meta property="og:image:width" content="334">
+<meta property="og:image:height" content="500">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:text:title" content="Zero Knowledge Proofs: An illustrated primer, Part&nbsp;2">
+<meta name="twitter:card" content="summary">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="https://s2.wp.com/i/webclip.png">
+<link rel="openid.server" href="https://matthewdgreen.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="https://matthewdgreen.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://blog.cryptographyengineering.com/osd.xml" title="A Few Thoughts on Cryptographic Engineering">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+<meta name="application-name" content="A Few Thoughts on Cryptographic Engineering"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="Some random thoughts about crypto. Notes from a course I teach. Pictures of my dachshunds."><meta name="msapplication-task" content="name=Subscribe;action-uri=https://blog.cryptographyengineering.com/feed/;icon-uri=https://s1.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s1.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico"><meta name="description" content="This post is the second in a two-part series on zero-knowledge proofs. Click here&nbsp;to read&nbsp;Part 1. In this post I'm going to continue the short, (relatively) non-technical overview of zero knowledge proofs that I started a couple of years ago. Yes, that was a very long time! If you didn't catch the first post, now…">
+<link rel="amphtml" href="https://blog.cryptographyengineering.com/2017/01/21/zero-knowledge-proofs-an-illustrated-primer-part-2/amp/"><style type="text/css" id="syntaxhighlighteranchor"></style>
+		<link rel="stylesheet" id="custom-css-css" type="text/css" href="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/a.css">
+		<style type="text/css"></style><link rel="stylesheet" type="text/css" id="gravatar-card-css" href="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/services.css"></head>
+
+<body class="post-template-default single single-post postid-95 single-format-standard mp6 customizer-styles-applied has-header-image has-sidebar gravatar-logo-disabled highlander-enabled highlander-light tablet-desktop">
+
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	
+<div id="hero-header" class="site-hero-section">
+			<a id="slide-menu-toggle" class="menu-toggle" href="#slide-menu" aria-controls="slide-menu" aria-expanded="false" role="button" onclick="return false;">
+			Menu		</a><!-- #slide-menu-toggle -->
+	
+	<div class="inner">
+				<h1 class="site-title"><a href="https://blog.cryptographyengineering.com/" rel="home">A Few Thoughts on Cryptographic Engineering</a></h1>
+		<h2 class="site-description">Some random thoughts about crypto. Notes from a course I teach. Pictures of my dachshunds.</h2>
+
+			</div><!-- .inner -->
+</div><!-- #hero-header -->
+
+
+	<div id="content-wrapper">
+		<header id="masthead" class="site-header" role="banner">
+			
+			
+<div id="secondary" class="widget-area" role="complementary">
+	<aside id="media_image-3" class="widget widget_media_image"><style>.widget.widget_media_image { overflow: hidden; }.widget.widget_media_image img { height: auto; max-width: 100%; }</style><img class="image alignnone" src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/matthew-green.jpg" alt="" srcset="https://matthewdgreen.files.wordpress.com/2016/08/matthew-green.jpg?w=160&amp;h=240&amp;zoom=2 2x" src-orig="https://matthewdgreen.files.wordpress.com/2016/08/matthew-green.jpg?w=200&amp;h=300" scale="2" width="160" height="240"></aside><aside id="text-4" class="widget widget_text"><h1 class="widget-title">Matthew Green</h1>			<div class="textwidget">I'm
+ a cryptographer and professor at Johns Hopkins University. I've 
+designed and analyzed cryptographic systems used in wireless networks, 
+payment systems and digital content protection platforms. In my research
+ I look at the various ways cryptography can be used to promote user 
+privacy. 
+<p>
+<a href="https://isi.jhu.edu/~mgreen">My academic website</a><br>
+<a href="https://twitter.com/matthew_d_green">My twitter feed</a><br>
+<a href="https://blog.cryptographyengineering.com/top-posts/">Top Posts</a><br>
+<a href="https://staging.cryptographyengineering.com/useful-cryptography-resources/">Useful crypto resources</a><br>
+<a href="https://blog.cryptographyengineering.com/p/bitcoin-tipjar.html">
+Bitcoin tipjar</a><br>
+<a href="http://cryptopals.com/">Cryptopals challenges</a></p><p>
+
+<a href="http://www.springer.com/computer/security+and+cryptology/journal/13389">Journal of Cryptographic Engineering
+(not related to this blog)</a></p></div>
+		</aside><aside id="search-4" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://blog.cryptographyengineering.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search …" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Search">
+			</form></aside><aside id="top-posts-4" class="widget widget_top-posts"><h1 class="widget-title">Top Posts &amp; Pages</h1><ul>				<li>
+										<a href="https://blog.cryptographyengineering.com/2018/09/23/why-im-leaving-chrome/" class="bump-view" data-bump-view="tp">
+						Why I'm done with Chrome					</a>
+										</li>
+								<li>
+										<a href="https://blog.cryptographyengineering.com/2014/11/27/zero-knowledge-proofs-illustrated-primer/" class="bump-view" data-bump-view="tp">
+						Zero Knowledge Proofs: An illustrated primer					</a>
+										</li>
+								<li>
+										<a href="https://blog.cryptographyengineering.com/2018/10/19/lets-talk-about-pake/" class="bump-view" data-bump-view="tp">
+						Let's talk about PAKE					</a>
+										</li>
+								<li>
+										<a href="https://blog.cryptographyengineering.com/2012/01/02/very-casual-introduction-to-fully/" class="bump-view" data-bump-view="tp">
+						A very casual introduction to Fully Homomorphic Encryption					</a>
+										</li>
+								<li>
+										<a href="https://blog.cryptographyengineering.com/2012/05/19/how-to-choose-authenticated-encryption/" class="bump-view" data-bump-view="tp">
+						How to choose an Authenticated Encryption mode					</a>
+										</li>
+								<li>
+										<a href="https://blog.cryptographyengineering.com/2013/03/12/attack-of-week-rc4-is-kind-of-broken-in/" class="bump-view" data-bump-view="tp">
+						Attack of the week: RC4 is kind of broken in TLS					</a>
+										</li>
+								<li>
+										<a href="https://blog.cryptographyengineering.com/2018/04/07/hash-based-signatures-an-illustrated-primer/" class="bump-view" data-bump-view="tp">
+						Hash-based Signatures: An illustrated Primer					</a>
+										</li>
+								<li>
+										<a href="https://blog.cryptographyengineering.com/2013/05/14/a-few-thoughts-on-cellular-encryption/" class="bump-view" data-bump-view="tp">
+						On cellular encryption					</a>
+										</li>
+								<li>
+										<a href="https://blog.cryptographyengineering.com/2016/06/15/what-is-differential-privacy/" class="bump-view" data-bump-view="tp">
+						What is Differential Privacy?					</a>
+										</li>
+								<li>
+										<a href="https://blog.cryptographyengineering.com/2017/01/21/zero-knowledge-proofs-an-illustrated-primer-part-2/" class="bump-view" data-bump-view="tp">
+						Zero Knowledge Proofs: An illustrated primer, Part 2					</a>
+										</li>
+				</ul></aside><aside id="text-6" class="widget widget_text">			<div class="textwidget"><i>Banner image by Matt Blaze</i></div>
+		</aside><aside id="archives-6" class="widget widget_archive"><h1 class="widget-title">Archives</h1>		<label class="screen-reader-text" for="archives-dropdown-6">Archives</label>
+		<select id="archives-dropdown-6" name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
+			
+			<option value="" selected="selected">Select Month</option>
+				<option value="https://blog.cryptographyengineering.com/2018/10/"> October 2018 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2018/09/"> September 2018 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2018/07/"> July 2018 &nbsp;(2)</option>
+	<option value="https://blog.cryptographyengineering.com/2018/05/"> May 2018 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2018/04/"> April 2018 &nbsp;(3)</option>
+	<option value="https://blog.cryptographyengineering.com/2018/02/"> February 2018 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2018/01/"> January 2018 &nbsp;(2)</option>
+	<option value="https://blog.cryptographyengineering.com/2017/12/"> December 2017 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2017/11/"> November 2017 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2017/10/"> October 2017 &nbsp;(2)</option>
+	<option value="https://blog.cryptographyengineering.com/2017/09/"> September 2017 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2017/07/"> July 2017 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2017/03/"> March 2017 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2017/02/"> February 2017 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2017/01/"> January 2017 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2016/11/"> November 2016 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2016/08/"> August 2016 &nbsp;(2)</option>
+	<option value="https://blog.cryptographyengineering.com/2016/07/"> July 2016 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2016/06/"> June 2016 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2016/03/"> March 2016 &nbsp;(2)</option>
+	<option value="https://blog.cryptographyengineering.com/2015/12/"> December 2015 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2015/11/"> November 2015 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2015/10/"> October 2015 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2015/09/"> September 2015 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2015/08/"> August 2015 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2015/07/"> July 2015 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2015/05/"> May 2015 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2015/04/"> April 2015 &nbsp;(2)</option>
+	<option value="https://blog.cryptographyengineering.com/2015/03/"> March 2015 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2015/02/"> February 2015 &nbsp;(3)</option>
+	<option value="https://blog.cryptographyengineering.com/2015/01/"> January 2015 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2014/12/"> December 2014 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2014/11/"> November 2014 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2014/10/"> October 2014 &nbsp;(3)</option>
+	<option value="https://blog.cryptographyengineering.com/2014/09/"> September 2014 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2014/08/"> August 2014 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2014/07/"> July 2014 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2014/04/"> April 2014 &nbsp;(2)</option>
+	<option value="https://blog.cryptographyengineering.com/2014/03/"> March 2014 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2014/02/"> February 2014 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2014/01/"> January 2014 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2013/12/"> December 2013 &nbsp;(4)</option>
+	<option value="https://blog.cryptographyengineering.com/2013/10/"> October 2013 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2013/09/"> September 2013 &nbsp;(4)</option>
+	<option value="https://blog.cryptographyengineering.com/2013/08/"> August 2013 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2013/07/"> July 2013 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2013/06/"> June 2013 &nbsp;(2)</option>
+	<option value="https://blog.cryptographyengineering.com/2013/05/"> May 2013 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2013/04/"> April 2013 &nbsp;(2)</option>
+	<option value="https://blog.cryptographyengineering.com/2013/03/"> March 2013 &nbsp;(2)</option>
+	<option value="https://blog.cryptographyengineering.com/2013/02/"> February 2013 &nbsp;(3)</option>
+	<option value="https://blog.cryptographyengineering.com/2013/01/"> January 2013 &nbsp;(2)</option>
+	<option value="https://blog.cryptographyengineering.com/2012/12/"> December 2012 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2012/11/"> November 2012 &nbsp;(1)</option>
+	<option value="https://blog.cryptographyengineering.com/2012/10/"> October 2012 &nbsp;(4)</option>
+	<option value="https://blog.cryptographyengineering.com/2012/09/"> September 2012 &nbsp;(3)</option>
+	<option value="https://blog.cryptographyengineering.com/2012/08/"> August 2012 &nbsp;(4)</option>
+	<option value="https://blog.cryptographyengineering.com/2012/07/"> July 2012 &nbsp;(2)</option>
+	<option value="https://blog.cryptographyengineering.com/2012/06/"> June 2012 &nbsp;(3)</option>
+	<option value="https://blog.cryptographyengineering.com/2012/05/"> May 2012 &nbsp;(5)</option>
+	<option value="https://blog.cryptographyengineering.com/2012/04/"> April 2012 &nbsp;(6)</option>
+	<option value="https://blog.cryptographyengineering.com/2012/03/"> March 2012 &nbsp;(4)</option>
+	<option value="https://blog.cryptographyengineering.com/2012/02/"> February 2012 &nbsp;(7)</option>
+	<option value="https://blog.cryptographyengineering.com/2012/01/"> January 2012 &nbsp;(8)</option>
+	<option value="https://blog.cryptographyengineering.com/2011/12/"> December 2011 &nbsp;(11)</option>
+	<option value="https://blog.cryptographyengineering.com/2011/11/"> November 2011 &nbsp;(13)</option>
+	<option value="https://blog.cryptographyengineering.com/2011/10/"> October 2011 &nbsp;(7)</option>
+	<option value="https://blog.cryptographyengineering.com/2011/09/"> September 2011 &nbsp;(8)</option>
+
+		</select>
+		</aside></div><!-- #secondary -->		</header><!-- #masthead -->
+
+		<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-95" class="post-95 post type-post status-publish format-standard hentry category-uncategorized">
+			<div class="entry-meta light-text">
+			<a href="https://blog.cryptographyengineering.com/author/matthewdgreen/" title="Posts by Matthew Green" rel="author">Matthew Green</a>			<span class="cat-links">
+				in <a href="https://blog.cryptographyengineering.com/category/uncategorized/" rel="category tag">Uncategorized</a>			</span><!-- .cat-links -->
+
+			<span class="published-on"><time class="entry-date published" datetime="2017-01-21T18:34:11+00:00">January 21, 2017</time><time class="updated" datetime="2017-01-21T18:46:26+00:00">January 21, 2017</time></span>
+
+							<span class="word-count">3,028 Words</span>
+			
+					</div><!-- .entry-meta -->
+			<header class="entry-header">
+			<h1 class="entry-title">Zero Knowledge Proofs: An illustrated primer, Part&nbsp;2</h1>		</header><!-- .entry-header -->
+	<div class="entry-content">
+		<p><i class="fix-link-focus">This post is the second in a two-part series on zero-knowledge proofs. <a href="https://blog.cryptographyengineering.com/2014/11/zero-knowledge-proofs-illustrated-primer.html">Click here</a>&nbsp;t<img data-attachment-id="2501" data-permalink="https://blog.cryptographyengineering.com/2017/01/21/zero-knowledge-proofs-an-illustrated-primer-part-2/2380271980_b2a66bd47d_z/" data-orig-file="https://matthewdgreen.files.wordpress.com/2017/01/2380271980_b2a66bd47d_z.jpg" data-orig-size="334,500" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="2380271980_b2a66bd47d_z" data-image-description="" data-medium-file="https://matthewdgreen.files.wordpress.com/2017/01/2380271980_b2a66bd47d_z.jpg?w=200" data-large-file="https://matthewdgreen.files.wordpress.com/2017/01/2380271980_b2a66bd47d_z.jpg?w=334" class=" size-medium wp-image-2501 alignright" src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/2380271980_b2a66bd47d_z.jpg" alt="2380271980_b2a66bd47d_z" srcset="https://matthewdgreen.files.wordpress.com/2017/01/2380271980_b2a66bd47d_z.jpg?w=200&amp;h=300 200w, https://matthewdgreen.files.wordpress.com/2017/01/2380271980_b2a66bd47d_z.jpg?w=100&amp;h=150 100w, https://matthewdgreen.files.wordpress.com/2017/01/2380271980_b2a66bd47d_z.jpg 334w" sizes="(max-width: 200px) 100vw, 200px" width="200" height="300">o read&nbsp;Part 1.</i></p>
+<p>In this post I’m going to continue the short, (relatively) 
+non-technical overview of zero knowledge proofs that I started a couple 
+of years ago. Yes, that was a very long time! If you didn’t catch the 
+first post, now would be an <a href="https://blog.cryptographyengineering.com/2014/11/zero-knowledge-proofs-illustrated-primer.html">excellent time to go read it</a>.</p>
+<p>Before we go much further, a bit of a warning. While this series is 
+still intended as a high-level overview, at a certain point it’s 
+necessary to dig a bit deeper into some specific algorithms. So you 
+should expect this post to get a bit wonkier than the last.</p>
+<h3><b>A quick recap, and a bit more on Zero Knowledge(ness)</b></h3>
+<p>First, a brief refresher.</p>
+<p>In the last post we defined a zero knowledge proof as an interaction 
+between two computer programs (or Turing machines) — respectively called
+ a Prover and a Verifier — where the Prover works to convince the 
+Verifier that some mathematical statement is true. We also covered a 
+specific example:&nbsp;a clever protocol by <a href="http://users.softlab.ece.ntua.gr/~dvitin/zk/GMW91.pdf">Goldreich, Micali and Wigderson</a> that allows us to prove, in zero knowledge, that a graph possesses&nbsp;a <a href="http://en.wikipedia.org/wiki/Graph_coloring">three-coloring</a>.</p>
+<p>In the course of that discussion, we described three critical properties that any zero knowledge proof must satisfy:</p>
+<ul>
+<li><b>Completeness</b>:&nbsp;If the Prover is honest, then she will eventually convince the Verifier.</li>
+<li><b>Soundness: </b>The Prover can only convince the Verifier if the statement is true.</li>
+<li><b>Zero-knowledge(ness):</b> <i>The Verifier learns no information beyond the fact that the statement is true.</i></li>
+</ul>
+<p>The real challenge turns out to be finding a way to formally define the last property. How do you state that a Verifier learns <i>nothing</i>&nbsp;beyond the truth of a statement?</p>
+<p>In case&nbsp;you didn’t read the <a href="https://blog.cryptographyengineering.com/2014/11/27/zero-knowledge-proofs-illustrated-primer/">previous post</a>
+ — the answer to this question came from Goldwasser, Micali and Rackoff,
+ and it’s very cool. What they argued is that a protocol can be proven <i>zero knowledge</i>
+ if for every possible Verifier, you can demonstrate the existence of an
+ algorithm called a ‘Simulator’, and show that this algorithm has some 
+very special properties.</p>
+<p>From a purely mechanical perspective, the Simulator is like a special
+ kind of Prover. However, unlike a real Prover — which starts with some 
+special knowledge that allows it to prove the truth of a statement — the
+ Simulator&nbsp;<i>gets no special knowledge at all.* </i>Nonetheless, 
+the Simulator (or Simulators) must be able to ‘fool’ every Verifier into
+ believing that the statement is true, while producing a transcript 
+that’s statistically identical top (or indistinguishable from) the 
+output of a real Prover.</p>
+<p>The logic here flows pretty cleanly: since&nbsp;Simulator has no 
+‘knowledge’ to extract in the first place, then clearly a Verifier <i>can’t</i>
+ obtain any meaningful amount of information after interacting with it. 
+Moreover, if&nbsp;the transcript of the interaction is distributed 
+identically to a real protocol run with a normal Prover, then the 
+Verifier <i>can’t</i>&nbsp;do better against the real prover than it can do against the Simulator. (If the Verifier <em>could</em>
+ do better, then that would imply that the distributions were not 
+statistically identical.) Ergo, the Verifier can’t extract useful 
+information from the real protocol run.</p>
+<p>This is incredibly wonky, and worse, it seems contradictory! We’re asking that a protocol be both <i>sound</i>&nbsp;—
+ meaning that a bogus Prover can’t trick some Verifier into accepting a 
+statement unless it has special knowledge allowing it to prove the 
+statement — but we’re also asking for the existence of an algorithm (the
+ simulator) that can literally cheat. Clearly both properties can’t hold
+ at the same time.</p>
+<p>The solution to this problem is that both properties <i>don’t </i>hold at the same time.</p>
+<p>To build our simulator, we’re allowed to do things to the Verifier 
+that would never happen in the real world. The example that I gave in 
+the previous post was to use a ‘time machine’ — that is, our ‘Simulator’
+ can rewind the Verifier program’s execution in order to ‘fool’ it. 
+Thus, in a world where we can wind the Verifier back in time, it’s easy 
+to show that a Simulator exists. In the real world, of course it 
+doesn’t. This ‘trick’ gets us around the contradiction.</p>
+<p>As a last reminder, to illustrate all of these ideas, we covered one 
+of the first general zero knowledge proofs, devised by&nbsp;<a href="http://people.csail.mit.edu/silvio/Selected%20Scientific%20Papers/Zero%20Knowledge/Proofs_That_Yield_Nothing_But_Their_Validity_or_All_Languages_in_NP_Have_Zero-Knowledge_Proof_Systems.pdf">Goldreich, Micali and Wigderson</a>&nbsp;(GMW). That protocol allowed us to prove, in zero knowledge, that a graph supports a&nbsp;<a href="http://en.wikipedia.org/wiki/Graph_coloring">three-coloring</a>.
+ Of course, proving three colorings isn’t terribly interesting. The real
+ significance of the GMW result is theoretical. Since graph three 
+coloring is known to be in the complexity class <a href="http://en.wikipedia.org/wiki/NP-complete">NP-complete</a>, the GMW protocol can be used to prove&nbsp;<i>any statement</i> in the class <a href="http://en.wikipedia.org/wiki/NP_%28complexity%29">NP</a>. And that’s quite powerful.</p>
+<p>Let me elaborate slightly on what that means:</p>
+<ol>
+<li>If there exists <i>any </i><a href="http://en.wikipedia.org/wiki/Decision_problem">decision problem</a>&nbsp;(that is, a problem with a yes/no answer) whose witness (solution) can be verified in polynomial time, then:</li>
+<li>We can prove that said solution exists by <i>(1)</i>&nbsp;<a href="https://www.cs.cmu.edu/~ckingsf/bioinfo-lectures/sat.pdf">translating the problem into an instance of the graph three-coloring problem</a>, and <i>(2)</i> running the GMW protocol.*</li>
+</ol>
+<p>This amazing result gives us interactive zero knowledge proofs for <i>every statement in NP.</i>&nbsp;The&nbsp;only problem is that it’s almost totally unusable.</p>
+<h3><b>From theory into practice</b></h3>
+<p>If you’re of a practical mindset, you’re probably shaking your head at all this talk of ZK proofs. That’s because actually <i>using this approach</i>&nbsp;would be an insanely expensive and stupid thing to do. Most likely you’d first represent your input problem as a <a href="http://en.wikipedia.org/wiki/Boolean_circuit">boolean circuit</a>&nbsp;where the circuit is <a href="http://en.wikipedia.org/wiki/Circuit_satisfiability_problem">satisfied</a>&nbsp;if
+ and only if you know the correct input. Then you’d have to translate 
+your circuit into a graph, resulting in some further blowup. Finally 
+you’d need to run the GMW protocol, which is damned expensive all by 
+itself.</p>
+<p>So in practice nobody does this. It’s really considered a 
+‘feasibility’ result. Once you show that something is possible, the next
+ step is to make it efficient.</p>
+<p>But we do use zero knowledge proofs, almost every day. In this post I’m going to spend some time talking about the more <i>practical</i>&nbsp;ZK proofs that we actually use. To do that I just need give just a tiny bit of extra background.</p>
+<h3><b>Proofs vs. Proofs of Knowledge</b></h3>
+<p>Before we go on, there’s one more concept we need to cover. Specifically, we need to discuss&nbsp;<i>what precisely we’re proving </i>when we conduct a zero knowledge proof<i>.</i><br>
+<i><br>
+</i>Let me explain. At a high level, there are two kinds of statement 
+you might want to prove in zero knowledge. Roughly speaking, these break
+ up as follows.</p>
+<blockquote class="tr_bq"><p><b>Statements about “facts”. </b>For example, I might wish to prove that&nbsp;“a specific graph has a three coloring” or “some number <i>N</i>&nbsp;is in the set of composite numbers<i>“. </i>Each of these is a statement about some intrinsic property of the universe.</p></blockquote>
+<blockquote class="tr_bq"><p><b>Statements about my personal knowledge. </b>Alternatively, I might wish to prove that I <i>know</i> some piece information. Examples of this kind of statement include: “I <i>know</i> a three coloring for this graph”, or “I <i>know</i> the factorization of <i>N”. </i>These go beyond merely proving that a fact is true, and actually rely on what the Prover knows.</p></blockquote>
+<p>It’s important to recognize that there’s a big difference between 
+these two kinds of statements! For example, it may be possible to prove 
+that a number <i>N</i>&nbsp;is composite <i>even if you don’t know the full factorization.</i>&nbsp;So merely proving the first statement is <i>not</i>&nbsp;equivalent to proving the second one.</p>
+<p>The second class of proof is known as a “proof of knowledge”. It 
+turns out to be extremely useful for proving a variety of statements 
+that we use in real life. In this post, we’ll mostly be focusing on this
+ kind of proof.</p>
+<h3><b>The Schnorr identification protocol</b></h3>
+<p>Now that we’ve covered some of the required background, it’s helpful 
+to move on to a specific and very useful proof of knowledge that was 
+invented by Claus-Peter Schnorr in the 1980s. At first glance, the 
+Schnorr protocol may seem a bit odd, but in fact it’s the basis of many 
+of our modern signature schemes today.</p>
+<p>Schnorr wasn’t really concerned with digital signatures, however. His concern was with <i>identification.</i>&nbsp;Specifically,
+ let’s imagine that Alice has published her public key to the world, and
+ later on wants to prove that she knows the secret key corresponding to 
+that public key. This is the exact problem that we encounter in 
+real-world protocols such as public-key SSH, so it turns out to be 
+well-motivated.</p>
+<p>Schnorr began with the assumption that the public key would be of a very specific format. Specifically, let <i>p</i>&nbsp;be some prime number, and let <i>g </i>be a <a href="http://en.wikipedia.org/wiki/Generating_set_of_a_group">generator</a> of a <a href="http://en.wikipedia.org/wiki/Cyclic_group">cyclic group</a> of prime-order <i>q</i>. To generate a keypair, Alice would first pick a random integer <i>a</i>&nbsp;between 1 and <i>q</i>, and then compute the keypair as:</p>
+<blockquote class="tr_bq"><p><img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_016.png" alt="PK_{A} = g^a~mod~p" title="PK_{A} = g^a~mod~p" class="latex" srcset="https://s0.wp.com/latex.php?latex=PK_%7BA%7D+%3D+g%5Ea%7Emod%7Ep&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="123" height="14"><i>, </i><img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_005.png" alt="SK_{A} = a" title="SK_{A} = a" class="latex" srcset="https://s0.wp.com/latex.php?latex=SK_%7BA%7D+%3D+a&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="65" height="14"></p></blockquote>
+<p>(If you’ve been around the block a time or two, you’ll probably notice that this is the same type of key used for <a href="http://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange">Diffie-Hellman</a> and the <a href="http://en.wikipedia.org/wiki/Digital_Signature_Algorithm">DSA signing</a> algorithm. That’s not a coincidence, and it makes this protocol very useful.)</p>
+<p>Alice keeps her secret key to herself, but she’s free to publish her public key to the world. Later on, when she wants to prove <i>knowledge</i>&nbsp;of her secret key, she conducts the following simple interactive protocol with Bob:</p>
+<div class="separator" style="clear:both;text-align:center;"><a style="margin-left:1em;margin-right:1em;" href="https://matthewdgreen.files.wordpress.com/2016/05/schnorr.png"><img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/schnorr1.png" srcset="https://matthewdgreen.files.wordpress.com/2016/05/schnorr1.png?w=320&amp;h=88&amp;zoom=2 2x" src-orig="https://matthewdgreen.files.wordpress.com/2016/05/schnorr1.png?w=320&amp;h=87" scale="2" width="320" height="88" border="0"></a></div>
+<div class="separator" style="clear:both;text-align:center;"></div>
+<p>There’s a lot going on in here, so let’s take a minute to unpack things.</p>
+<p>First off, we should ask ourselves if the protocol is <i>complete. </i>This
+ is usually the easiest property to verify: if Alice performs the 
+protocol honestly, should Bob be satisfied at the end of it? In this 
+case, completeness is pretty easy to see just by doing a bit of 
+substitution:</p>
+<div class="separator" style="clear:both;text-align:center;"><a style="margin-left:1em;margin-right:1em;" href="https://matthewdgreen.files.wordpress.com/2016/05/completenessschnorr.png"><img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/completenessschnorr1.png" srcset="https://matthewdgreen.files.wordpress.com/2016/05/completenessschnorr1.png?w=200&amp;h=56&amp;zoom=2 2x" src-orig="https://matthewdgreen.files.wordpress.com/2016/05/completenessschnorr1.png?w=200&amp;h=55" scale="2" width="200" height="56" border="0"></a></div>
+<h3><b>Proving soundness</b></h3>
+<p>The harder property is <i>soundness.</i>&nbsp;Mainly because we don’t yet have a good definition of what it means for a proof of knowledge to be <i>sound. </i>Remember that what we want to show is the following:</p>
+<blockquote class="tr_bq"><p>If Alice successfully convinces Bob, then <i>she must know</i>&nbsp;the secret key <i>a</i>.</p></blockquote>
+<p>It’s easy to look at the equations above and try to convince yourself that Alice’s only way to cheat the protocol is to know <i>a</i>. But that’s hardly a proof.</p>
+<p>When it comes to demonstrating the soundness of a proof of knowledge,
+ we have a really nice formal approach. Just as with the Simulator we 
+discussed above, we need to demonstrate the existence of a special 
+algorithm. This algorithm is called a <i>knowledge extractor</i>, and it
+ does exactly what it claims to. A knowledge extractor (or just 
+‘Extractor’ for short) is a special type of Verifier that interacts with
+ a Prover, and — if the Prover succeeds in completing the proof — the 
+Extractor should be able to extract the Prover’s original secret.</p>
+<p>And this answers our question above. To prove <i>soundness</i> for a proof of knowledge, we must show that an Extractor exists for every possible Prover.</p>
+<p>Of course this again seems totally contradictory to the purpose of a zero knowledge protocol — where we’re <i>not</i>&nbsp;supposed
+ to be able to learn secrets from a Prover. Fortunately we’ve already 
+resolved this conundrum once for the case of the Simulator. Here again, 
+we take the same approach. The Extractor is <i>not</i>&nbsp;required to 
+exist during a normal run of the protocol. We simply show that it exists
+ if we’re allowed to take special liberties with the Prover — in this 
+case, we’ll use ‘rewinding’ to wind back the Prover’s execution and 
+allow us to extract secrets.</p>
+<p>The extractor for the Schnorr protocol is extremely clever — and it’s
+ also pretty simple. Let’s illustrate it in terms of a protocol diagram.
+ Alice (the Prover) is on the left, and the Extractor is on the right:</p>
+<div class="separator" style="clear:both;text-align:center;"><a style="margin-left:1em;margin-right:1em;" href="https://matthewdgreen.files.wordpress.com/2016/05/schnorrextractor.png"><img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/schnorrextractor1.png" srcset="https://matthewdgreen.files.wordpress.com/2016/05/schnorrextractor1.png?w=320&amp;h=143&amp;zoom=2 2x" src-orig="https://matthewdgreen.files.wordpress.com/2016/05/schnorrextractor1.png?w=320&amp;h=142" scale="2" width="320" height="143" border="0"></a></div>
+<p>The key observation here is that by rewinding Alice’s execution, the 
+Extractor can ‘trick’ Alice into making two different proof transcripts 
+using the same&nbsp;<i>k</i>. This shouldn’t normally happen in a real protocol run, where Alice specifically picks a new <i>k</i>&nbsp;for each execution of the protocol.</p>
+<p>If the Extractor can trick Alice into doing this, then he can solve the following simple equation to recover Alice’s secret:</p>
+<div class="separator" style="clear:both;text-align:center;"><a style="margin-left:1em;margin-right:1em;" href="https://matthewdgreen.files.wordpress.com/2016/05/schnorrextractoreqn.png"><img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/schnorrextractoreqn1.png" srcset="https://matthewdgreen.files.wordpress.com/2016/05/schnorrextractoreqn1.png?w=200&amp;h=56&amp;zoom=2 2x" src-orig="https://matthewdgreen.files.wordpress.com/2016/05/schnorrextractoreqn1.png?w=200&amp;h=55" scale="2" width="200" height="56" border="0"></a></div>
+<p>It’s worth taking a moment right now to note that this <i>also</i>&nbsp;implies a serious vulnerability in bad implementations of the Schnorr protocol. If you ever <i>accidentally</i>&nbsp;use the same <i>k</i>&nbsp;for
+ two different runs of the protocol, an attacker may be able to recover 
+your secret key! This can happen if you use a bad random number 
+generator.</p>
+<p>Indeed, those with a bit more experience will notice that this is similar to a&nbsp;<a href="https://www.schneier.com/blog/archives/2011/01/sony_ps3_securi.html"><i>real</i>&nbsp;attack on systems (with bad random number generators)</a>&nbsp;that
+ implement ECDSA or DSA signatures! This is also not a coincidence. The 
+(EC)DSA signature family is based on Schnorr. Ironically, the developers
+ of DSA managed to retain this vulnerability of the Schorr family of 
+protocols while <i>at the same time</i>&nbsp;ditching the security proof that makes Schnorr so nice.</p>
+<h3><b>Proving zero-knowledge(ness) against an honest Verifier</b></h3>
+<p>Having demonstrated that Schnorr signatures are complete and sound, it remains only to prove that they’re ‘<i>zero knowledge’</i>.
+ Remember that to do this, normally we require a Simulator that can 
+interact with any possible Verifier and produce a ‘simulated’ transcript
+ of the proof, even if the Simulator doesn’t know the secret it’s 
+proving it knows.</p>
+<p>The standard Schnorr protocol does not have such a Simulator, for 
+reasons we’ll get into in a second. Instead, to make the proof work we 
+need to make a special assumption. Specifically, the Verifier needs to 
+be ‘honest’. That is, we need to make the special assumption that it 
+will run its part of the protocol correctly — namely, that it will pick 
+its challenge “<i>c</i>”&nbsp;using only its random number generator,&nbsp;<i>and will not choose this value based on any input we provide it</i>. As long as it does this, we can construct a Simulator.</p>
+<p>Here’s how the Simulator works.</p>
+<p>Let’s say we are trying to prove knowledge of a secret <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_003.png" alt="a" title="a" class="latex" srcset="https://s0.wp.com/latex.php?latex=a&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="9" height="7">&nbsp;for some public key <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_006.png" alt="g^a~mod~p" title="g^a~mod~p" class="latex" srcset="https://s0.wp.com/latex.php?latex=g%5Ea%7Emod%7Ep&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="65" height="14"><i>— </i>but we don’t actually know the value <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_003.png" alt="a" title="a" class="latex" srcset="https://s0.wp.com/latex.php?latex=a&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="9" height="7"><i>.&nbsp;</i>Our Simulator assumes that the Verifier will choose some value <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_010.png" alt="c" title="c" class="latex" srcset="https://s0.wp.com/latex.php?latex=c&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="7" height="7">&nbsp;as its challenge, and moreover, it knows that the honest Verifier will choose the value <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_010.png" alt="c" title="c" class="latex" srcset="https://s0.wp.com/latex.php?latex=c&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="7" height="7">&nbsp;only based on its random number generator — and not based on any inputs the Prover has provided.</p>
+<ol>
+<li>First, output some initial <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_012.png" alt="g^{k_1}" title="g^{k_1}" class="latex" srcset="https://s0.wp.com/latex.php?latex=g%5E%7Bk_1%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="19" height="17"> as the Prover’s first message<i>,</i>&nbsp;and find out what challenge <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_010.png" alt="c" title="c" class="latex" srcset="https://s0.wp.com/latex.php?latex=c&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="7" height="7">&nbsp;the Verifier chooses.</li>
+<li><em>Rewind the Verifier</em>, and pick a random integer <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_013.png" alt="z" title="z" class="latex" srcset="https://s0.wp.com/latex.php?latex=z&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="8" height="7"> in the range&nbsp;<img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_008.png" alt="\{0,\dots,q-1\}" title="\{0,\dots,q-1\}" class="latex" srcset="https://s0.wp.com/latex.php?latex=%5C%7B0%2C%5Cdots%2Cq-1%5C%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="96" height="17"><i>.</i></li>
+<li>Compute <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex.png" alt="g^{k_2}&nbsp;= g^z * g^{a (-c)}" title="g^{k_2}&nbsp;= g^z * g^{a (-c)}" class="latex" srcset="https://s0.wp.com/latex.php?latex=g%5E%7Bk_2%7D%C2%A0%3D+g%5Ez+%2A+g%5E%7Ba+%28-c%29%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="111" height="18"><i>&nbsp;</i>and output <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_014.png" alt="g^{k_2}" title="g^{k_2}" class="latex" srcset="https://s0.wp.com/latex.php?latex=g%5E%7Bk_2%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="19" height="17">&nbsp;as the Prover’s new initial message.</li>
+<li>When the Verifier challenges on <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_010.png" alt="c" title="c" class="latex" srcset="https://s0.wp.com/latex.php?latex=c&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="7" height="7"> again, output <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_013.png" alt="z" title="z" class="latex" srcset="https://s0.wp.com/latex.php?latex=z&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="8" height="7">.</li>
+</ol>
+<div>Notice that the transcript <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_009.png" alt="g^k, c, z" title="g^k, c, z" class="latex" srcset="https://s0.wp.com/latex.php?latex=g%5Ek%2C+c%2C+z&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="45" height="17"> will verify correctly as a perfectly valid, well-distributed proof of knowledge of the value <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_003.png" alt="a" title="a" class="latex" srcset="https://s0.wp.com/latex.php?latex=a&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="9" height="7">. The Verifier will accept this output as a valid proof of knowledge of <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_003.png" alt="a" title="a" class="latex" srcset="https://s0.wp.com/latex.php?latex=a&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="9" height="7">, even though the Simulator does not know <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_003.png" alt="a" title="a" class="latex" srcset="https://s0.wp.com/latex.php?latex=a&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="9" height="7"> in the first place!</div>
+<div></div>
+<div>What this proves is that&nbsp;<em>if we can rewind a Verifier</em>,
+ then (just as in the first post in this series) we can always trick the
+ Verifier into believing we have knowledge of a value, even when we 
+don’t. And since the statistical distribution of our protocol is 
+identical to the real protocol, this means that our protocol must be 
+zero knowledge — against an honest Verifier.</div>
+<h3><strong>From interactive to&nbsp;<em>non-interactive</em></strong></h3>
+<p>So far we’ve shown how to use the Schnorr protocol to&nbsp;<em>interactively prove knowledge</em> of a secret key <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_003.png" alt="a" title="a" class="latex" srcset="https://s0.wp.com/latex.php?latex=a&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="9" height="7"> that corresponds to a public key <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_015.png" alt="g^{a}" title="g^{a}" class="latex" srcset="https://s0.wp.com/latex.php?latex=g%5E%7Ba%7D&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="14" height="14">. This is an incredibly useful protocol, but it only works if our Verifier is online and willing to interact with us.</p>
+<p>An obvious question is whether we can make this protocol 
+work&nbsp;without interaction. Specifically, can I make a proof that I 
+can send you without you even being online. Such a proof is called a <a href="https://en.wikipedia.org/wiki/Non-interactive_zero-knowledge_proof">non-interactive zero knowledge proof</a>
+ (NIZK).&nbsp;Turning Schnorr into a non-interactive proof seems 
+initially quite&nbsp;difficult — since the protocol fundamentally relies
+ on the Verifier picking a random challenge. Fortunately there is a 
+clever trick we can use.</p>
+<p>This technique&nbsp;was&nbsp;developed by Fiat and Shamir in the 1980s. What they observed was that&nbsp;<em>if you have a decent hash function lying around,</em> you can convert an interactive protocol into a non-interactive one by simply using the hash function to pick the challenge.</p>
+<p>Specifically, the revised protocol for proving knowledge of <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_003.png" alt="a" title="a" class="latex" srcset="https://s0.wp.com/latex.php?latex=a&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="9" height="7"> with respect to a public key <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_017.png" alt="g^a" title="g^a" class="latex" srcset="https://s0.wp.com/latex.php?latex=g%5Ea&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="14" height="14"> looks like this:</p>
+<ol>
+<li>The Prover picks&nbsp;<img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_011.png" alt="g^k" title="g^k" class="latex" srcset="https://s0.wp.com/latex.php?latex=g%5Ek&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="14" height="17"> (just as in the interactive&nbsp;protocol).</li>
+<li>Now, the prover computes&nbsp;the challenge as <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_018.png" alt="c = H(g^k || M)" title="c = H(g^k || M)" class="latex" srcset="https://s0.wp.com/latex.php?latex=c+%3D+H%28g%5Ek+%7C%7C+M%29&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="97" height="18"> where <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_002.png" alt="H()" title="H()" class="latex" srcset="https://s0.wp.com/latex.php?latex=H%28%29&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="26" height="18"> is a hash function, and M is an (optional) and arbitary message string.</li>
+<li>Compute <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_004.png" alt="ac + k~mod~q" title="ac + k~mod~q" class="latex" srcset="https://s0.wp.com/latex.php?latex=ac+%2B+k%7Emod%7Eq&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="94" height="14"> (just as in the interactive protocol).</li>
+</ol>
+<p>The upshot here is that the hash function is picking the challenge <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_010.png" alt="c" title="c" class="latex" srcset="https://s0.wp.com/latex.php?latex=c&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="7" height="7"> without any interaction with the Verifier. In principle, if the hash function is “strong enough” (meaning, it’s a <a href="https://blog.cryptographyengineering.com/2011/09/29/what-is-random-oracle-model-and-why-3/">random oracle</a>) then the result is a completely non-interactive proof of knowledge of the value <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_003.png" alt="a" title="a" class="latex" srcset="https://s0.wp.com/latex.php?latex=a&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="9" height="7"> that the Prover can send to the Verifier. The proof of this is relatively straightforward.</p>
+<p>The particularly neat thing about this protocol is that it isn’t just a proof of knowledge, it’s also a&nbsp;<em>signature scheme.</em> That is, if you put a message into the (optional) value <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_007.png" alt="M" title="M" class="latex" srcset="https://s0.wp.com/latex.php?latex=M&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="17" height="11">, you obtain a signature on <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_007.png" alt="M" title="M" class="latex" srcset="https://s0.wp.com/latex.php?latex=M&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="17" height="11">, which&nbsp;can only be produced by someone who knows the secret key <img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/latex_003.png" alt="a" title="a" class="latex" srcset="https://s0.wp.com/latex.php?latex=a&amp;bg=ffffff&amp;fg=000000&amp;s=0&amp;zoom=2 2x" scale="2" width="9" height="7">. The resulting protocol is called the Schnorr signature scheme, and it’s the basis of real-world protocols like <a href="https://en.wikipedia.org/wiki/EdDSA">EdDSA</a>.</p>
+<h3><strong>Phew.</strong></h3>
+<div>Yes, this has been a long post and there’s probably a lot more to 
+be said. Hopefully there will be more time for that in a third post — 
+which should only take me another three years.</div>
+<div></div>
+<div><i>Notes:</i></div>
+<p><i><br>
+</i><i>* </i>In this definition, it’s necessary that the statement be literally true.</p>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled">
+<div id="jp-relatedposts" class="jp-relatedposts" style="display: block;">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-minimal"><p class="jp-relatedposts-post jp-relatedposts-post0" data-post-id="128" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://blog.cryptographyengineering.com/2014/11/27/zero-knowledge-proofs-illustrated-primer/" title="Zero Knowledge Proofs: An illustrated primer
+
+One of the best things about modern cryptography is the beautiful terminology. You could start any number of punk bands (or&nbsp;Tumblrs) named after cryptography terms like 'hard-core predicate', 'trapdoor function',&nbsp;' or 'impossible differential cryptanalysis'. And of course, I haven't even mentioned the one term that surpasses all of these. That…" rel="nofollow" data-origin="95" data-position="0">Zero Knowledge Proofs: An illustrated primer</a></span><span class="jp-relatedposts-post-context">In "fundamentals"</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-id="4877" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://blog.cryptographyengineering.com/2018/04/07/hash-based-signatures-an-illustrated-primer/" title="Hash-based Signatures: An illustrated Primer
+
+Over the past several years I've been privileged to observe two contradictory and fascinating trends. The first is that we're finally starting to use the cryptography that researchers have spent the past forty years designing. We see this every day in examples ranging from encrypted messaging to phone security to…" rel="nofollow" data-origin="95" data-position="1">Hash-based Signatures: An illustrated Primer</a></span><span class="jp-relatedposts-post-context">With 6 comments</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-id="271" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://blog.cryptographyengineering.com/2013/04/11/zerocoin-making-bitcoin-anonymous/" title="Zerocoin: making Bitcoin anonymous
+
+Wow, what the heck is going on with Bitcoin? When I started this post, the value of a single bitcoin had surged upwards of $250. It's corrected a bit since then (down $100 or so), but it's pretty clear that we live in a very different world than we did…" rel="nofollow" data-origin="95" data-position="2">Zerocoin: making Bitcoin anonymous</a></span><span class="jp-relatedposts-post-context">In "Bitcoin"</span></p></div></div></div>	</div><!-- .entry-content -->
+
+			<div class="entry-footer">
+			
+					</div><!-- .entry-footer -->
+	</article><!-- #post-## -->
+			
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://blog.cryptographyengineering.com/2016/11/24/android-n-encryption/" rel="prev">The limitations of Android N&nbsp;Encryption</a></div><div class="nav-next"><a href="https://blog.cryptographyengineering.com/2017/02/28/the-future-of-ransomware/" rel="next">The future of&nbsp;Ransomware</a></div></div>
+	</nav>
+			
+<div id="comments" class="comments-area">
+
+	
+			<h2 class="comments-title">
+			6 thoughts on “<span>Zero Knowledge Proofs: An illustrated primer, Part&nbsp;2</span>”		</h2><!-- .comments-title -->
+
+		
+		<ol class="comment-list">
+					<li id="comment-3186" class="pingback even thread-even depth-1 highlander-comment">
+			<div class="comment-body">
+				Pingback: <a href="https://www.sec.uno/2017/01/21/zero-knowledge-proofs-an-illustrated-primer-part-2/" rel="external nofollow" class="url">Zero Knowledge Proofs: An illustrated primer, Part 2 – sec.uno</a> 			</div>
+		</li><!-- #comment-## -->
+		<li id="comment-3187" class="comment byuser comment-author-andremeiio odd alt thread-odd thread-alt depth-1 parent highlander-comment">
+			<article id="div-comment-3187" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/49c4b30df601d3d6c1ee4c37492773f9.png" class="avatar avatar-48 grav-hashed grav-hijack" id="grav-49c4b30df601d3d6c1ee4c37492773f9-0" originals="48" src-orig="https://1.gravatar.com/avatar/49c4b30df601d3d6c1ee4c37492773f9?s=48&amp;d=identicon&amp;r=PG" scale="2" width="48" height="48">						<b class="fn"><a href="http://gravatar.com/andremeiio" rel="external nofollow" class="url">asm</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blog.cryptographyengineering.com/2017/01/21/zero-knowledge-proofs-an-illustrated-primer-part-2/#comment-3187">
+							<time datetime="2017-01-21T20:30:40+00:00">
+								January 21, 2017 at 8:30 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>“this means that our protocol must be zero knowledge — against an honest Verifier.”</p>
+<p>What about a dishonest verifier? This seems to me like quite a large 
+hole to leave unpatched… Specially since the whole point of ZKPs was to 
+deal with the case where the verifier can’t be trusted.</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-3188" class="comment byuser comment-author-matthewdgreen bypostauthor even depth-2 highlander-comment">
+			<article id="div-comment-3188" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/0c686ee27e835834c44ad17115185e12.png" class="avatar avatar-48 grav-hashed grav-hijack" id="grav-0c686ee27e835834c44ad17115185e12-0" originals="48" src-orig="https://0.gravatar.com/avatar/0c686ee27e835834c44ad17115185e12?s=48&amp;d=identicon&amp;r=PG" scale="2" width="48" height="48">						<b class="fn"><a href="https://matthewdgreen.wordpress.com/" rel="external nofollow" class="url">Matthew Green</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blog.cryptographyengineering.com/2017/01/21/zero-knowledge-proofs-an-illustrated-primer-part-2/#comment-3188">
+							<time datetime="2017-01-22T01:51:20+00:00">
+								January 22, 2017 at 1:51 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>It is indeed quite a hole. The standard Schnorr protocol is 
+“honest verifier zero knowledge” (HVZK), which means the security really
+ only holds in the unusual case that a Verifier is honest. It’s really 
+easy to come up with a counterexample — consider a Verifier who computes
+ the challenge by e.g., hashing the Prover’s inputs together with some 
+salt. This would completely break the argument for ZK, since you would 
+no longer be able to rely on the Verifier picking the same challenge c.</p>
+<p>There are two fixes for this. In the non-interactive (signature) 
+construction, the fix is simply to ignore the problem — because in the 
+Schnorr signature the Verifier doesn’t pick the challenge. It’s chosen 
+using a hash function. If we conduct the security proof in the random 
+oracle model, we get to tinker with the random oracle so that it won’t 
+alter the challenge. This is cheating (because real hash functions don’t
+ work like this) but random oracle model proofs are so screwy it’s a 
+moot point.</p>
+<p>Moving back to the interactive protocol, there are various “folklore”
+ solutions that fix this problem and allows you to work with dishonest 
+Verifiers. One is for the Verifier to use a trapdoor commitment scheme 
+to commit to the initial message “g^k”, and then open the commitment 
+only in the third message. A trapdoor commitment scheme is a commitment 
+scheme where there exists a special “trapdoor” that you can use to open a
+ commitment up to any value you want. So the Simulator commits to a 
+random g^{k1} in the first message, and then after it finds out which 
+“c” the Verifier has chosen, it simply uses the commitment scheme 
+trapdoor to open the commitment to the new value g^{k2} you want to use.
+ </p>
+<p>This fix eliminates the need for rewinding in building the ZK 
+Simulator, at the cost of adding a trapdoor commitment scheme with 
+parameters that must be chosen by some trusted party. (In the real 
+protocol you trust the party not to give out the trapdoor to anyone, and
+ in the proofs of security you have it give you the trapdoor). One 
+example of a trapdoor commitment scheme is the Pedersen commitment 
+scheme.</p>
+<p>I’ll try to talk more about some of this stuff in the following posts, when I get around to writing them <img draggable="false" class="emoji" alt="🙂" src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/1f642.svg" scale="0"></p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-3189" class="pingback odd alt thread-even depth-1 highlander-comment">
+			<div class="comment-body">
+				Pingback: <a href="http://www.phpdrill.com/zero-knowledge-proofs-an-illustrated-primer-part-2/" rel="external nofollow" class="url">Zero Knowledge Proofs: An illustrated primer, Part 2</a> 			</div>
+		</li><!-- #comment-## -->
+		<li id="comment-3191" class="comment even thread-odd thread-alt depth-1 highlander-comment">
+			<article id="div-comment-3191" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/2361557f61612a777fa80055fd894a5e.png" class="avatar avatar-48 grav-hashed grav-hijack" id="grav-2361557f61612a777fa80055fd894a5e-0" originals="48" src-orig="https://2.gravatar.com/avatar/2361557f61612a777fa80055fd894a5e?s=48&amp;d=identicon&amp;r=PG" scale="2" width="48" height="48">						<b class="fn">david</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blog.cryptographyengineering.com/2017/01/21/zero-knowledge-proofs-an-illustrated-primer-part-2/#comment-3191">
+							<time datetime="2017-01-23T12:52:54+00:00">
+								January 23, 2017 at 12:52 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hopefully sooner than in two years, eh?</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-3192" class="comment odd alt thread-even depth-1 highlander-comment">
+			<article id="div-comment-3192" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/89b0e2b1228b0a0fd8441e3623ec7df7.png" class="avatar avatar-48 grav-hashed grav-hijack" id="grav-89b0e2b1228b0a0fd8441e3623ec7df7-0" originals="48" src-orig="https://2.gravatar.com/avatar/89b0e2b1228b0a0fd8441e3623ec7df7?s=48&amp;d=identicon&amp;r=PG" scale="2" width="48" height="48">						<b class="fn">Ivars Suba</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blog.cryptographyengineering.com/2017/01/21/zero-knowledge-proofs-an-illustrated-primer-part-2/#comment-3192">
+							<time datetime="2017-01-24T10:47:25+00:00">
+								January 24, 2017 at 10:47 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>If we replace in Schnorr identification/signature protocol DH 
+cryptography with EC (Curve25519, Curve448) we will get XedDSA and 
+VXedDSA signature schemes for Whispersystems Signal protocol <a href="https://www.whispersystems.org/docs/specifications/xeddsa/" rel="nofollow">https://www.whispersystems.org/docs/specifications/xeddsa/</a> . I’m correct?</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+			<p class="no-comments">Comments are closed.</p>
+	
+	
+</div><!-- #comments -->
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+
+		</div><!-- #content -->
+
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			<div class="site-info">
+				<a href="https://wordpress.com/?ref=footer_custom_svg" title="Create a website or blog at WordPress.com"><svg style="fill: currentColor; position: relative; top: 1px;" width="14px" height="15px" viewBox="0 0 14 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" aria-labelledby="title" role="img">
+				<desc id="title">Create a website or blog at WordPress.com</desc>
+				<path d="M12.5225848,4.97949746 C13.0138466,5.87586309 13.2934037,6.90452431 13.2934037,7.99874074 C13.2934037,10.3205803 12.0351007,12.3476807 10.1640538,13.4385638 L12.0862862,7.88081544 C12.4453251,6.98296834 12.5648813,6.26504621 12.5648813,5.62667922 C12.5648813,5.39497674 12.549622,5.17994084 12.5225848,4.97949746 L12.5225848,4.97949746 Z M7.86730089,5.04801561 C8.24619178,5.02808979 8.58760099,4.98823815 8.58760099,4.98823815 C8.9267139,4.94809022 8.88671369,4.44972248 8.54745263,4.46957423 C8.54745263,4.46957423 7.52803983,4.54957381 6.86996227,4.54957381 C6.25158863,4.54957381 5.21247202,4.46957423 5.21247202,4.46957423 C4.87306282,4.44972248 4.83328483,4.96816418 5.17254589,4.98823815 C5.17254589,4.98823815 5.49358462,5.02808979 5.83269753,5.04801561 L6.81314716,7.73459399 L5.43565839,11.8651647 L3.14394256,5.04801561 C3.52312975,5.02808979 3.86416859,4.98823815 3.86416859,4.98823815 C4.20305928,4.94809022 4.16305906,4.44972248 3.82394616,4.46957423 C3.82394616,4.46957423 2.80475558,4.54957381 2.14660395,4.54957381 C2.02852925,4.54957381 1.88934333,4.54668493 1.74156477,4.54194422 C2.86690406,2.83350881 4.80113651,1.70529256 6.99996296,1.70529256 C8.638342,1.70529256 10.1302017,2.33173369 11.2498373,3.35765419 C11.222726,3.35602457 11.1962815,3.35261718 11.1683554,3.35261718 C10.5501299,3.35261718 10.1114609,3.89113285 10.1114609,4.46957423 C10.1114609,4.98823815 10.4107217,5.42705065 10.7296864,5.94564049 C10.969021,6.36482346 11.248578,6.90326506 11.248578,7.68133501 C11.248578,8.21992476 11.0413918,8.84503256 10.7696866,9.71584277 L10.1417574,11.8132391 L7.86730089,5.04801561 Z M6.99996296,14.2927074 C6.38218192,14.2927074 5.78595654,14.2021153 5.22195356,14.0362644 L7.11048207,8.54925635 L9.04486267,13.8491542 C9.05760348,13.8802652 9.07323319,13.9089317 9.08989995,13.9358945 C8.43574834,14.1661896 7.73285573,14.2927074 6.99996296,14.2927074 L6.99996296,14.2927074 Z M0.706448182,7.99874074 C0.706448182,7.08630113 0.902152921,6.22015756 1.25141403,5.43749503 L4.25357806,13.6627848 C2.15393732,12.6427902 0.706448182,10.4898387 0.706448182,7.99874074 L0.706448182,7.99874074 Z M6.99996296,0.999 C3.14016476,0.999 0,4.13905746 0,7.99874074 C0,11.8585722 3.14016476,14.999 6.99996296,14.999 C10.8596871,14.999 14,11.8585722 14,7.99874074 C14,4.13905746 10.8596871,0.999 6.99996296,0.999 L6.99996296,0.999 Z" id="wordpress-logo-simplified-cmyk" stroke="none" fill="“currentColor”" fill-rule="evenodd"></path>
+			</svg></a>
+				
+							</div><!-- .site-info -->
+		</footer><!-- #colophon -->
+	</div><!-- #content-wrapper -->
+
+			<div id="slide-menu" aria-expanded="false">
+			<button class="menu-toggle" aria-controls="slide-menu" aria-expanded="false">Menu</button>
+
+			<h2 class="menu-title">Menu</h2>
+			<nav id="slide-navigation" class="main-slide-navigation" role="navigation">
+				<ul id="menu-about" class="menu"><li id="menu-item-860" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-860"><a href="https://matthewdgreen.wordpress.com/">Home</a></li>
+<li id="menu-item-871" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-871"><a href="https://blog.cryptographyengineering.com/about-me/">About Me</a></li>
+<li id="menu-item-872" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-872"><a href="https://blog.cryptographyengineering.com/bitcoin-tipjar/">Bitcoin Tipjar</a></li>
+<li id="menu-item-1249" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1249"><a href="https://blog.cryptographyengineering.com/top-posts/">Top Posts</a></li>
+<li id="menu-item-1232" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1232"><a href="https://blog.cryptographyengineering.com/all-posts/">All Posts</a></li>
+<li id="menu-item-873" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-873"><a href="https://blog.cryptographyengineering.com/useful-cryptography-resources/">Useful Cryptography Resources</a></li>
+</ul>			</nav><!-- #slide-navigation -->
+
+					</div><!-- #slide-menu -->
+	</div><!-- #page -->
+
+<!--  -->
+<script type="text/javascript" src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/wpgroho.js"></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-49c4b30df601d3d6c1ee4c37492773f9">
+	</div>
+	<div class="grofile-hash-map-0c686ee27e835834c44ad17115185e12">
+	</div>
+	<div class="grofile-hash-map-2361557f61612a777fa80055fd894a5e">
+	</div>
+	<div class="grofile-hash-map-89b0e2b1228b0a0fd8441e3623ec7df7">
+	</div>
+	</div>
+
+	<div id="carousel-reblog-box">
+		<form action="#" name="carousel-reblog">
+			<textarea id="carousel-reblog-content" name="carousel-reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="carousel-reblog-to-blog-id" id="carousel-reblog-lblogid">Post to</label>
+			<select name="carousel-reblog-to-blog-id" id="carousel-reblog-to-blog-id">
+						</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="#" class="cancel">Cancel</a></span>
+				<input type="submit" name="carousel-reblog-submit" class="button" id="carousel-reblog-submit" value="Reblog Post">
+				<input type="hidden" id="carousel-reblog-blog-id" value="9549322">
+				<input type="hidden" id="carousel-reblog-blog-url" value="https://blog.cryptographyengineering.com">
+				<input type="hidden" id="carousel-reblog-blog-title" value="A Few Thoughts on Cryptographic Engineering">
+				<input type="hidden" id="carousel-reblog-post-url" value="">
+				<input type="hidden" id="carousel-reblog-post-title" value="">
+			</div>
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="3e17923f70"><input type="hidden" name="_wp_http_referer" value="/2017/01/21/zero-knowledge-proofs-an-illustrated-primer-part-2/">		</form>
+
+		<div class="arrow"></div>
+	</div>
+<link rel="stylesheet" id="all-css-0-2" href="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/jetpack-carousel.css" type="text/css" media="all">
+<!--[if lte IE 8]>
+<link rel='stylesheet' id='jetpack-carousel-ie8fix-css'  href='https://s1.wp.com/wp-content/mu-plugins/carousel/jetpack-carousel-ie8fix.css?m=1412618825h&#038;ver=20121024' type='text/css' media='all' />
+<![endif]-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var actionbardata = {"siteID":"9549322","siteName":"A Few Thoughts on Cryptographic Engineering","siteURL":"https:\/\/blog.cryptographyengineering.com","icon":"<img alt='' src='https:\/\/s2.wp.com\/i\/logo\/wpcom-gray-white.png' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"pub\/independent-publisher","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/matthewdgreen.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fblog.cryptographyengineering.com%2F2017%2F01%2F21%2Fzero-knowledge-proofs-an-illustrated-primer-part-2%2F","themeURL":"","xhrURL":"https:\/\/blog.cryptographyengineering.com\/wp-admin\/admin-ajax.php","nonce":"32a0c33bda","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"0c4b9f0c5a\" \/>","referer":"https:\/\/blog.cryptographyengineering.com\/2017\/01\/21\/zero-knowledge-proofs-an-illustrated-primer-part-2\/","canFollow":"1","feedID":"53033543","statusMessage":"","customizeLink":"https:\/\/matthewdgreen.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Fmatthewdgreen.wordpress.com%2F2017%2F01%2F21%2Fzero-knowledge-proofs-an-illustrated-primer-part-2%2F","postID":"95","shortlink":"https:\/\/wp.me\/pE4dk-1x","canEditPost":"","editLink":"https:\/\/wordpress.com\/post\/blog.cryptographyengineering.com\/95","statsLink":"https:\/\/wordpress.com\/stats\/post\/95\/blog.cryptographyengineering.com","i18n":{"view":"View site","follow":"Follow","following":"Following","edit":"Edit","login":"Log in","signup":"Sign up","customize":"Customize","report":"Report this content","themeInfo":"Get theme: Independent Publisher","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editSubs":"Manage subscriptions","viewReader":"View site in Reader","viewReadPost":"View post in Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"Join 484 other followers","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/matthewdgreen.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fblog.cryptographyengineering.com%2F2017%2F01%2F21%2Fzero-knowledge-proofs-an-illustrated-primer-part-2%2F\">Log in now.<\/a>","stats":"Stats"}};
+/* ]]> */
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"en","ajaxurl":"https:\/\/blog.cryptographyengineering.com\/wp-admin\/admin-ajax.php","nonce":"14bbfeed5e","display_exif":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/matthewdgreen.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fblog.cryptographyengineering.com%2F2017%2F01%2F21%2Fzero-knowledge-proofs-an-illustrated-primer-part-2%2F","blog_id":"9549322","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"local_comments_commenting_as":"<fieldset><label for=\"email\">Email (Required)<\/label> <input type=\"text\" name=\"email\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-email-field\" \/><\/fieldset><fieldset><label for=\"author\">Name (Required)<\/label> <input type=\"text\" name=\"author\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-author-field\" \/><\/fieldset><fieldset><label for=\"url\">Website<\/label> <input type=\"text\" name=\"url\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-url-field\" \/><\/fieldset>","reblog":"Reblog","reblogged":"Reblogged","reblog_add_thoughts":"Add your thoughts here... (optional)","reblogging":"Reblogging...","post_reblog":"Post Reblog","stats_query_args":"blog=9549322&v=wpcom&tz=0&user_id=0&subd=matthewdgreen","is_public":"1","reblog_enabled":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/a.js"></script><div id="actionbar" class="actnbr-pub-independent-publisher actnbr-has-follow"><ul><li class="actnbr-btn actnbr-hidden"> 			    	<a class="actnbr-action actnbr-actn-follow" href=""><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a> 			    	<div class="actnbr-popover tip tip-top-left actnbr-notice"> 			    		<div class="tip-arrow"></div> 			    		<div class="tip-inner actnbr-follow-bubble"></div> 			    	</div> 			    </li><li class="actnbr-ellipsis actnbr-hidden"> 			  <svg class="gridicon gridicon__ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle></g></svg> 			  <div class="actnbr-popover tip tip-top-left actnbr-more"> 			  	<div class="tip-arrow"></div> 			  	<div class="tip-inner"> 				  <ul> 				    <li class="actnbr-sitename actnbr-hidden"><a href="https://blog.cryptographyengineering.com/"><img alt="" src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/wpcom-gray-white.png" class="avatar avatar-50" scale="0" width="50" height="50"> A Few Thoughts on Cryptographic Engineering</a></li> 				   	<li class="actnbr-folded-customize actnbr-hidden"><a href="https://matthewdgreen.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fmatthewdgreen.wordpress.com%2F2017%2F01%2F21%2Fzero-knowledge-proofs-an-illustrated-primer-part-2%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>Customize<span></span></span></a></li> 				    <li class="actnbr-folded-follow actnbr-hidden"><a class="actnbr-action actnbr-actn-follow" href=""><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a></li> 					<li class="actnbr-signup actnbr-hidden"><a href="https://wordpress.com/start/">Sign up</a></li> 				    <li class="actnbr-login actnbr-hidden"><a href="https://matthewdgreen.wordpress.com/wp-login.php?redirect_to=https%3A%2F%2Fblog.cryptographyengineering.com%2F2017%2F01%2F21%2Fzero-knowledge-proofs-an-illustrated-primer-part-2%2F">Log in</a></li> 				     				    <li class="actnbr-shortlink actnbr-hidden"><a href="https://wp.me/pE4dk-1x">Copy shortlink</a></li> 				    <li class="flb-report actnbr-hidden"><a href="http://en.wordpress.com/abuse/">Report this content</a></li> 				     				     				    <li class="actnbr-subs actnbr-hidden"><a href="https://subscribe.wordpress.com/">Manage subscriptions</a></li> 				    <li class="actnbr-fold actnbr-hidden"><a href="">Collapse this bar</a></li> 			      </ul> 			    </div> 		      </div> 		    </li> 	      </ul></div>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script><script src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/w.js" type="text/javascript" async="" defer="defer"></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'9549322','blog_tz':'0','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'9549322','v':'wpcom','tz':'0','user_id':'0','post':'95','subd':'matthewdgreen'}]);
+_stq.push(['extra', {'crypt':'UE40eW5QN0p8M2Y/RE1TaVhzUzFMbjdWNHpwZGhTayxPSUFCMGNrd29+Smw0TDhnZmRTK0hlRi9QSGh6bi9GXVhBJWIlZlR5U1JMLU8/MkNtblkvY1dldi1Cdz1FW1N6S0NteFFsTTZdcCU0P29mXyxINV1GX24sZ3YuQ1UvQUNPazVmMmRhP0MreGVIcDlCYVslTVgmMjJuZXVFWlUraWc2ZyZHMT9TYmNoekJvP2pvRFpmR2YvSnFBJnhRMldRb1huR1F2bk4yTXM4fHFkN3dLV2s0WTFyeWo0MFZ3SC1FUnx4UmZlLj9PN3hpMkY4ZzJ8Y0tUU3BYQVN6VlQ0dHV3RC09TGUuN0VCJVpleSV3ZzdsdkIvRU1UOVlJSnZUcFI/Q0lvcHxbWCZvNGRFRyZqMm5ifjJuSnlJJXVfcyxHb0ZqTEtoUjl5T1NlK051'}]);
+_stq.push([ 'clickTrackerInit', '9549322', '95' ]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+		<script>
+			jQuery( '#resend-verifyemail' ).on( 'click', function(e) {
+				var link = jQuery(e.target);
+
+				e.preventDefault();
+
+				var r = jQuery.ajax( {
+					type: 'POST',
+					url: '/wp-admin/admin-ajax.php',
+					data: {
+						'action': 'resend_verify_email',
+						'_wpnonce': link.data( 'nonce' )
+					}
+				} );
+
+				setTimeout( function() {
+					link.hide();
+					link.after( '<strong id="email-sent">Email Sent</strong>' );
+				}, 200 );
+
+				setTimeout( function() {
+					jQuery( "strong#email-sent" ).hide().remove();
+					link.show();
+				}, 4000 );
+			} );
+		</script>
+	<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+
+<img src="Zero%20Knowledge%20Proofs%20%20An%20illustrated%20primer,%20Part%202%20%E2%80%93%20A%20Few%20Thoughts%20on%20Cryptographic%20Engineering_files/g.gif" alt=":)" id="wpstats" scale="0"></body></html>
